@@ -224,14 +224,22 @@ for slug,w in sym.items():
         o=[]
         if ps in ('sight','muzzle','barrel','grip','laser','light','ergo'):
             sp_pts = (att['WEAPON_ATTS'].get(rid,{}) or {}).get('sightPoints') or {}
-            for aid in (tw.get(ps) or {}):
+            ids = list(tw.get(ps) or {})
+            if ps=='sight':
+                # the tooltip map only carries iron sights; the availability list is the
+                # authority on which optics a weapon takes, so union the two.
+                avail = (att['WEAPON_ATTS'].get(rid,{}) or {}).get('sight')
+                if isinstance(avail, list):
+                    ids += [a for a in avail if a not in ids and a in {x['id'] for x in att['SIGHTS']}]
+            for aid in ids:
                 rp = p_resolve(ACAT.get((ps,aid)) or {}, rid)
                 rec = ACAT.get((ps,aid))
                 if rec is None: continue
+                h = (tw.get(ps) or {}).get(aid)
                 p = int(rp.get('pts') or 0)            # per-weapon cost overrides win
                 if ps=='sight' and aid in sp_pts: p = int(sp_pts[aid])
                 o.append(dict(id=aid, n=rec.get('name',aid), p=p,
-                              t=tip(tw[ps][aid]), ic=icon_for(ps,aid), fx=p_fx(rp)))
+                              t=tip(h), ic=icon_for(ps,aid), fx=p_fx(rp)))
         elif ps=='mag':
             for mid,mm in ((att['WEAPON_MAG'].get(rid,{}) or {}).get('mags') or {}).items():
                 if mid not in (tw.get('mag') or {}): continue
