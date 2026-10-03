@@ -1,0 +1,4 @@
+# Serve only the built catalog; build inputs (data/*, generators, source art) stay in the repo, off the CDN.
+/*
+!bf6-armory.html
+!vercel.json
