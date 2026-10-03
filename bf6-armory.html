@@ -525,21 +525,39 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;color:v
 .pglane.sel .n{color:var(--accent);font-weight:700}
 .pglane .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;font-size:12px}
 .pglane .v small{font-size:9.5px;color:var(--dim2);font-weight:600;margin-left:2px}
-.pgenv{position:relative;height:18px;background:var(--panel2);border:1px solid var(--line);border-radius:9px}
-.pgenv .rng{position:absolute;top:2px;bottom:2px;background:linear-gradient(90deg,#333c46,#4a5a6b);border-radius:7px}
-.pgenv .zero{position:absolute;top:-3px;bottom:-3px;width:1px;background:#5d6874}
-.pgenv .cur{position:absolute;top:-2px;bottom:-2px;width:4px;border-radius:2px;background:var(--accent);box-shadow:0 0 10px var(--accent)}
-.pgenv .lb{position:absolute;top:-1px;font-size:8px;color:var(--dim2);letter-spacing:.05em;white-space:nowrap}
-.pgmx{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:9.5px}
-.pgmxwrap{overflow-x:auto}
-.pgmx{min-width:430px}
-.pgmx i{font-style:normal;padding:5px 3px;text-align:center;background:var(--panel);font-variant-numeric:tabular-nums}
-.pgmx i.h{color:var(--dim2);letter-spacing:.05em;text-transform:uppercase;font-size:8px;background:var(--panel2);line-height:1.15}
-.pgmx i.rh{text-align:right;color:var(--dim);text-transform:uppercase;letter-spacing:.04em;font-size:8px;background:var(--panel2);padding-right:7px;line-height:1.15}
-.pgmx i.up{color:#6fd48a;font-weight:800}
-.pgmx i.dn{color:#e0707a;font-weight:800}
-.pgmx i.z{color:var(--dim2)}
-.pgmx i.hi{background:#2a2415}
+.pgenv{position:relative;height:20px;background:var(--panel2);border:1px solid var(--line);border-radius:9px;overflow:hidden}
+/* the reachable range stays neutral; the fill from factory to the current value carries the
+   level colour, and both morph on a transition so a changed build slides rather than jumps */
+.pgenv .rng{position:absolute;top:3px;bottom:3px;background:linear-gradient(90deg,#2a323a,#3a444f);border-radius:6px;transition:left .6s cubic-bezier(.2,.8,.2,1),width .6s cubic-bezier(.2,.8,.2,1)}
+.pgenv .zero{position:absolute;top:-2px;bottom:-2px;width:1px;background:#5d6874;transition:left .6s cubic-bezier(.2,.8,.2,1)}
+.pgenv .fill{position:absolute;top:4px;bottom:4px;border-radius:5px;transition:left .6s cubic-bezier(.2,.8,.2,1),width .6s cubic-bezier(.2,.8,.2,1),background .35s}
+.pgenv .cur{position:absolute;top:1px;bottom:1px;width:4px;border-radius:2px;transition:left .6s cubic-bezier(.2,.8,.2,1),background .35s,box-shadow .35s}
+.pglane.low  .pgenv .fill{background:linear-gradient(90deg,#8a6a1e,#c99a25)}
+.pglane.mid  .pgenv .fill{background:linear-gradient(90deg,#c98a1a,#ffb020)}
+.pglane.high .pgenv .fill{background:linear-gradient(90deg,#2f8f5b,#6fd48a)}
+.pglane.neg  .pgenv .fill{background:linear-gradient(90deg,#8f3740,#e0707a)}
+.pglane.low  .pgenv .cur{background:#c99a25}
+.pglane.mid  .pgenv .cur{background:#ffb020;box-shadow:0 0 10px rgba(255,176,32,.5)}
+.pglane.high .pgenv .cur{background:#6fd48a;box-shadow:0 0 10px rgba(111,212,138,.5)}
+.pglane.neg  .pgenv .cur{background:#e0707a;box-shadow:0 0 10px rgba(224,112,122,.5)}
+.pglane.low .v{color:#c99a25}.pglane.mid .v{color:#ffb020}.pglane.high .v{color:#6fd48a}.pglane.neg .v{color:#e0707a}
+.pglane.dim .n{opacity:.45}
+.pgkey{display:flex;flex-wrap:wrap;gap:12px;font-size:10px;color:var(--dim2);margin-top:9px}
+.pgkey span{display:inline-flex;align-items:center;gap:5px}
+.pgkey i{width:9px;height:9px;border-radius:3px;display:inline-block}
+/* absolute readout: vertical bars, each scaled against the whole arsenal at the current range */
+.pgstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(74px,1fr));gap:9px}
+.pgstat{display:flex;flex-direction:column;align-items:center;gap:7px;background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:11px 7px 9px}
+.pgstat .pv{font-size:17px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1;white-space:nowrap}
+.pgstat .pv small{font-size:9.5px;font-weight:600;color:var(--dim2);margin-left:2px}
+.pgstat .pt{position:relative;width:100%;max-width:34px;flex:1 1 auto;min-height:74px;background:linear-gradient(180deg,#141a20,#0f1418);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.pgstat .pt i{position:absolute;left:0;right:0;bottom:0;height:0;border-radius:0 0 7px 7px;transition:height .75s cubic-bezier(.2,.8,.2,1),background .35s}
+.pgstat.high .pt i{background:linear-gradient(180deg,#6fd48a,#2f8f5b)}
+.pgstat.mid  .pt i{background:linear-gradient(180deg,#ffd479,#c9821a)}
+.pgstat.low  .pt i{background:linear-gradient(180deg,#e0707a,#8f3740)}
+.pgstat.high .pv{color:#6fd48a}.pgstat.mid .pv{color:#ffb020}.pgstat.low .pv{color:#e0707a}
+.pgstat .pk{font-size:8.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--dim2);text-align:center;line-height:1.25}
+.pgstat .pr{font-size:8.5px;color:var(--dim2);font-variant-numeric:tabular-nums}
 .pgbuild{display:flex;flex-wrap:wrap;gap:7px}
 .pgbud{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:9px;margin-bottom:11px;font-size:11px;color:var(--dim)}
 .pgbud .pgbudbar{height:6px;background:var(--panel2);border:1px solid var(--line);border-radius:4px;overflow:hidden}
@@ -1925,6 +1943,9 @@ const PG_LANES = [
   {id:'stealth',  label:'Stealth',   f:[['worldSpotMult',1.0,'ratio'],['minimapSpotMult',1.0,'ratio']]},
 ];
 const playState = {slug:null, sel:{}, slot:null, goal:'recoil'};
+/* last drawn geometry of each fan band, so bars morph from where they were instead of
+   re-growing from zero every render */
+const FANPREV = {};
 
 function pgCurveAt(pts, d){
   if(!pts || !pts.length) return 0;
@@ -1980,6 +2001,88 @@ function pgLane(w, sel, lane){
   for(const sl of w.play.slots) s += pgSlotScore(w, sl.k, sel[sl.k], lane);
   return s;
 }
+/* ---- level tiers -----------------------------------------------------------------------
+   An axis is graded against what this weapon can actually reach, not against other weapons:
+   neg = below the factory gun, low/mid/high = share of the reachable upside already taken. */
+function pgTier(w, cur, env){
+  if(cur < -0.05) return 'neg';
+  const hi = env.hi > 1e-9 ? env.hi : 0;
+  if(hi <= 0) return 'dim';
+  const a = Math.max(0, cur) / hi;
+  return a >= 0.7 ? 'high' : a >= 0.35 ? 'mid' : 'low';
+}
+/* ---- absolute readout behind the vertical bars -------------------------------------------
+   Each figure is scaled against every weapon in the arsenal as it ships, at the range on
+   screen, so a bar reads "where does this build sit" rather than "is the number big". */
+function pgStatRef(w){
+  /* keyed by range: the damage figure moves with the distance slider */
+  if(w.__sr && w.__sr.d === state.dist) return w.__sr.ref;
+  const ref = {};
+  const put = (k, v, better) => {
+    if(typeof v !== 'number' || !isFinite(v)) return;
+    const r = ref[k] || (ref[k] = {lo:Infinity, hi:-Infinity, better});
+    r.lo = Math.min(r.lo, v); r.hi = Math.max(r.hi, v);
+  };
+  /* every weapon's own readout at its factory configuration — this is the only source that
+     sees figures the base payload folds away, such as a barrel that ships fully suppressed
+     (spotting ×0), so the span is the real field and not a degenerate single value */
+  for(const x of WEAPONS){
+    const a = pgAbs(x, x.play.def);
+    put('vel', a.vel, 1);
+    put('dmg', a.dmg, 1);
+    put('mag', a.mag, 1);
+    if(a.empty != null) put('empty', a.empty, -1);
+    if(a.adsInc != null) put('adsInc', a.adsInc, -1);
+    if(a.hipInc != null) put('hipInc', a.hipInc, -1);
+    if(a.coll != null) put('coll', a.coll, 1);
+    put('wsp', a.wsp, -1);
+    put('msp', a.msp, -1);
+  }
+  w.__sr = {d: state.dist, ref};
+  return ref;
+}
+/* fraction of the track a value fills, given the arsenal's span and which way is better */
+function pgBarPct(ref, k, v){
+  const r = ref[k];
+  if(!r || v == null || !isFinite(v)) return null;
+  const span = r.hi - r.lo;
+  const t = span > 1e-9 ? (v - r.lo) / span : 1;      // 0 = worst in the arsenal, 1 = best
+  return Math.max(4, Math.min(100, Math.round((r.better > 0 ? t : 1 - t) * 100)));
+}
+const pgTierOfPct = p => p == null ? 'low' : p >= 66 ? 'high' : p >= 34 ? 'mid' : 'low';
+/* the absolute readout, as vertical bars scaled against the arsenal */
+function pgStatBars(w, A){
+  const ref = pgStatRef(w);
+  const cells = [
+    {k:'vel',   lab:'Velocity', sub:'m/s', v:A.vel},
+    {k:'dmg',   lab:'Damage',   sub:'/shot', v:A.dmg},
+    {k:'mag',   lab:'Magazine', sub:'rds', v:A.mag},
+    {k:'empty', lab:'Reload',   sub:'s', v:A.empty},
+    {k:'adsInc',lab:'ADS spread', sub:'°/shot', v:A.adsInc},
+    {k:'hipInc',lab:'Hip spread', sub:'°/shot', v:A.hipInc},
+    {k:'coll',  lab:'Collateral', sub:'%', v:A.coll!=null? Math.round(A.coll*100) : null},
+    {k:'wsp',   lab:'Spotted — world', sub:'%', v:Math.round(A.wsp*100)},
+    {k:'msp',   lab:'Spotted — minimap', sub:'%', v:Math.round(A.msp*100)},
+  ];
+  return `<div class="pgstats">${cells.map(c=>{
+    /* collateral and visibility are stored as fractions, so scale them the same way the
+       reference was built (fraction in, percent out) */
+    const raw = (c.k==='coll' || c.k==='wsp' || c.k==='msp') ? (c.v==null? null : c.v/100) : c.v;
+    const pct = c.k==='coll' ? pgBarPct(ref, 'coll', raw)
+              : c.k==='wsp'  ? pgBarPct(ref, 'wsp', raw)
+              : c.k==='msp'  ? pgBarPct(ref, 'msp', raw)
+              : pgBarPct(ref, c.k, raw);
+    const tier = pgTierOfPct(pct);
+    const txt = c.v == null ? '—' : (c.k==='empty' ? Number(c.v).toFixed(2) : c.v);
+    return `<div class="pgstat ${tier}" title="${esc(c.lab)}: ${txt} ${esc(c.sub)} — ${pct==null?'no reference':pct+'% of the arsenal' }">
+      <span class="pv">${txt}${c.v!=null?`<small>${esc(c.sub)}</small>`:''}</span>
+      <span class="pt"><i data-h="${pct==null?0:pct}"></i></span>
+      <span class="pk">${esc(c.lab)}</span>
+      ${pct!=null?`<span class="pr">${pct}%</span>`:''}
+    </div>`;
+  }).join('')}</div>`;
+}
+
 /* per-option lane deltas, cached on the option (its slot id is stable) */
 function pgDeltas(w, slot, o){
   if(!o.__dl){ const d = {}; for(const L of PG_LANES) d[L.id] = pgSlotScore(w, slot, o.id, L); o.__dl = d; }
@@ -2051,13 +2154,6 @@ function pgNorms(w){
     n[L.id] = Math.max(0, pgLane(w, r.sel, L));
   }
   w.__pn = n; return n;
-}
-/* best build for one goal, honouring the point budget */
-function pgBuild(w, lane){
-  const norms = pgNorms(w);
-  const wt = {}; for(const L of PG_LANES) wt[L.id] = 0;
-  wt[lane.id] = 1;
-  return pgSolve(w, wt, norms).sel;
 }
 /* widest swing per axis inside the budget: the fan of values the player can reach */
 function pgEnv(w, lane){
@@ -2232,6 +2328,7 @@ function renderPlay(w, keepScroll){
     playState.slug = w.slug;
     playState.sel = Object.assign({}, w.play.def);
     playState.slot = w.play.slots[0].k;
+    for(const k in FANPREV) delete FANPREV[k];   // bars start from the floor on a new weapon
   }
   for(const sl of w.play.slots)
     if(!sl.o.some(o=>o.id===playState.sel[sl.k])) playState.sel[sl.k] = w.play.def[sl.k] || sl.o[0].id;
@@ -2295,7 +2392,8 @@ function renderPlay(w, keepScroll){
     <span class="sp"></span>
     <span class="pgsum"><b class="${over?'ov':''}">${cost}</b>/${budget} pts · <b>${pot}%</b> potential · <b>${changed}</b>/${w.play.slots.length} slots</span>`;
 
-  document.getElementById('pbody').innerHTML = `
+  const root = document.getElementById('pbody');
+  root.innerHTML = `
   <div class="kpanel pgrec">
     <h4>Recommended builds — ${goal.label} <span class="pghint">every slot spent inside ${budget} pts</span></h4>
     <div class="pgvars">
@@ -2369,20 +2467,10 @@ function renderPlay(w, keepScroll){
         <div class="note">Amber = changed from the factory gun.</div>
       </div>
 
-      <div class="kpanel">
+      <div class="kpanel" id="pgabs">
         <h4>Absolute readout — this build</h4>
-        <table class="spec">
-          <tr><td>Muzzle velocity</td><td>${A.vel} m/s</td></tr>
-          <tr><td>Damage per shot @ ${state.dist} m</td><td>${A.dmg} (${A.btk<=1?'1 shot':A.btk+' hits'})</td></tr>
-          <tr><td>Pellets per shot</td><td>${A.pel}</td></tr>
-          <tr><td>Magazine</td><td>${A.mag} rounds</td></tr>
-          <tr><td>Reload from empty</td><td>${A.empty!=null? A.empty.toFixed(2)+' s':'—'}</td></tr>
-          <tr><td>ADS spread growth</td><td>${A.adsInc!=null? A.adsInc+'°/shot':'—'}</td></tr>
-          <tr><td>Hip spread growth</td><td>${A.hipInc!=null? A.hipInc+'°/shot':'—'}</td></tr>
-          <tr><td>Collateral multiplier</td><td>${A.coll!=null? Math.round(A.coll*100)+'%':'—'}</td></tr>
-          <tr><td>Visibility — world / minimap</td><td>${Math.round(A.wsp*100)}% / ${Math.round(A.msp*100)}%</td></tr>
-        </table>
-        <div class="note">Accumulated tiers: ${pgTierLine(A.tiers)}</div>
+        ${pgStatBars(w, A)}
+        <div class="note">Bars are scaled against every weapon in the arsenal as it ships, at ${state.dist} m — full means best in the game on that figure, and the colour is that standing. Figures are absolute, not deltas. Accumulated tiers: ${pgTierLine(A.tiers)}</div>
       </div>
     </div>
 
@@ -2390,33 +2478,33 @@ function renderPlay(w, keepScroll){
       <div class="kpanel" style="margin-bottom:16px">
         <h4>Fan — reachable value per axis</h4>
         <div id="pglanes">
-          ${rows.map(r=>`<div class="pglane ${r.lane.id===goal.id?'sel':''}">
-            <span class="n">${r.lane.label}</span>
-            <span class="pgenv">
-              ${r.env.hi>r.env.lo?`<i class="rng" style="left:${xOf(r.env.lo).toFixed(2)}%;width:${(xOf(r.env.hi)-xOf(r.env.lo)).toFixed(2)}%"></i>`:''}
-              <i class="zero" style="left:${xOf(0).toFixed(2)}%"></i>
-              ${r.lane.id===goal.id?`<i class="cur" style="left:${xOf(r.cur).toFixed(2)}%"></i>`:''}
-            </span>
-            <span class="v">${(r.cur>0?'+':'')+r.cur.toFixed(1)}<small>/${(r.env.hi>0?'+':'')+r.env.hi.toFixed(1)}</small></span>
-          </div>`).join('')}
-        </div>
-        <div class="note">The grey band is everything reachable on that axis for the ${budget} points the weapon has, with every slot filled as far as the budget allows; <b>every band shares one scale</b>, so the widest band is the axis with the most headroom. The thin vertical mark is zero (factory gun) and the amber marker is your build on the axis you are optimising. Index 1.0 ≈ one tier level or a 100% multiplier; magazine rounds score at 15%.</div>
-      </div>
-
-      <div class="kpanel">
-        <h4>Trade-off matrix — what each goal costs you</h4>
-        <div class="pgmxwrap"><div class="pgmx" style="grid-template-columns:74px repeat(${PG_LANES.length},minmax(0,1fr))">
-          <i class="h"></i>${PG_LANES.map(l=>`<i class="h">${l.label}</i>`).join('')}
-          ${PG_LANES.map(row=>{
-            const b = pgBuild(w, row);
-            return `<i class="rh">${row.label}</i>` + PG_LANES.map(col=>{
-              const v = pgLane(w, b, col);
-              const cls = v > 0.05 ? 'up' : v < -0.05 ? 'dn' : 'z';
-              return `<i class="${cls}" ${col.id===row.id?'style="background:#2a2415"':''}>${(v>0?'+':'')+v.toFixed(1)}</i>`;
-            }).join('');
+          ${rows.map(r=>{
+            const tier = pgTier(w, r.cur, r.env);
+            const prev = FANPREV[r.lane.id] || {lo:0, hi:0, cur:0};
+            const seg = (a,b) => `${xOf(Math.min(a,b)).toFixed(2)}%`;   // left edge, from zero
+            const wid = (a,b) => `${Math.abs(xOf(b)-xOf(a)).toFixed(2)}%`; // extent, unit included
+            return `<div class="pglane ${r.lane.id===goal.id?'sel':''} ${tier}">
+              <span class="n">${r.lane.label}</span>
+              <span class="pgenv">
+                <i class="rng" style="left:${seg(prev.lo,prev.hi)};width:${wid(prev.lo,prev.hi)}" data-k="rng"
+                   data-l="${seg(r.env.lo,r.env.hi)}" data-w="${wid(r.env.lo,r.env.hi)}"></i>
+                <i class="zero" style="left:${xOf(0).toFixed(2)}%"></i>
+                <i class="fill" style="left:${seg(0,prev.cur)};width:${wid(0,prev.cur)}" data-k="fill"
+                   data-l="${seg(0,r.cur)}" data-w="${wid(0,r.cur)}"></i>
+                <i class="cur" style="left:${xOf(prev.cur).toFixed(2)}%" data-k="cur"
+                   data-l="${xOf(r.cur).toFixed(2)}%"></i>
+              </span>
+              <span class="v">${(r.cur>0?'+':'')+r.cur.toFixed(1)}<small>/${(r.env.hi>0?'+':'')+r.env.hi.toFixed(1)}</small></span>
+            </div>`;
           }).join('')}
-        </div></div>
-        <div class="note">Each row is the best possible build for that goal inside the ${budget}-point budget, and each cell is how the rest of the weapon ends up with it. The diagonal is the maximum reachable per axis. Because every effect is additive per slot and there is one shared budget, the solver is an exact knapsack — there is no hidden better combination. A row of zeroes is an axis no attachment on this weapon moves.</div>
+        </div>
+        <div class="pgkey">
+          <span><i style="background:linear-gradient(180deg,#6fd48a,#2f8f5b)"></i>high ≥70% of reachable</span>
+          <span><i style="background:linear-gradient(180deg,#ffd479,#c9821a)"></i>mid 35–70%</span>
+          <span><i style="background:linear-gradient(180deg,#8a6a1e,#c99a25)"></i>low &lt;35%</span>
+          <span><i style="background:linear-gradient(180deg,#e0707a,#8f3740)"></i>below the factory gun</span>
+        </div>
+        <div class="note">The grey band is everything reachable on that axis for the ${budget} points the weapon has; the coloured fill is what this build has taken from the factory gun, and it slides as you change parts. Every band shares one scale, so the widest band is the axis with the most headroom. Index 1.0 ≈ one tier level or a 100% multiplier; magazine rounds score at 15%.</div>
       </div>
     </div>
   </div>`;
@@ -2443,7 +2531,32 @@ function renderPlay(w, keepScroll){
     playState.sel[slot.k] = b.dataset.id; renderPlay(w, true);
   });
   syncBarh();
+  playFan(root, rows);
   if(!keepScroll) window.scrollTo(0,0);
+}
+
+/* fan bands and the vertical stat bars draw from their start geometry, then move to the real
+   value on the next frame so the CSS transitions animate the change. */
+function playFan(root, rows){
+  const box = root.querySelector('#pglanes');
+  if(box){
+    /* the bars are rendered sitting at the previous geometry; reading a layout property
+       commits that style, so setting the target values straight after starts the CSS
+       transitions. A forced reflow is used instead of requestAnimationFrame because rAF does
+       not fire while the tab is in the background. */
+    void box.offsetHeight;
+    box.querySelectorAll('[data-k]').forEach(e=>{
+      if(e.dataset.l != null) e.style.left = e.dataset.l;
+      if(e.dataset.w != null) e.style.width = e.dataset.w;
+    });
+    for(const r of rows) FANPREV[r.lane.id] = {lo:r.env.lo, hi:r.env.hi, cur:r.cur};
+  }
+  const stats = root.querySelector('.pgstats');
+  if(stats){
+    const bars = stats.querySelectorAll('.pt i[data-h]');
+    void stats.offsetHeight;
+    bars.forEach((e,i)=> setTimeout(()=>{ e.style.height = e.dataset.h + '%'; }, i*45));
+  }
 }
 
 /* ---- controls ---- */
