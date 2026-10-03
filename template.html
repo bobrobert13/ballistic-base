@@ -459,11 +459,36 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;color:v
 .pgbar .sp{flex:1 1 auto}
 .pgbar .pgsum{font-size:11px;color:var(--dim);white-space:nowrap;font-variant-numeric:tabular-nums}
 .pgbar .pgsum b{color:var(--accent)}
+.pgbar .pgsum b.ov{color:#e0707a}
+/* recommended builds: complete loadouts the solver found inside the point budget */
+.pgrec{margin-bottom:16px}
+.pghint{color:var(--dim2);font-weight:600;letter-spacing:.04em;text-transform:none}
+.pgvars{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:10px}
+.pgvar{display:flex;flex-direction:column;gap:8px;background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:11px 12px;cursor:pointer;transition:.14s;font:inherit;color:var(--txt);text-align:left}
+.pgvar:hover{border-color:#3a444f;transform:translateY(-2px);box-shadow:0 10px 24px -18px #000}
+.pgvar.on{border-color:var(--accent);box-shadow:0 0 0 1px rgba(255,176,32,.35);background:rgba(255,176,32,.06)}
+.pgvar .vh{display:flex;align-items:baseline;gap:8px}
+.pgvar .vn{font-size:13.5px;font-weight:800;letter-spacing:.02em;line-height:1.2}
+.pgvar .vc{margin-left:auto;font-size:11px;font-variant-numeric:tabular-nums;color:var(--accent);font-weight:700;white-space:nowrap}
+.pgvar .vc.ov{color:#e0707a}
+.pgvar .vatt{font-size:11px;color:var(--dim)}
+.pgvar .vatt b{color:var(--txt);font-variant-numeric:tabular-nums;font-size:12.5px}
+.pgvar .vlanes{display:flex;flex-wrap:wrap;gap:4px}
+.pgvar .vlanes span{font-size:9px;letter-spacing:.05em;padding:1px 6px;border-radius:999px;border:1px solid;font-weight:700;text-transform:uppercase;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pgvar .vlanes .up{color:#6fd48a;border-color:#2c4a37;background:rgba(111,212,138,.08)}
+.pgvar .vlanes .dn{color:#e0707a;border-color:#4a2b2e;background:rgba(224,112,122,.08)}
+.pgvar .vslots{display:flex;flex-direction:column;gap:3px;border-top:1px dashed var(--line);padding-top:8px}
+.pgvar .vs{font-size:10.5px;color:var(--dim2);display:flex;justify-content:space-between;gap:8px}
+.pgvar .vs b{color:var(--txt);font-weight:700;text-align:right}
+.pgvar .vuse{align-self:flex-start;margin-top:2px;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--dim2)}
+.pgvar.on .vuse{color:var(--accent)}
 .pghero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;background:radial-gradient(120% 170% at 0% 0%,rgba(255,176,32,.13),transparent 60%),linear-gradient(180deg,#161b21,#0e1216);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:16px}
 .pggoals{display:flex;flex-wrap:wrap;gap:7px}
 .pgchip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--panel2);color:var(--dim);padding:7px 12px;border-radius:9px;font-size:12.5px;cursor:pointer;transition:.12s}
 .pgchip:hover{color:var(--txt);border-color:#39424d}
 .pgchip.on{background:var(--accent);border-color:var(--accent);color:#12161b;font-weight:700}
+.pgchip.off{opacity:.38;cursor:not-allowed;text-decoration:line-through}
+.pgchip.off:hover{color:var(--dim);border-color:var(--line)}
 .pgpot{display:flex;align-items:center;gap:14px;flex:0 0 auto}
 .pgpot .dial{position:relative;width:92px;height:92px;flex:0 0 auto}
 .pgpot .dial svg{width:100%;height:100%;transform:rotate(-90deg)}
@@ -475,6 +500,9 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;color:v
 .pgpot .side{font-size:11px;color:var(--dim);line-height:1.7}
 .pgpot .side b{color:var(--txt);font-variant-numeric:tabular-nums}
 .pggrid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:16px;align-items:start}
+/* grid items default to min-width:auto, which lets the 430px matrix push the whole page wide */
+.pggrid > *{min-width:0}
+.kpanel{min-width:0}
 @media(max-width:1180px){.pggrid{grid-template-columns:1fr}}
 .pgslots{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
 .pgopts{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:9px}
@@ -513,6 +541,14 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;color:v
 .pgmx i.z{color:var(--dim2)}
 .pgmx i.hi{background:#2a2415}
 .pgbuild{display:flex;flex-wrap:wrap;gap:7px}
+.pgbud{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:9px;margin-bottom:11px;font-size:11px;color:var(--dim)}
+.pgbud .pgbudbar{height:6px;background:var(--panel2);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.pgbud .pgbudbar i{display:block;height:100%;background:linear-gradient(90deg,#ffb020,#ffd479);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.pgbud b{color:var(--accent);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pgbud .pgbudrest{grid-column:1/-1;font-size:10px;color:var(--dim2)}
+.pgbud.ov b{color:#e0707a}
+.pgbud.ov .pgbudbar i{background:linear-gradient(90deg,#a8434a,#e0707a)}
+.pgbud.ov .pgbudrest{color:#e0707a}
 .pgb{display:flex;align-items:center;gap:8px;background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:7px 10px}
 .pgb .aic,.pgb .glyph{width:22px;height:22px;flex:0 0 22px;margin:0}
 .pgb .sl{display:block;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim2)}
@@ -1944,29 +1980,160 @@ function pgLane(w, sel, lane){
   for(const sl of w.play.slots) s += pgSlotScore(w, sl.k, sel[sl.k], lane);
   return s;
 }
-/* best single pick per slot for one goal. Every slot's contribution is independent, so
-   taking that slot's best delta is the true optimum for the objective, not an approximation. */
-function pgBuild(w, lane){
-  const sel = Object.assign({}, w.play.def);
-  for(const sl of w.play.slots){
-    let best = null, bs = 0;                 // 0 = keep the factory part
-    for(const o of sl.o){
-      const s = pgSlotScore(w, sl.k, o.id, lane);
-      if(s > bs + 1e-9 || (Math.abs(s-bs) < 1e-9 && best && o.p > best.p)){ best = o; bs = s; }
-    }
-    if(best) sel[sl.k] = best.id;
-  }
-  return sel;
+/* per-option lane deltas, cached on the option (its slot id is stable) */
+function pgDeltas(w, slot, o){
+  if(!o.__dl){ const d = {}; for(const L of PG_LANES) d[L.id] = pgSlotScore(w, slot, o.id, L); o.__dl = d; }
+  return o.__dl;
 }
-/* widest swing any single slot can give this lane: the fan of values the player can reach */
-function pgEnv(w, lane){
-  let lo=0, hi=0;
-  for(const sl of w.play.slots){
-    let a=0, b=0;                            // the factory part is always available
-    for(const o of sl.o){ const s = pgSlotScore(w, sl.k, o.id, lane); if(s<a) a=s; if(s>b) b=s; }
-    lo += a; hi += b;
+function pgCost(w, sel){
+  let c = w.play.base.fixed || 0;
+  for(const sl of w.play.slots){ const o = pgOpt(w, sl.k, sel[sl.k]); if(o) c += o.p || 0; }
+  return c;
+}
+/* Exact optimiser. One choice per slot, one shared budget: the objective is additive per
+   slot and the constraint is a single knapsack, so a per-slot DP over the remaining budget
+   returns the true optimum — no greedy heuristic. Slot count is ~9 and the budget 100, so
+   the table is tiny. */
+function pgSolve(w, weights, norms, lossMul){
+  const slots = w.play.slots;
+  const B = Math.max(0, (w.play.base.budget || 100) - (w.play.base.fixed || 0));
+  const NEG = -1e18, LM = lossMul || 1;
+  const val = slots.map(sl=>sl.o.map(o=>{
+    const d = pgDeltas(w, sl.k, o); let v = 0;
+    /* a loss on a secondary axis is charged LM times a gain, which is what keeps a preset from
+       paying for its strong axis with another one it does not care about */
+    for(const L of PG_LANES){
+      const wt = weights[L.id]; if(!wt) continue;
+      const x = d[L.id];
+      v += wt * (x < 0 ? x*LM : x) / (norms[L.id] || 1);
+    }
+    return v;
+  }));
+  let dp = new Array(B+1).fill(NEG); dp[0] = 0;
+  const pickIdx = [], prevB = [];
+  for(let i=0;i<slots.length;i++){
+    const nd = new Array(B+1).fill(NEG), pi = new Int32Array(B+1).fill(-1), pv = new Int32Array(B+1).fill(-1);
+    const opts = slots[i].o;
+    for(let b=0;b<=B;b++){
+      if(dp[b] === NEG) continue;
+      for(let j=0;j<opts.length;j++){
+        const nb = b + (opts[j].p || 0);
+        if(nb > B) continue;
+        const v = dp[b] + val[i][j];
+        if(v > nd[nb] + 1e-12){ nd[nb] = v; pi[nb] = j; pv[nb] = b; }
+      }
+    }
+    dp = nd; pickIdx.push(pi); prevB.push(pv);
   }
-  return {lo, hi};
+  let bb = 0; for(let b=1;b<=B;b++) if(dp[b] > dp[bb] + 1e-12) bb = b;
+  const sel = Object.assign({}, w.play.def);
+  if(dp[bb] === NEG){
+    /* nothing fits the budget: fall back to the cheapest legal choice per slot */
+    for(const sl of slots) sel[sl.k] = sl.o.slice().sort((a,b)=>(a.p||0)-(b.p||0))[0].id;
+    return {sel, cost:pgCost(w, sel), score:NEG, over:pgCost(w, sel) > (w.play.base.budget||100)};
+  }
+  let b = bb;
+  for(let i=slots.length-1;i>=0;i--){
+    const j = pickIdx[i][b];
+    if(j < 0) break;
+    sel[slots[i].k] = slots[i].o[j].id;
+    b = prevB[i][b];
+  }
+  return {sel, cost:pgCost(w, sel), score:dp[bb]};
+}
+/* reachable maximum of each axis on its own, inside the budget — the yardstick each axis is
+   normalised against, and the number the fan's right edge and the matrix diagonal show */
+function pgNorms(w){
+  if(w.__pn) return w.__pn;
+  const n = {};
+  for(const L of PG_LANES){
+    const r = pgSolve(w, {[L.id]:1}, {});          // unnormalised: weight 1, no norms needed
+    n[L.id] = Math.max(0, pgLane(w, r.sel, L));
+  }
+  w.__pn = n; return n;
+}
+/* best build for one goal, honouring the point budget */
+function pgBuild(w, lane){
+  const norms = pgNorms(w);
+  const wt = {}; for(const L of PG_LANES) wt[L.id] = 0;
+  wt[lane.id] = 1;
+  return pgSolve(w, wt, norms).sel;
+}
+/* widest swing per axis inside the budget: the fan of values the player can reach */
+function pgEnv(w, lane){
+  const norms = pgNorms(w);
+  const up = pgSolve(w, {[lane.id]:1}, norms);
+  const dn = pgSolve(w, {[lane.id]:-1}, norms);
+  return {lo: pgLane(w, dn.sel, lane), hi: norms[lane.id]};
+}
+/* ---- recommended variants ---------------------------------------------------------------
+   A preset must fill every slot it can afford, dominate its axis and still hold up elsewhere.
+   One weighted objective cannot express "dominant but not lopsided", so the same solver is
+   re-run over a few weight vectors — pure dominance, a guarded balance, and tilts toward the
+   axes where the dominant build leaves the most on the table. Each result is a complete build
+   inside the 100-point budget, and duplicates are dropped, so the list only shows real
+   alternatives this weapon can actually reach. */
+function pgAttain(w, sel, L, norms){
+  const n = (norms || pgNorms(w))[L.id] || 1;
+  return pgLane(w, sel, L) / n;
+}
+/* Weights are shares of one unit each, and the objective is scored on normalised attainment
+   (0 = factory, 1 = that axis maxed inside the budget). Because there are eight secondary axes
+   against one target, a per-lane weight would let the crowd outvote the goal — so the secondary
+   side gets a fixed *total* share that is split evenly, keeping the goal ahead. Each variant also
+   carries a floor: if the solver was willing to sink the goal, the weight is re-run stronger until
+   the build actually dominates its axis. */
+function pgVariants(w, target){
+  const key = w.slug + '|' + target.id;
+  if(!w.__pv) w.__pv = {};
+  if(w.__pv[key]) return w.__pv[key];
+  const norms = pgNorms(w);
+  /* some weapons simply have no attachment that moves an axis (belt-fed LMGs have no reload
+     part, several guns' barrels do not touch velocity). Nothing to offer, and saying so beats
+     presenting a variant that changes nothing. */
+  if(!(norms[target.id] > 1e-9)){
+    const res = {list: [], norms, none: true};
+    w.__pv[key] = res; return res;
+  }
+  const others = PG_LANES.filter(L => L.id !== target.id);
+  const wtFor = (secondaryShare, tilt, tiltShare) => {
+    const wt = {}; wt[target.id] = 1;
+    const per = others.length ? secondaryShare / others.length : 0;
+    for(const L of others) wt[L.id] = per;
+    if(tilt) wt[tilt] = per + (tiltShare || 0);
+    return wt;
+  };
+  const solve = (wt, floor, lm) => {
+    let scale = 1, r = null;
+    for(let i=0;i<7;i++){
+      const wtt = Object.assign({}, wt); wtt[target.id] = scale;
+      r = pgSolve(w, wtt, norms, lm);
+      if(pgAttain(w, r.sel, target, norms) >= floor) break;
+      scale *= 2;
+    }
+    return r;
+  };
+  const out = [];
+  const add = (name, r) => {
+    const sig = w.play.slots.map(s=>r.sel[s.k]).join('|');
+    if(out.some(x=>x.sig === sig)) return;
+    out.push({name, sig, sel:r.sel, cost:r.cost, att:pgAttain(w, r.sel, target, norms)});
+  };
+  const mk = (name, wt, floor, lm) => add(name, solve(wt, floor, lm));
+
+  mk('Dominant', wtFor(0.15), 0.9, 1);
+  mk('Balanced', wtFor(0.75), 0.6, 4);          // strong enough to refuse collateral damage
+  /* tilts: after the dominant build, which axes still have the most headroom? those are the
+     ones worth pairing the goal with, and each pairing moves different points around. */
+  const dom = out[0];
+  if(dom){
+    const room = others.map(L=>({L, left: 1 - Math.max(0, pgAttain(w, dom.sel, L, norms))}))
+                       .sort((a,b)=> b.left - a.left);
+    for(const {L} of room.slice(0,4)) mk(target.label + ' + ' + L.label, wtFor(0.35, L.id, 0.35), 0.75, 2.5);
+  }
+  const res = {list: out.slice(0,4), norms};
+  w.__pv[key] = res;
+  return res;
 }
 /* field spec lookup, so a pill can be scored with the same function the lanes use */
 const PG_FIELD = {};
@@ -2071,16 +2238,26 @@ function renderPlay(w, keepScroll){
   if(!w.play.slots.some(s=>s.k===playState.slot)) playState.slot = w.play.slots[0].k;
 
   const sel = playState.sel;
-  const goal = PG_LANES.find(l=>l.id===playState.goal) || PG_LANES[0];
+  const V = pgVariants(w, PG_LANES.find(l=>l.id===playState.goal) || PG_LANES[0]);
+  const avail = PG_LANES.filter(l => (V.norms[l.id] || 0) > 1e-9);
+  const goal = PG_LANES.find(l => l.id===playState.goal && avail.includes(l)) || avail[0] || PG_LANES[0];
+  playState.goal = goal.id;
   const rows = PG_LANES.map(lane=>{
     const cur = pgLane(w, sel, lane), env = pgEnv(w, lane);
-    /* share of the reachable upside this build has actually taken: 0 = factory gun,
-       100% = every slot spent on this axis */
+    /* share of the reachable upside this build has actually taken, measured against what the
+       point budget actually allows: 0 = factory gun, 1 = nothing left on the table */
     const pct = env.hi > 0 ? Math.max(0, Math.min(1, cur/env.hi)) : 0;
-    return {lane, cur, env, pct};
+    return {lane, cur, env, pct, ok: (V.norms[lane.id]||0) > 1e-9};
   });
-  const pot = Math.round(100 * rows.reduce((a,r)=>a+r.pct,0) / rows.length);
+  /* the potential average only counts axes this weapon can actually move */
+  const scored = rows.filter(r=>r.ok);
+  const pot = scored.length ? Math.round(100 * scored.reduce((a,r)=>a+r.pct,0) / scored.length) : 0;
+  const cost = pgCost(w, sel), budget = w.play.base.budget || 100;
+  const over = cost > budget;
   const A = pgAbs(w, sel);
+  const sig = w.play.slots.map(s=>sel[s.k]).join('|');
+  const activeV = V.list.find(x=>x.sig === sig);
+  const changed = w.play.slots.filter(s=>sel[s.k] !== w.play.def[s.k]).length;
 
   document.getElementById('phead').innerHTML = `
     <div class="wthumb"><img src="${w.img||''}" alt="${esc(w.name)}" decoding="async"></div>
@@ -2099,7 +2276,6 @@ function renderPlay(w, keepScroll){
 
   const slot = w.play.slots.find(s=>s.k===playState.slot) || w.play.slots[0];
   const opts = slot.o.slice().sort((a,b)=> b.p-a.p || a.n.localeCompare(b.n));
-  const changed = w.play.slots.filter(s=>sel[s.k] !== w.play.def[s.k]).length;
 
   /* one shared scale for every fan band, so the grey bars are comparable across axes */
   const gLo = Math.min(0, ...rows.map(r=>r.env.lo));
@@ -2110,13 +2286,39 @@ function renderPlay(w, keepScroll){
   document.getElementById('pgbar').innerHTML = `
     <span class="pglb">Optimise for</span>
     <div class="pggoals" id="pggoals">
-      ${PG_LANES.map(l=>`<button class="pgchip ${l.id===goal.id?'on':''}" data-goal="${l.id}">${l.label}</button>`).join('')}
+      ${PG_LANES.map(l=>{
+        const ok = avail.includes(l);
+        return `<button class="pgchip ${l.id===goal.id?'on':''} ${ok?'':'off'}" data-goal="${l.id}" ${ok?'':'disabled title="No attachment on this weapon moves this axis"'}>${l.label}</button>`;
+      }).join('')}
       <button class="pgchip" data-goal="__reset">Reset</button>
     </div>
     <span class="sp"></span>
-    <span class="pgsum"><b>${pot}%</b> potential · <b>${changed}</b>/${w.play.slots.length} slots</span>`;
+    <span class="pgsum"><b class="${over?'ov':''}">${cost}</b>/${budget} pts · <b>${pot}%</b> potential · <b>${changed}</b>/${w.play.slots.length} slots</span>`;
 
   document.getElementById('pbody').innerHTML = `
+  <div class="kpanel pgrec">
+    <h4>Recommended builds — ${goal.label} <span class="pghint">every slot spent inside ${budget} pts</span></h4>
+    <div class="pgvars">
+      ${!V.list.length ? `<div class="none" style="grid-column:1/-1;padding:20px 0">No attachment on the ${esc(w.name)} moves <b>${goal.label}</b>, so there is nothing to optimise here — pick another axis.</div>`
+      : V.list.map((v,i)=>{
+        const lanes = PG_LANES.map(L=>({L, v:pgLane(w, v.sel, L)})).filter(x=>Math.abs(x.v) > 0.05)
+          .sort((a,b)=> Math.abs(b.v) - Math.abs(a.v)).slice(0,4);
+        const chg = w.play.slots.filter(s=>v.sel[s.k] !== w.play.def[s.k]);
+        return `<div class="pgvar ${activeV===v?'on':''}" data-sig="${v.sig}">
+          <div class="vh"><span class="vn">${esc(v.name)}</span>
+            <span class="vc ${v.cost>budget?'ov':''}">${v.cost}/${budget} pt</span></div>
+          <div class="vatt">${goal.label} <b>${Math.round(Math.max(0,v.att)*100)}%</b> of reachable</div>
+          <div class="vlanes">${lanes.map(x=>`<span class="${x.v>0?'up':'dn'}">${x.v>0?'+':'−'}${Math.abs(x.v).toFixed(1)} ${x.L.label}</span>`).join('')}</div>
+          <div class="vslots">${chg.map(s=>{
+            const o = pgOpt(w, s.k, v.sel[s.k]);
+            return `<span class="vs">${esc(s.l)} <b>${esc(o?o.n:'—')}</b></span>`;
+          }).join('') || '<span class="vs">factory configuration</span>'}</div>
+          <span class="vuse">${activeV===v?'in use':'use this build'}</span>
+        </div>`;
+      }).join('')}
+    </div>
+    <div class="note">Each column is a complete loadout the solver found inside the budget: <b>Dominant</b> pushes the goal as far as the points allow, <b>Balanced</b> keeps the goal ahead but refuses to wreck the rest, and the pairings tilt toward the axes the dominant build left open. All of them respect ${budget} points and every slot the weapon can take.</div>
+  </div>
   <div class="pghero">
     <div class="note" style="margin:0">Every slot offers a real variation of the weapon. Pills use the datamined magnitude of the attachment: <b>the sign is the change in the stat, the colour says whether it plays for you (green) or against you (red)</b>. Each axis <b>index</b> is additive and unitless, and starts at 0 for the gun exactly as it ships — positive is always an improvement.</div>
     <div class="pgpot">
@@ -2150,6 +2352,12 @@ function renderPlay(w, keepScroll){
 
       <div class="kpanel" style="margin-bottom:16px">
         <h4>Current build</h4>
+        <div class="pgbud ${over?'ov':''}">
+          <span>Pick-100 budget</span>
+          <span class="pgbudbar"><i style="width:${Math.min(100, cost/budget*100).toFixed(0)}%"></i></span>
+          <b>${cost} / ${budget} pt</b>
+          <span class="pgbudrest">${over? 'over budget' : (budget-cost)+' pt free · '+w.play.base.fixed+' pt locked in factory parts'}</span>
+        </div>
         <div class="pgbuild">
           ${w.play.slots.map(s=>{
             const o = pgOpt(w, s.k, sel[s.k]);
@@ -2192,7 +2400,7 @@ function renderPlay(w, keepScroll){
             <span class="v">${(r.cur>0?'+':'')+r.cur.toFixed(1)}<small>/${(r.env.hi>0?'+':'')+r.env.hi.toFixed(1)}</small></span>
           </div>`).join('')}
         </div>
-        <div class="note">The grey band is everything reachable by summing each slot's best choice; <b>every band shares one scale</b>, so the widest band is the axis with the most headroom. The thin vertical mark is zero (factory gun) and the amber marker is your build on the axis you are optimising. Index 1.0 ≈ one tier level or a 100% multiplier; magazine rounds score at 15%.</div>
+        <div class="note">The grey band is everything reachable on that axis for the ${budget} points the weapon has, with every slot filled as far as the budget allows; <b>every band shares one scale</b>, so the widest band is the axis with the most headroom. The thin vertical mark is zero (factory gun) and the amber marker is your build on the axis you are optimising. Index 1.0 ≈ one tier level or a 100% multiplier; magazine rounds score at 15%.</div>
       </div>
 
       <div class="kpanel">
@@ -2208,7 +2416,7 @@ function renderPlay(w, keepScroll){
             }).join('');
           }).join('')}
         </div></div>
-        <div class="note">Each row is the best possible build for that goal, and each cell is how the rest of the weapon ends up with it. The diagonal is the maximum reachable. Because every effect is additive per slot, the optimal build for a goal is the sum of its best attachment in each slot — there is no hidden better combination.</div>
+        <div class="note">Each row is the best possible build for that goal inside the ${budget}-point budget, and each cell is how the rest of the weapon ends up with it. The diagonal is the maximum reachable per axis. Because every effect is additive per slot and there is one shared budget, the solver is an exact knapsack — there is no hidden better combination. A row of zeroes is an axis no attachment on this weapon moves.</div>
       </div>
     </div>
   </div>`;
@@ -2217,8 +2425,16 @@ function renderPlay(w, keepScroll){
   document.getElementById('pggoals').querySelectorAll('.pgchip').forEach(b=>b.onclick=()=>{
     const g = b.dataset.goal;
     if(g==='__reset'){ playState.sel = Object.assign({}, w.play.def); }
-    else { playState.goal = g; playState.sel = pgBuild(w, PG_LANES.find(l=>l.id===g)); }
+    else {
+      playState.goal = g;
+      const lane = PG_LANES.find(l=>l.id===g);
+      playState.sel = pgVariants(w, lane).list[0].sel;   // dominant build for the new goal
+    }
     renderPlay(w, true);
+  });
+  document.getElementById('pbody').querySelectorAll('.pgvar').forEach(el=>el.onclick=()=>{
+    const v = V.list.find(x=>x.sig===el.dataset.sig);
+    if(v){ playState.sel = Object.assign({}, v.sel); renderPlay(w, true); }
   });
   document.getElementById('pgslots').querySelectorAll('.attslot').forEach(b=>b.onclick=()=>{
     playState.slot = b.dataset.slot; renderPlay(w, true);
@@ -2272,7 +2488,7 @@ document.getElementById('foot').innerHTML =
   `Meta tiers, real-world firearm references and map intel: public community sources.<br>`+
   `Self-contained, offline, no network requests. Fan-made reference — not affiliated with EA/DICE. `+
   `TTK model: 100 HP, chest shots, constant damage per range band. `+
-  `The playground applies the datamined per-attachment fields on top of the bare weapon; tier axes keep the game's own ladder because the tier→number table is not public. `+
+  `The playground applies the datamined per-attachment fields on top of the bare weapon and fits every build inside the game's 100-point Pick-100 budget; tier axes keep the game's own ladder because the tier→number table is not public. `+
   `Map fit is a derived heuristic, not a guarantee.`;
 
 renderChips();

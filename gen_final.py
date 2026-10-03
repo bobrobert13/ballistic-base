@@ -121,6 +121,9 @@ PLAY_SLOTS = [('sight','Optic'),('muzzle','Muzzle'),('barrel','Barrel'),('grip',
               ('laser','Laser'),('light','Light'),('ergo','Ergonomics'),('mag','Magazine'),
               ('ammo','Ammo'),('accessory','Accessory')]
 OPTIONAL = ('muzzle','grip','laser','light','ergo','accessory')
+# Battlefield 6's "Pick-100": every loadout may spend 100 attachment points, and the
+# weapon's factory parts are already spending part of it.
+PICK_BUDGET = 100
 COLL_BASE = next((x.get('collateralMult') for x in amd['AMMO'] if x['id']=='standard' and isinstance(x.get('collateralMult'),dict)), {})
 
 TIPS=[]; tip_idx={}
@@ -220,11 +223,15 @@ for slug,w in sym.items():
     for ps,pl in PLAY_SLOTS:
         o=[]
         if ps in ('sight','muzzle','barrel','grip','laser','light','ergo'):
+            sp_pts = (att['WEAPON_ATTS'].get(rid,{}) or {}).get('sightPoints') or {}
             for aid in (tw.get(ps) or {}):
+                rp = p_resolve(ACAT.get((ps,aid)) or {}, rid)
                 rec = ACAT.get((ps,aid))
                 if rec is None: continue
-                o.append(dict(id=aid, n=rec.get('name',aid), p=int(rec.get('pts') or 0),
-                              t=tip(tw[ps][aid]), ic=icon_for(ps,aid), fx=p_fx(p_resolve(rec,rid))))
+                p = int(rp.get('pts') or 0)            # per-weapon cost overrides win
+                if ps=='sight' and aid in sp_pts: p = int(sp_pts[aid])
+                o.append(dict(id=aid, n=rec.get('name',aid), p=p,
+                              t=tip(tw[ps][aid]), ic=icon_for(ps,aid), fx=p_fx(rp)))
         elif ps=='mag':
             for mid,mm in ((att['WEAPON_MAG'].get(rid,{}) or {}).get('mags') or {}).items():
                 if mid not in (tw.get('mag') or {}): continue
@@ -266,8 +273,9 @@ for slug,w in sym.items():
         elif ps=='barrel':p_def[ps] = (att['WEAPON_ATTS'].get(rid,{}) or {}).get('barrelDef')
         elif ps=='sight': p_def[ps] = 'iron' if any(x['id']=='iron' for x in o) else o[0]['id']
         else:             p_def[ps] = 'none' if any(x['id']=='none' for x in o) else o[0]['id']
-    # a slot with a single option offers no choice — drop it before the baseline is built,
-    # so base_mult only ever reflects parts the player can actually change
+    # a slot with a single option offers no choice, but its part still spends the budget:
+    # bank that cost before dropping the slot so the optimiser sees the real headroom.
+    fixed_pts = sum(int(sl['o'][0].get('p') or 0) for sl in p_slots if len(sl['o'])==1)
     p_slots = [sl for sl in p_slots if len(sl['o'])>1]
     p_def = {k:v for k,v in p_def.items() if any(sl['k']==k for sl in p_slots)}
     # express every effect relative to the weapon's factory option in its slot, so a lane
@@ -313,7 +321,7 @@ for slug,w in sym.items():
         'slots':p_slots,
         'base':dict(vel=round(w['velocity']), mag=w['mags']['MagSize'], pel=w['pellets'],
                   mult=base_mult,
-                  dmg=e['pts'], tac=num(tac_rl), empty=num(empt_rl),
+                  budget=PICK_BUDGET, fixed=int(fixed_pts), dmg=e['pts'], tac=num(tac_rl), empty=num(empt_rl),
                   dep=round(w['deploy']['DeployTime'],2), und=round(w['deploy']['UnDeployTime'],2),
                   ads=round(sp['ADSStandBaseMin'],3), hip=round(sp['HIPStandBaseMin'],3),
                   adsInc=(round(p_inc['ads']['inc'],3) if p_inc.get('ads') else None),
