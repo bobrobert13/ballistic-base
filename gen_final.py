@@ -350,8 +350,102 @@ for m in MAPS:
     if os.path.exists(p):
         MAPIMG[slug] = 'data:image/webp;base64,' + base64.b64encode(open(p,'rb').read()).decode()
     else:
-        u = (REALMAPS.get('imageUrls') or {}).get(slug) or f'https://bf6balancelog.com/img/items/{slug}.jpg'
+        u = (REALMAPS.get('imageUrls') or {}).get(slug) or f'https://battlefield-6.wiki/img/items/{slug}.jpg'
         MAPIMG[slug] = u
+
+# ---- map intelligence -------------------------------------------------------
+# Derived from the sourced text in maps.json. Where a map states its vehicle
+# lineup we keep that sentence as evidence and mark it documented; where the
+# source only implies it, the entry is marked inferred. Anything the sources do
+# not state is left out rather than guessed.
+VEH_TABLE = {
+ 'blackwell-fields':  dict(armor=['Heavy armor','Light armor'], air=['Attack heli','Transport heli','Jets'],
+                           naval=False, aa=False, light=True,  src='documented',
+                           evidence='Vehicles: all types including jets.'),
+ 'cairo-bazaar':      dict(armor=[], air=[], naval=False, aa=False, light=False, src='documented',
+                           evidence='Infantry-only per Fandom infobox; vehicles appear in larger modes.',
+                           caveat='Infantry-only map; larger modes see vehicles, composition not published.'),
+ 'contaminated':      dict(armor=['Heavy armor','Light armor'], air=['Transport heli'], naval=False, aa=False, light=True,
+                           src='documented', disputed=['Jets'],
+                           evidence='Vehicles: land + helicopters (Fandom also lists jets - flagged inconsistent).'),
+ 'eastwood':          dict(armor=['Heavy armor','Light armor'], air=['Attack heli','Transport heli'], naval=False, aa=False,
+                           light=True, src='documented', excluded=['Jets'],
+                           evidence='Vehicles: light/heavy armor + helicopters (no jets).'),
+ 'empire-state':      dict(armor=[], air=[], naval=False, aa=False, light=False, src='documented',
+                           evidence='No vehicles. / No vehicle play.'),
+ 'fort-lyndon':       dict(armor=['Heavy armor'], air=['Transport heli'], naval=True, aa=False, light=True, src='documented',
+                           evidence='Includes full vehicular support (tanks, helicopters, boats/RHIB).'),
+ 'hagental-base':     dict(armor=[], air=[], naval=False, aa=False, light=False, src='documented',
+                           evidence='Infantry-only underground base. / No vehicles.'),
+ 'iberian-offensive': dict(armor=['Light armor'], air=[], naval=False, aa=False, light=True, src='documented',
+                           disputed=['Heavy armor'],
+                           evidence='Vehicles: light transports + 1 IFV per side in Conquest (EA blurb and some guides also mention tanks).'),
+ 'liberation-peak':   dict(armor=['Heavy armor','Light armor'], air=['Attack heli','Transport heli','Jets'],
+                           naval=False, aa=False, light=True, src='documented',
+                           evidence='Vehicles: light/heavy armor, helicopters, jets.'),
+ 'manhattan-bridge':  dict(armor=['Heavy armor','Light armor'], air=['Attack heli','Transport heli'], naval=False, aa=False,
+                           light=True, src='documented', excluded=['Jets'],
+                           evidence='Vehicles: light transports, IFVs, tanks, transport and attack helicopters.'),
+ 'mirak-valley':      dict(armor=['Heavy armor','Light armor'], air=['Attack heli','Transport heli','Jets'],
+                           naval=False, aa=False, light=True, src='documented',
+                           evidence='Every vehicle type incl. tanks, helicopters and jets.'),
+ 'new-sobek-city':    dict(armor=['Heavy armor','Light armor'], air=['Attack heli'], naval=False, aa=True, light=True,
+                           src='documented',
+                           evidence='Vehicles: light/heavy armor, attack helicopters and AA (one of few launch maps with attack helis).'),
+ 'operation-firestorm':dict(armor=['Heavy armor','Light armor'], air=['Attack heli','Transport heli','Jets'],
+                           naval=False, aa=True, light=True, src='documented',
+                           evidence='Vehicles: light/heavy armor, AA, helicopters and jets.'),
+ 'railway-to-golmud': dict(armor=['Heavy armor','Light armor'], air=['Transport heli','Jets'], naval=False, aa=False,
+                           light=True, src='inferred',
+                           evidence="open landscape 'ablaze with tank shootouts'; Expanded airspace/largest jet space to date."),
+ 'saints-quarter':    dict(armor=[], air=[], naval=False, aa=False, light=False, src='documented',
+                           evidence='Infantry-only. No empty space where vehicles would usually be.'),
+ 'siege-of-cairo':    dict(armor=['Heavy armor','Light armor'], air=[], naval=False, aa=False, light=False, src='documented',
+                           evidence='Infantry + light/heavy armor (cat-and-mouse with tanks).'),
+ 'tsuru-reef':        dict(armor=[], air=[], naval=True, aa=False, light=False, src='documented',
+                           evidence='Supports all modes and Naval Warfare (boats, carrier).',
+                           caveat='Naval documented; land and air composition not published.'),
+ 'wake-island':       dict(armor=[], air=[], naval=True, aa=False, light=False, src='documented',
+                           evidence='Rebuilt for BF6 with Naval Warfare; outdoor areas defined by vehicular combat.',
+                           caveat='Naval and vehicular combat documented; exact lineup not published.'),
+}
+
+def split_list(txt):
+    """Split an English list on commas / 'and' without cutting inside parentheses."""
+    out, buf, depth = [], '', 0
+    i = 0
+    while i < len(txt):
+        c = txt[i]
+        if c in '([': depth += 1
+        elif c in ')]': depth = max(0, depth-1)
+        if depth == 0 and (c == ',' or txt[i:i+5].lower() == ' and '):
+            out.append(buf.strip()); buf = ''
+            i += 5 if txt[i:i+5].lower() == ' and ' else 1
+            continue
+        buf += c; i += 1
+    if buf.strip(): out.append(buf.strip())
+    return [x for x in out if x and len(x) < 60]
+
+def derive_map(m):
+    lay, notes = m.get('layout') or '', m.get('notes') or ''
+    blob = lay + ' || ' + notes
+    veh = dict(VEH_TABLE.get(m['slug'], dict(armor=[], air=[], naval=False, aa=False, light=False,
+                                               src='inferred', evidence='')))
+    fl = re.search(r'flags?:\s*([^.]+)', blob)
+    flags = [x.strip() for x in split_list(fl.group(1))] if fl else []
+    pm = re.search(r'(?:POIs|Points of interest)[^:]*:\s*([^.]+)', blob)
+    pois = [x.strip() for x in split_list(pm.group(1))] if pm else []
+    doc, est = notes, ''
+    em = re.search(r'\binferred:\s*(.+)$', notes, re.I)
+    if em:
+        est = em.group(1).strip()
+        doc = notes[:em.start()].strip()
+    quotes = re.findall(r"'([^']{12,240})'", doc)[:6]
+    # what the mix means for you, straight off the profile
+    p = m.get('profile') or {}
+    return dict(veh=veh, flags=flags, pois=pois, doc=doc, est=est, quotes=quotes)
+
+MAPMETA = {m['slug']: derive_map(m) for m in MAPS}
 RW   = json.load(open('realworld.json')) if os.path.exists('realworld.json') else {}
 SEASON = open('season.txt').read().strip() if os.path.exists('season.txt') else ''
 VER = 'v%s (%s)' % (sym_info['version'], sym_info['versionDate'])
@@ -364,9 +458,11 @@ html = (tpl.replace('/*__DATA__*/[]', json.dumps(weapons,ensure_ascii=False))
            .replace('/*__ICONS__*/[]', json.dumps(ICONS,ensure_ascii=False))
            .replace('/*__MAPS__*/[]', json.dumps(MAPS,ensure_ascii=False))
            .replace('/*__MAPIMG__*/{}', json.dumps(MAPIMG,ensure_ascii=False))
+           .replace('/*__MAPMETA__*/{}', json.dumps(MAPMETA,ensure_ascii=False))
+           .replace('/*__CONS__*/1', str(REALMAPS.get('consensusOf',1)))
            .replace("/*__VER__*/''", json.dumps(VER))
            .replace("/*__SEASON__*/''", json.dumps(SEASON)))
-for ph in ('__DATA__','__RW__','__TIER__','__TIPS__','__ICONS__','__MAPS__','__MAPIMG__','__VER__','__SEASON__'):
+for ph in ('__DATA__','__RW__','__TIER__','__TIPS__','__ICONS__','__MAPS__','__MAPIMG__','__MAPMETA__','__CONS__','__VER__','__SEASON__'):
     assert ph not in html, ph
 open(OUT,'w',encoding='utf-8').write(html)
 n_att = sum(sum(len(v) for v in w['atts'].values()) for w in weapons)

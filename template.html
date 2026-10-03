@@ -345,7 +345,92 @@ svg.kcurve{width:100%;height:174px;display:block}
 .spulse{transform-box:fill-box;transform-origin:center;animation:spulse 1.9s ease-out infinite}
 @keyframes spulse{0%{r:9;opacity:.5}70%{r:21;opacity:0}100%{r:21;opacity:0}}
 
-/* ---------- maps: diverging delta + composition ---------- */
+/* ---------- maps: catalog section ---------- */
+.msec{margin-top:44px;border-top:1px solid var(--line);padding-top:22px}
+.msec-h{display:flex;flex-wrap:wrap;align-items:flex-end;gap:14px;justify-content:space-between;margin-bottom:16px}
+.msec-h h2{margin:0;font-size:17px;letter-spacing:.14em;text-transform:uppercase;font-weight:800}
+.msec-h h2 b{color:var(--accent)}
+.msec-h .sub{display:block;font-size:11.5px;color:var(--dim2);letter-spacing:.05em;text-transform:none;font-weight:500;margin-top:5px;max-width:640px;line-height:1.5}
+.msec-cta{display:flex;align-items:center;gap:9px;background:var(--accent);border:1px solid var(--accent);color:#12161b;padding:10px 15px;border-radius:9px;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap}
+.msec-cta:hover{filter:brightness(1.08)}
+.mstrip{display:grid;grid-template-columns:repeat(auto-fill,minmax(214px,1fr));gap:12px}
+.mtile{background:var(--panel);border:1px solid var(--line);border-radius:11px;overflow:hidden;cursor:pointer;transition:.15s;display:flex;flex-direction:column}
+.mtile:hover{transform:translateY(-2px);border-color:#46522f;box-shadow:0 10px 26px -18px #000}
+.mtart{height:86px;background:#0d1013 center/cover no-repeat;position:relative}
+.mtart:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,12,.05),rgba(18,22,27,.92))}
+.mtveh{position:absolute;top:7px;right:7px;z-index:2;background:rgba(10,12,15,.85);border:1px solid var(--line);border-radius:6px;font-size:9.5px;padding:2px 7px;color:var(--dim);letter-spacing:.04em}
+.mtveh.inf{color:var(--accent2)}
+.mtb{padding:10px 12px 12px;display:flex;flex-direction:column;gap:7px;flex:1}
+.mtn{font-size:13.5px;font-weight:700}
+.mtmix{display:flex;height:5px;border-radius:3px;overflow:hidden;border:1px solid var(--line)}
+.mtmix i{display:block;height:100%;width:0;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.mtmix i.c1{background:#ff5a5f}.mtmix i.c2{background:#ffb020}.mtmix i.c3{background:#4fd1c5}
+.mts{font-size:9.5px;color:var(--dim2);letter-spacing:.05em;font-variant-numeric:tabular-nums}
+.mtbody{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
+.mgcard{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;transition:.16s;display:flex;flex-direction:column}
+.mgcard:hover{transform:translateY(-3px);border-color:#46522f;box-shadow:0 12px 30px -18px #000,0 0 0 1px rgba(255,176,32,.2)}
+.mgart{height:150px;background:#0d1013 center/cover no-repeat;position:relative}
+.mgart:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,12,.1),rgba(18,22,27,.94))}
+.mgcard .rank{position:absolute;top:9px;left:9px;z-index:2;background:rgba(10,12,15,.86);border:1px solid var(--line);border-radius:7px;font-size:11px;font-weight:800;padding:3px 8px;color:var(--accent);font-variant-numeric:tabular-nums}
+.mgcard .sz{position:absolute;top:9px;right:9px;z-index:2;background:rgba(10,12,15,.86);border:1px solid var(--line);border-radius:7px;font-size:10px;padding:3px 8px;color:var(--dim)}
+.mgb{padding:12px 14px 14px;display:flex;flex-direction:column;gap:9px;flex:1}
+.mgb h5{margin:0;font-size:15.5px}
+.mgb .sub{font-size:10.5px;color:var(--dim2);letter-spacing:.04em;text-transform:uppercase}
+.mgb .pick{font-size:12px;color:var(--dim)}
+.mgb .pick b{color:var(--accent)}
+.mgcard .go{margin-top:auto;font-size:11px;color:var(--accent2);letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+
+/* detail */
+.mpane{position:relative;z-index:1;padding:0 0 90px}
+.mhero{position:relative;height:clamp(320px,44vh,440px);overflow:hidden;border-bottom:1px solid var(--line)}
+.mhero .art{position:absolute;inset:-18% 0;background-position:center 40%;background-size:cover;will-change:transform}
+.mhero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,15,.55) 0%,rgba(10,12,15,.30) 34%,rgba(10,12,15,.80) 72%,var(--bg) 100%)}
+.mhero .inner{position:absolute;inset:auto 0 0 0;z-index:3;max-width:1420px;margin:0 auto;padding:0 22px 22px}
+.mback{position:absolute;top:16px;left:22px;z-index:5;display:flex;align-items:center;gap:8px;background:rgba(12,15,19,.74);border:1px solid var(--line);color:var(--txt);padding:8px 13px;border-radius:9px;font-size:12.5px;cursor:pointer;backdrop-filter:blur(8px)}
+.mback:hover{border-color:var(--accent);color:var(--accent)}
+.mhero h1{margin:6px 0 2px;font-size:clamp(30px,5.4vw,56px);font-weight:800;letter-spacing:.01em;line-height:.98;text-shadow:0 6px 30px rgba(0,0,0,.75)}
+.mhero .kick{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.mhero .blurb{color:var(--dim);font-size:13px;margin-top:8px;max-width:820px;text-shadow:0 2px 12px rgba(6,8,10,.95)}
+.mwrap{max-width:1420px;margin:0 auto;padding:0 22px}
+
+.mmix{display:flex;height:38px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--panel2)}
+.mmix i{display:block;height:100%;width:0;transition:width 1s cubic-bezier(.2,.8,.2,1);position:relative}
+.mmix i.c1{background:linear-gradient(180deg,#ff5a5f,#c23a3f)}
+.mmix i.c2{background:linear-gradient(180deg,#ffb020,#c9821a)}
+.mmix i.c3{background:linear-gradient(180deg,#4fd1c5,#2f9c92)}
+.mmix i span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:800;letter-spacing:.08em;color:#0a0c0f}
+.mmixleg{display:flex;justify-content:space-between;font-size:10px;color:var(--dim2);margin-top:7px;letter-spacing:.06em}
+
+.mload{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.mwc{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 13px;transition:.15s;cursor:pointer;display:flex;flex-direction:column;gap:10px}
+.mwc:hover{border-color:#46522f;transform:translateY(-2px)}
+.mwc.p1{border-color:#46522f;box-shadow:0 0 0 1px rgba(255,176,32,.2)}
+.mwc .top{display:flex;align-items:center;gap:10px}
+.mwc .top img{width:82px;height:44px;object-fit:contain;flex:0 0 82px;filter:drop-shadow(0 3px 6px rgba(0,0,0,.6))}
+.mwc .nm{font-size:14.5px;font-weight:700;line-height:1.15}
+.mwc .cl{font-size:10px;color:var(--dim2);letter-spacing:.07em;text-transform:uppercase;margin-top:2px}
+.mwc .fit{margin-left:auto;text-align:right}
+.mwc .fit b{display:block;font-size:19px;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;line-height:1}
+.mwc .fit span{font-size:9px;color:var(--dim2);letter-spacing:.09em;text-transform:uppercase}
+.mwc .bars{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mwc .bl{display:flex;flex-direction:column;gap:3px}
+.mwc .bl .h{display:flex;justify-content:space-between;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim2)}
+.mwc .bl .h b{color:var(--txt);font-variant-numeric:tabular-nums;font-size:11px}
+.mwc .bar{height:4px}
+.mwc .bar i{display:block;height:100%;width:0;border-radius:3px;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.mwc .why{font-size:11px;color:var(--dim2);line-height:1.5;border-top:1px dashed var(--line);padding-top:8px}
+.mwc .why b{color:var(--dim)}
+
+.mveh{display:flex;flex-wrap:wrap;gap:8px}
+.mvehchip{display:flex;align-items:center;gap:8px;background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:7px 11px;font-size:12.5px}
+.mvehchip svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;color:var(--accent)}
+.mvehchip.no{color:var(--dim2)}
+.mvehchip.no svg{color:var(--dim2)}
+.mflagchip{font-size:11.5px;color:var(--dim);background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:6px 11px}
+.mquote{border-left:2px solid var(--accent2);padding:2px 0 2px 13px;margin:0 0 11px;font-size:12.5px;color:var(--dim);line-height:1.6;font-style:italic}
+.mest{border-left:2px solid var(--accent);padding:2px 0 2px 13px;font-size:12.5px;color:var(--dim);line-height:1.6;background:rgba(255,176,32,.05)}
+.mest b{color:var(--accent);font-style:normal;letter-spacing:.08em;font-size:10px;text-transform:uppercase;display:block;margin-bottom:3px}
 .mrow{display:grid;grid-template-columns:134px minmax(0,1fr) 50px;align-items:center;gap:10px;padding:3px 0;font-size:12px}
 .mrow .n{color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mrow.best .n{color:var(--txt);font-weight:700}
@@ -600,6 +685,7 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;color:v
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
         <input id="q" type="search" placeholder="Search weapon, caliber, real gun…" autocomplete="off">
       </div>
+      <button class="toggle" id="mapsBtn" type="button" title="Open the map intelligence view">⌖ Maps <span id="mapsN"></span></button>
       <select id="sort">
         <option value="name">Sort: Name</option>
         <option value="ttk">Sort: TTK @ range</option>
@@ -619,6 +705,7 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;color:v
 
     <div class="chips" id="chips"></div>
     <div class="grid" id="grid"></div>
+    <section class="msec" id="mapsSection"></section>
     <footer id="foot"></footer>
   </div>
 </div>
@@ -674,6 +761,9 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;color:v
   </div>
 </div>
 
+<!-- ============ MAPS INDEX + MAP DETAIL ============ -->
+<div id="viewMaps" hidden></div>
+
 <script>
 const WEAPONS = /*__DATA__*/[];
 const RW = /*__RW__*/{};
@@ -681,6 +771,7 @@ const TIER = /*__TIER__*/{};
 const TIPS = /*__TIPS__*/[];
 const ICONS = /*__ICONS__*/[];
 const MAPS = /*__MAPS__*/[];
+const REALCONS = /*__CONS__*/1;
 const MAPIMG = /*__MAPIMG__*/{};
 const VER = /*__VER__*/'';
 const SEASON = /*__SEASON__*/'';
@@ -829,6 +920,14 @@ function route(){
     const w = WEAPONS.find(x=>x.slug===mp[1]);
     if(w){ document.body.classList.add('wpn'); renderPlay(w); return; }
   }
+  const mm = h.match(/^#\/m\/([^\/]+)$/);
+  if(mm){
+    const m = MAPS.find(x=>x.slug===mm[1]);
+    if(m){ showMapsView(); setBackdropVisible(false); renderMap(m); return; }
+  }
+  if(h === '#/maps' || h === '#/maps/'){
+    showMapsView(); setBackdropVisible(true); renderMapsIndex(); window.scrollTo(0,0); return;
+  }
   const m = h.match(/^#\/w\/(.+)$/);
   if(m){
     const w = WEAPONS.find(x=>x.slug===m[1]);
@@ -837,15 +936,18 @@ function route(){
   document.body.classList.remove('wpn');
   document.getElementById('viewWeapon').hidden = true;
   document.getElementById('viewPlay').hidden = true;
+  document.getElementById('viewMaps').hidden = true;
+  setBackdropVisible(true);
   document.getElementById('viewCatalog').hidden = false;
   window.scrollTo(0,0);
 }
+function goMap(slug){ location.hash = '#/m/'+slug; }
 function go(slug){ location.hash = '#/w/'+slug; }
 function goPlay(slug){ location.hash = '#/w/'+slug+'/play'; }
 window.addEventListener('hashchange', route);
 
 /* ================= catalog ================= */
-const state = {cls:'all', q:'', sort:'name', dist:20, only:false};
+const state = {cls:'all', q:'', sort:'name', dist:20, only:false, mtag:'all'};
 const CLASSES = ['assaultrifle','carbine','smg','mg','dmr','boltaction','shotgun','secondary'];
 document.getElementById('catMeta').innerHTML =
   `<b>${WEAPONS.length}</b> weapons · <b>${CLASSES.length}</b> classes · <b>${MAPS.length}</b> maps<br>`+
@@ -1018,6 +1120,8 @@ function attEffects(slot, tipIdx){
   return out;
 }
 const ordinal = n => n + (n%100>=11 && n%100<=13 ? 'th' : (['th','st','nd','rd'][n%10] || 'th'));
+/* percentiles are 0..100; a 0th-place reading is noise, so floor it at 1 */
+const pctOrd = n => ordinal(Math.max(1, Math.round(n)));
 function arsenalStanding(w, d){
   const rows = WEAPONS.map(x=>({slug:x.slug, cls:x.cls, t: ttk(x,d)}));
   const my = ttk(w,d);
@@ -1502,7 +1606,7 @@ function renderWeapon(w, keepScroll){
     const maxPart = Math.max(...s.parts.map(p=>p.v), 1);
     const pr = m.profile || {cqb:1/3, mid:1/3, long:1/3};
     const mix = Math.round((pr.cqb+pr.mid+pr.long)*100) || 100;
-    return `<div class="mapcard ${i===0?'top':''}">
+    return `<div class="mapcard ${i===0?'top':''}" data-m="${m.slug}" role="button" tabindex="0" title="Open map intel">
       <div class="art" ${art}><span class="rank">#${i+1}</span><span class="fit" style="color:${dcolor(s.delta)}">${s.delta>0?'+':''}${s.delta}</span></div>
       <div class="mb">
         <div><h5>${esc(m.name)}</h5><div class="ms">${esc(m.size||'')}</div></div>
@@ -1823,6 +1927,11 @@ function renderWeapon(w, keepScroll){
       </div>
     </section>`;
 
+  document.querySelectorAll('#sections .mapcard[data-m]').forEach(el=>{
+    const open = ()=>goMap(el.dataset.m);
+    el.onclick = open;
+    el.onkeydown = e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } };
+  });
   const msrc = document.getElementById('msrc');
   if(msrc) msrc.innerHTML = document.getElementById('foot').innerHTML;
   const aq = document.getElementById('attq');
@@ -2559,6 +2668,292 @@ function playFan(root, rows){
   }
 }
 
+/* ================= maps: index + detail =================
+   The map ranking reuses the same bracket percentiles the rest of the site is
+   built on: a map's weapon score is the documented engagement mix dotted with
+   the weapon's kill-speed percentile in each bracket. Nothing here is invented —
+   the mix and the vehicle lineup come from the sourced text in maps.json. */
+const MAPMETA = /*__MAPMETA__*/{};
+const VGLYPH = {
+  'Heavy armor':'<rect x="2" y="12" width="20" height="5.5" rx="1.4"/><rect x="8" y="8" width="8" height="4" rx="1"/><path d="M16 10h5.5"/><circle cx="6" cy="19" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="18" cy="19" r="2"/>',
+  'Light armor':'<path d="M3 14.5 5.2 9.5h10.6L19 14.5V18H3z"/><path d="M8 9.5V6.6h5.2v2.9"/><circle cx="7" cy="18.6" r="1.9"/><circle cx="17" cy="18.6" r="1.9"/>',
+  'Attack heli':'<path d="M9 11h7l3 2v1.8H9z"/><path d="M12 5v6"/><path d="M3.4 5h17.2"/><path d="M3.6 9h5.4"/><path d="M9.4 15.4 7.6 19"/><path d="M19 13l2.2 3"/>',
+  'Transport heli':'<path d="M8.4 12h8.8l2.8 2v1.8H8.4z"/><path d="M12 5v7"/><path d="M3.4 5h17.2"/><path d="M9.6 16.4 8 19"/>',
+  'Jets':'<path d="M12 2.4 14 10.4h7.2l-2 2h-5.4l1 4.8L12 14.4 9.2 17.2l1-4.8H4.8l-2-2H10z"/>',
+  'AA':'<rect x="2.6" y="13" width="10" height="5.6" rx="1.2"/><path d="M6 13l3-6.4M10 13l3-6.4"/><circle cx="17.6" cy="8.6" r="2.8"/><path d="M17.6 11.4V16"/>',
+  'Boats':'<path d="M3 14.4h18l-2.8 4.8H5.8z"/><path d="M12 14.4V4.6"/><path d="M12 5.6l5 4.8h-5z"/>',
+  'Light transport':'<path d="M3 15.2 5 11h10l3 4.2v2.6H3z"/><circle cx="7" cy="18.4" r="1.8"/><circle cx="16" cy="18.4" r="1.8"/>',
+  'none':'<circle cx="12" cy="5" r="2.3"/><path d="M12 7.6v6M8.4 10.6h7.2M9 20l3-6.4L15 20"/>'
+};
+const vehIcons = v => {
+  const list = [...v.armor, ...v.air];
+  if(v.aa) list.push('AA');
+  if(v.naval) list.push('Boats');
+  if(v.light) list.push('Light transport');
+  return list;
+};
+const isInfantryMap = m => vehIcons((MAPMETA[m.slug]||{}).veh||{}).length === 0;
+function mapSizeTag(m){
+  const t = vehIcons((MAPMETA[m.slug]||{}).veh||{}).length;
+  if(t === 0) return 'infantry';
+  if(/^XL/i.test(m.size||'')) return 'xl';
+  if(/^Large\b/i.test(m.size||'')) return 'large';
+  if(/^Small\b/i.test(m.size||'')) return 'small';
+  return 'medium';
+}
+const mapSizeClass = m => {
+  if(/^XL/i.test(m.size||'')) return 'xl';
+  if(/^Large\b/i.test(m.size||'')) return 'large';
+  if(/^Small\b/i.test(m.size||'')) return 'small';
+  return 'medium';
+};
+const mapPlaystyle = p => {
+  const top = Object.entries(p).sort((a,b)=>b[1]-a[1])[0][0];
+  return {cqb:'CQB brawl — SMG, shotgun and fast reflexes', mid:'Mid-range trades — assault rifles and DMRs',
+          long:'Long sightlines — snipers, LMGs and vehicles'}[top];
+};
+/* one weapon's suitability for one map, from the map's own engagement mix */
+function mapRank(map){
+  const p = map.profile || {cqb:1/3,mid:1/3,long:1/3};
+  const sum = (p.cqb + p.mid + p.long) || 1;
+  const rows = WEAPONS.map(w=>{
+    const e = EFFECT[w.slug];
+    const parts = BUCKETS.map(b=>({b, w:p[b], v:p[b]*e[b], pct:e[b]}));
+    const fit = parts.reduce((a,x)=>a+x.v, 0)/sum;
+    const dom = parts.slice().sort((a,b)=>b.v-a.v)[0];
+    return {w, e, fit, parts, dom};
+  }).sort((a,b)=>b.fit-a.fit);
+  const top = rows[0].fit || 1;
+  rows.forEach(r=> r.rel = Math.max(1, Math.round(100*r.fit/top)));
+  return rows;
+}
+function renderMapsIndex(){
+  const box = document.getElementById('viewMaps');
+  const tag = m => mapSizeTag(m);
+  const groups = [['all','All maps'],['infantry','Infantry only'],['veh','Combined arms'],
+                  ['xl','XL'],['large','Large'],['medium','Medium'],['small','Small']];
+  const counts = {all:MAPS.length, infantry:0, veh:0, xl:0, large:0, medium:0, small:0};
+  MAPS.forEach(m=>{
+    if(isInfantryMap(m)) counts.infantry++; else counts.veh++;
+    counts[mapSizeClass(m)]++;
+  });
+  box.innerHTML = `<div class="wrap">
+    <header class="top">
+      <div class="brand"><h1><b>BF6</b> MAP INTEL</h1><span class="sub">${MAPS.length} maps · engagement mix, vehicles & loadouts</span></div>
+      <div class="meta"><b>${MAPS.length}</b> maps · <b>${[...new Set(MAPS.flatMap(m=>m.modes||[]))].length}</b> modes<br>Sourced briefs, then modelled fit</div>
+    </header>
+    <div class="chips" id="mchips">${groups.map(([k,l])=>
+      `<div class="chip ${state.mtag===k?'on':''}" data-t="${k}">${l}<span class="n">${counts[k]}</span></div>`).join('')}</div>
+    <div class="mgrid" id="mgrid"></div>
+  </div>`;
+  box.querySelectorAll('.chip').forEach(el=>el.onclick=()=>{ state.mtag = el.dataset.t; renderMapsIndex(); });
+  const list = MAPS.filter(m=>{
+    if(state.mtag==='all') return true;
+    if(state.mtag==='infantry') return isInfantryMap(m);
+    if(state.mtag==='veh') return !isInfantryMap(m);
+    return mapSizeClass(m) === state.mtag;
+  });
+  const grid = box.querySelector('#mgrid');
+  grid.innerHTML = list.map(m=>{
+    const p = m.profile||{}, mrank = mapRank(m)[0];
+    const veh = vehIcons((MAPMETA[m.slug]||{}).veh||{});
+    const art = MAPIMG[m.slug] ? `style="background-image:url('${MAPIMG[m.slug]}')"` : '';
+    return `<div class="mgcard" data-m="${m.slug}" role="button" tabindex="0">
+      <div class="mgart" ${art}>
+        <span class="rank">Best fit · ${esc(mrank.w.name)}</span>
+        <span class="sz">${esc(m.size||'')}</span>
+      </div>
+      <div class="mgb">
+        <h5>${esc(m.name)}</h5>
+        <div class="sub">${veh.length? veh.length+' vehicle types' : 'Infantry only'} · ${(m.modes||[]).length} modes</div>
+        <div class="comp" title="Documented engagement mix">
+          <i class="c1" data-w="${(p.cqb*100).toFixed(1)}"></i><i class="c2" data-w="${(p.mid*100).toFixed(1)}"></i><i class="c3" data-w="${(p.long*100).toFixed(1)}"></i>
+        </div>
+        <div class="ms" style="font-size:10px;color:var(--dim2);letter-spacing:.04em">CQB ${Math.round(p.cqb*100)}% · MID ${Math.round(p.mid*100)}% · LONG ${Math.round(p.long*100)}%</div>
+        <div class="pick">Best fit <b>${esc(mrank.w.name)}</b></div>
+        <div class="go">Open intel →</div>
+      </div>
+    </div>`;
+  }).join('');
+  grid.querySelectorAll('.mgcard').forEach(el=>{
+    const open = ()=>goMap(el.dataset.m);
+    el.onclick = open;
+    el.onkeydown = e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } };
+  });
+  requestAnimationFrame(()=>grid.querySelectorAll('.comp i[data-w]').forEach(i=>{ i.style.width = i.dataset.w+'%'; }));
+
+  const first = list[0] || MAPS[0];
+  if(first) backdropDefault(MAPIMG[first.slug] || '');
+  grid.onmouseover = e => {
+    const card = e.target.closest('.mgcard');
+    if(!card) return;
+    BG.hover = true; setBackdrop(MAPIMG[card.dataset.m] || '');
+  };
+  grid.onmouseleave = () => { BG.hover = false; setBackdrop(BG.def); };
+}
+function renderMap(m){
+  const box = document.getElementById('viewMaps');
+  const meta = MAPMETA[m.slug] || {veh:{}, flags:[], pois:[], quotes:[], est:''};
+  const p = m.profile || {cqb:1/3,mid:1/3,long:1/3};
+  const rank = mapRank(m);
+  const picks = rank.slice(0,6);
+  const avoid = rank.slice(-3).reverse();
+  const veh = vehIcons(meta.veh||{});
+  const killed = Object.fromEntries(BUCKETS.map(b=>[b, Math.round(p[b]*100)]));
+  const mixTitle = mapPlaystyle(p);
+  const pc = b => Math.round(p[b]*100);
+
+  const why = (r)=>{
+    const b = r.dom.b, names={cqb:'close-quarters',mid:'mid-range',long:'long-range'};
+    const dd = RANGES[b];
+    return `This map runs ${pc(b)}% ${names[b]}. ${esc(r.w.name)} sits in the ${pctOrd(r.e[b])} percentile there`+
+      (btk(r.w,dd)<=1?` and one-shots at ${dd} m.`:` and kills in ${btk(r.w,dd)} hits (~${Math.round(ttk(r.w,dd))} ms) at ${dd} m.`);
+  };
+  const buildOf = w => {
+    const b = attPicks(w).build;
+    return ['Muzzle','Barrel','Underbarrel','Magazine','Ammo','Optic','Laser','Ergonomics','Light']
+      .filter(s=>b[s]).slice(0,5)
+      .map(s=>`<span class="klalt">${esc(s)}: ${esc(b[s].name)}</span>`).join('');
+  };
+  const cards = picks.map((r,i)=>`<div class="mwc ${i===0?'p1':''}" data-s="${r.w.slug}" role="button" tabindex="0">
+      <div class="top">
+        <img src="${r.w.img||''}" alt="" loading="lazy" decoding="async">
+        <div><div class="nm">${esc(r.w.name)}</div><div class="cl">${esc(r.w.clsLabel)}</div></div>
+        <div class="fit"><b>${r.rel}</b><span>fit index</span></div>
+      </div>
+      <div class="bars">${BUCKETS.map(b=>`<div class="bl"><div class="h"><span>${{cqb:'CQB',mid:'MID',long:'LNG'}[b]}</span><b>${r.e[b]}</b></div>
+        <div class="bar"><i class="${toneOf(r.e[b])}" data-w="${Math.max(3,r.e[b])}"></i></div></div>`).join('')}</div>
+      <div class="why">${why(r)}</div>
+      <div class="klalts">${buildOf(r.w)}</div>
+    </div>`).join('');
+
+  box.innerHTML = `<div class="mpane">
+    <div class="mhero">
+      <div class="art" id="mart" style="background-image:url('${MAPIMG[m.slug]||''}')"></div>
+      <div class="veil"></div>
+      <button class="mback" id="mback">← All maps</button>
+      <div class="inner">
+        <div class="kick"><span>${esc(m.size||'')}</span><span>·</span><span>${(m.modes||[]).length} modes</span>${veh.length?`<span>·</span><span>${veh.length} vehicle types</span>`:`<span>·</span><span>infantry only</span>`}</div>
+        <h1>${esc(m.name)}</h1>
+        <div class="blurb">${esc(mixTitle)}. ${esc((m.layout||'').split('.')[0])}.</div>
+      </div>
+    </div>
+    <div class="mwrap">
+      <div class="kpanel" style="margin-top:18px">
+        <h4>Engagement mix — the documented split that decides this map</h4>
+        <div class="mmix">${BUCKETS.map((b,i)=>`<i class="c${i+1}" data-w="${(p[b]*100).toFixed(1)}"><span>${pc(b)}% ${{cqb:'CQB',mid:'MID',long:'LONG'}[b]}</span></i>`).join('')}</div>
+        <div class="mmixleg"><span>Close quarters</span><span>Mid range</span><span>Long range</span></div>
+        <div class="note">Weights come from the sourced map brief and community consensus (${REALCONS} sources per map). They drive every recommendation below.</div>
+      </div>
+
+      <div class="kgrid2" style="margin-top:16px">
+        <div class="kpanel"><h4>Vehicles on this map</h4>
+          ${veh.length? `<div class="mveh">${veh.map(v=>`<span class="mvehchip"><svg viewBox="0 0 24 24">${VGLYPH[v]||VGLYPH.none}</svg>${esc(v)}</span>`).join('')}</div>`
+            : `<div class="mveh"><span class="mvehchip no"><svg viewBox="0 0 24 24">${VGLYPH.none}</svg>No vehicles — pure infantry</span></div>`}
+          ${(meta.veh.disputed||[]).length?`<div class="mveh" style="margin-top:8px">${meta.veh.disputed.map(v=>`<span class="mvehchip no"><svg viewBox="0 0 24 24">${VGLYPH[v]||VGLYPH.none}</svg>${esc(v)} <span style="opacity:.7">· reported, not confirmed</span></span>`).join('')}</div>`:''}
+          ${meta.veh.caveat?`<div class="note">${esc(meta.veh.caveat)}</div>`:''}
+          ${meta.veh.evidence?`<div class="mquote" style="margin-top:10px">“${esc(meta.veh.evidence)}”</div>`:''}
+          <div class="note">Marked <b>${meta.veh.src}</b> — ${meta.veh.src==='documented'?'quoted straight from the source brief':'inferred from the source prose, not a published lineup'}.</div>
+        </div>
+        <div class="kpanel"><h4>Objectives & points of interest</h4>
+          ${(meta.flags||[]).length?`<div class="wrk" style="font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--dim2);margin-bottom:8px">Conquest flags</div>
+          <div class="mveh">${meta.flags.map(f=>`<span class="mflagchip">${esc(f)}</span>`).join('')}</div>`
+          :`<div class="wrk" style="font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--dim2);margin-bottom:8px">Conquest flags</div>
+          <div class="note" style="margin:0 0 4px">${isInfantryMap(m)?'Exclusive to close-quarters modes — this map has no Conquest layout.':'No published objective list for this map.'}</div>`}
+          ${(meta.pois||[]).length?`<div class="wrk" style="font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--dim2);margin:12px 0 8px">Other POIs</div>
+          <div class="mveh">${meta.pois.map(f=>`<span class="mflagchip">${esc(f)}</span>`).join('')}</div>`:''}
+          <div class="wrk" style="font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--dim2);margin:12px 0 8px">Modes on this map</div>
+          <div class="mveh">${(m.modes||[]).map(x=>`<span class="mflagchip">${esc(x)}</span>`).join('') || '<span class="note" style="margin:0">Not published.</span>'}</div>
+        </div>
+      </div>
+
+      <h3 class="sh" style="margin-top:26px">Recommended loadouts for this map</h3>
+      <p class="lede">Every weapon in the arsenal scored against this map's mix. A weapon's score is its kill-speed percentile in each bracket, weighted by how often that bracket occurs here — so a specialist that is bad everywhere else still ranks below an all-rounder.</p>
+      <div class="mload">${cards}</div>
+
+      <h3 class="sh" style="margin-top:26px">Best per bracket — pick the fight you want</h3>
+      <p class="lede">If you are going to live in one bracket, take the weapon that owns it. These are the top of each bracket's percentile ladder, independent of how the map averages out.</p>
+      <div class="kgrid2" style="margin-top:4px">
+        ${BUCKETS.map(b=>{
+          const top3 = WEAPONS.slice().sort((a,c)=>EFFECT[c.slug][b]-EFFECT[a.slug][b]).slice(0,3);
+          const dd = RANGES[b];
+          const prim = p[b] === Math.max(p.cqb,p.mid,p.long);
+          return `<div class="kpanel" ${prim?'style="border-color:#46522f"':''}>
+            <h4>${{cqb:'Close quarters',mid:'Mid range',long:'Long range'}[b]} · ${dd} m · <span style="color:${prim?'var(--accent)':'var(--dim2)'}">${pc(b)}% of fights</span></h4>
+            ${top3.map((x,i)=>{
+              return `<div class="prow" style="grid-template-columns:minmax(0,1fr) 62px 52px">
+                <span class="n" style="${i===0?'color:var(--txt);font-weight:700':''}">${esc(x.name)} <span style="color:var(--dim2)">· ${esc(x.clsLabel)}</span></span>
+                <span class="v">${btk(x,dd)<=1?'1-shot':Math.round(ttk(x,dd))+'<small>ms</small>'}</span>
+                <span class="r">${pctOrd(EFFECT[x.slug][b])}<small> pct</small></span></div>`;
+            }).join('')}
+            <div class="note">Ranked by kill time at ${dd} m under the weighted model (${Math.round(top3[0]?killTime(top3[0],dd,b):0)} ms for the leader).</div>
+          </div>`;
+        }).join('')}
+      </div>
+
+      <div class="kgrid2" style="margin-top:16px">
+        <div class="kpanel"><h4>Consider something else</h4>
+          ${avoid.map(r=>`<div class="prow"><span class="n">${esc(r.w.name)}</span>
+            <span class="b"><i class="${toneOf(r.rel)}" data-w="${Math.max(3,r.rel)}"></i></span>
+            <span class="v">${r.rel}<small>fit</small></span>
+            <span class="r">${pctOrd(r.e[r.dom.b])}<small> ${r.dom.b.toUpperCase()}</small></span></div>`).join('')}
+          <div class="note">Weakest fits for this map's documented mix — usually a slow-killing weapon being asked to fight outside its bracket.</div>
+        </div>
+        <div class="kpanel"><h4>Playstyle this map rewards</h4>
+          <div class="modes">${BUCKETS.slice().sort((a,b)=>p[b]-p[a]).map(b=>`<span class="mode">${{cqb:'Close quarters',mid:'Mid range',long:'Long range'}[b]} <b>${pc(b)}%</b></span>`).join('')}</div>
+          <table class="spec" style="margin-top:12px">
+            <tr><td>Bring</td><td>${esc(mixTitle.split('—')[1]?mixTitle.split('—')[1].trim():mixTitle)}</td></tr>
+            <tr><td>Vehicles</td><td>${veh.length?esc(veh.join(' · ')):'None'}</td></tr>
+            <tr><td>Modes</td><td>${(m.modes||[]).length}</td></tr>
+            <tr><td>Best fit</td><td>${esc(picks[0].w.name)} <b>${picks[0].rel}</b></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="kpanel" style="margin-top:16px"><h4>Tactical brief</h4>
+        ${(()=>{ const qs = (meta.quotes||[]).filter(q=>!(meta.veh&&meta.veh.evidence&&meta.veh.evidence.includes(q.slice(0,40))));
+          return qs.length? qs.map(q=>`<div class="mquote">“${esc(q)}”</div>`).join('')
+            : '<div class="note">No further quotes kept for this map.</div>'; })()}
+        ${meta.est?`<div class="mest"><b>Our estimate</b>${esc(meta.est)}</div>`:''}
+        <div class="note" style="margin-top:12px">Layout: ${esc(m.layout||'')}</div>
+        <div class="note">${[m.source?`<a href="${m.source}" target="_blank" rel="noopener">Primary source</a>`:'', m.source2?`<a href="${m.source2}" target="_blank" rel="noopener">Secondary source</a>`:''].filter(Boolean).join(' · ')}</div>
+      </div>
+    </div>
+  </div>`;
+
+  const back = document.getElementById('mback'); if(back) back.onclick = ()=>{ location.hash = '#/maps'; };
+  box.querySelectorAll('.mwc').forEach(el=>{
+    const open = ()=>go(el.dataset.s);
+    el.onclick = open;
+    el.onkeydown = e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } };
+  });
+  requestAnimationFrame(()=>{
+    box.querySelectorAll('.mmix i[data-w], .mwc .bar i[data-w], .prow .b i[data-w]').forEach(i=>{ i.style.width = i.dataset.w+'%'; });
+  });
+  window.scrollTo(0,0);
+}
+let mTick = false;
+function mapParallax(){
+  if(mTick) return;
+  mTick = true;
+  requestAnimationFrame(()=>{
+    const art = document.getElementById('mart');
+    if(art) art.style.transform = `translate3d(0,${(window.scrollY*0.28).toFixed(1)}px,0)`;
+    mTick = false;
+  });
+}
+function showMapsView(){
+  document.body.classList.remove('wpn');
+  document.getElementById('viewWeapon').hidden = true;
+  document.getElementById('viewPlay').hidden = true;
+  document.getElementById('viewCatalog').hidden = true;
+  document.getElementById('viewMaps').hidden = false;
+}
+/* the map detail has its own hero art, so the shared backdrop is suppressed there */
+function setBackdropVisible(on){
+  document.querySelector('.wbgwrap').style.display = on ? '' : 'none';
+  document.getElementById('wbgveil').style.display = on ? '' : 'none';
+}
 /* ---- controls ---- */
 function syncRange(){
   const cd = document.getElementById('dist'); if(cd) cd.value = state.dist;
@@ -2583,6 +2978,9 @@ document.getElementById('sort').addEventListener('change', e=>{ state.sort=e.tar
 document.getElementById('dist').addEventListener('input', e=>setDist(e.target.value));
 document.getElementById('wdist').addEventListener('input', e=>setDist(e.target.value));
 document.getElementById('pdist').addEventListener('input', e=>setDist(e.target.value));
+document.getElementById('mapsBtn').addEventListener('click', ()=>{ location.hash = '#/maps'; });
+document.getElementById('mapsN').textContent = MAPS.length;
+window.addEventListener('scroll', ()=>{ if(!document.getElementById('viewMaps').hidden) mapParallax(); }, {passive:true});
 document.getElementById('only').addEventListener('click', e=>{
   state.only = !state.only;
   const b = e.currentTarget;
@@ -2604,8 +3002,39 @@ document.getElementById('foot').innerHTML =
   `The playground applies the datamined per-attachment fields on top of the bare weapon and fits every build inside the game's 100-point Pick-100 budget; tier axes keep the game's own ladder because the tier→number table is not public. `+
   `Map fit is a derived heuristic, not a guarantee.`;
 
+function renderMapsSection(){
+  const box = document.getElementById('mapsSection');
+  if(!box) return;
+  const tiles = MAPS.map(m=>{
+    const p = m.profile||{};
+    const veh = vehIcons((MAPMETA[m.slug]||{}).veh||{});
+    const inf = isInfantryMap(m);
+    const art = MAPIMG[m.slug] ? `style="background-image:url('${MAPIMG[m.slug]}')"` : '';
+    return `<div class="mtile" data-m="${m.slug}" role="button" tabindex="0" title="${esc(m.name)} — open map intel">
+      <div class="mtart" ${art}><span class="mtveh ${inf?'inf':''}">${inf ? 'infantry only' : veh.length+' vehicle types'}</span></div>
+      <div class="mtb">
+        <div class="mtn">${esc(m.name)}</div>
+        <div class="mtmix"><i class="c1" data-w="${(p.cqb*100).toFixed(1)}"></i><i class="c2" data-w="${(p.mid*100).toFixed(1)}"></i><i class="c3" data-w="${(p.long*100).toFixed(1)}"></i></div>
+        <div class="mts">CQB ${Math.round(p.cqb*100)} · MID ${Math.round(p.mid*100)} · LNG ${Math.round(p.long*100)}</div>
+      </div>
+    </div>`;
+  }).join('');
+  box.innerHTML = `<div class="msec-h">
+      <h2><b>Map</b> Intel<span class="sub">Engagement mix, vehicle lineups, objectives and the loadouts each map rewards — one brief per battleground.</span></h2>
+      <button class="msec-cta" id="mapsCta" type="button">Open all ${MAPS.length} maps →</button>
+    </div>
+    <div class="mstrip">${tiles}</div>`;
+  document.getElementById('mapsCta').onclick = ()=>{ location.hash = '#/maps'; };
+  box.querySelectorAll('.mtile').forEach(el=>{
+    const open = ()=>goMap(el.dataset.m);
+    el.onclick = open;
+    el.onkeydown = e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } };
+  });
+  requestAnimationFrame(()=>box.querySelectorAll('.mtmix i[data-w]').forEach(i=>{ i.style.width = i.dataset.w+'%'; }));
+}
 renderChips();
 renderGrid();
+renderMapsSection();
 route();
 </script>
 </body>
