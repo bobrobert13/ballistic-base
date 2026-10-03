@@ -1,0 +1,455 @@
+{
+ "maps": [
+  {
+   "slug": "blackwell-fields",
+   "name": "Blackwell Fields",
+   "size": "Large (All-Out Warfare)",
+   "profile": {
+    "cqb": 0.15,
+    "mid": 0.3,
+    "long": 0.55
+   },
+   "modes": [
+    "Conquest",
+    "Breakthrough",
+    "Escalation",
+    "Rush",
+    "Domination",
+    "King of the Hill",
+    "Team Deathmatch",
+    "Squad Deathmatch",
+    "Strikepoint",
+    "Sabotage"
+   ],
+   "layout": "Rural Southern California badlands at sunset (Kern County). Large, open map with minimal buildings outside objective areas; a garage, military depot, hangars, small outposts, active oil pumpjacks, many hills and trenches, a map-bisecting east-west road, and an active wildfire that damages players. Six Conquest flags: Salvage Lot, Homestead, Site Office, Relay Station, Oil Fields, Military Base. Small modes use two 'Misfire' variants (east hangars / west garage).",
+   "notes": "Documented 'long, open sightlines broken up only by hills', 'cover is minimal so expect to be shot from almost anywhere', snipers and tanks dominate; spawn-to-spawn sightlines. CQB confined to depot/scrapyard/hangar objectives. Vehicles: all types including jets. Not in Escalation rotation; EA-confirmed rework planned for Season 5 with New Sobek City. inferred: weights reflect open dominant with LONG bias.",
+   "source": "https://allthings.how/battlefield-6-season-1-maps-blackwell-fields-eastwood-ice-lock/",
+   "source2": "https://battlefield.fandom.com/wiki/Blackwell_Fields"
+  },
+  {
+   "slug": "cairo-bazaar",
+   "name": "Cairo Bazaar",
+   "size": "Medium (infantry-focused)",
+   "profile": {
+    "cqb": 0.525,
+    "mid": 0.3,
+    "long": 0.175
+   },
+   "modes": [
+    "Conquest",
+    "Breakthrough",
+    "Rush",
+    "Domination",
+    "King of the Hill",
+    "Team Deathmatch",
+    "Squad Deathmatch",
+    "Strikepoint"
+   ],
+   "layout": "Reimagined Grand Bazaar (BF3) in central Cairo; urban marketplace of alleys, an indoor bazaar, archway columns and a central 'Alley of Death'/'big banana' lane. Points of interest: faction HQs, Bazaar/Marketplace, Boulevard (western vehicle lane), Plaza and Checkpoint (ruined). Heavy tactical destruction creates new routes and rubble cover. Infantry-only per Fandom infobox; vehicles appear in larger modes.",
+   "notes": "Official: BF3 Grand Bazaar was 'a very short range close quarter combat map where shotguns tend to be favored'; EA preserves 'classic tight, corridor-driven gameplay'. Reportedly plays 'similar to Hagental Base or Saints Quarter'. Blvd and north-south Bazaar lanes give long sightlines and L115/RPK-74M headshot lanes ('deepest cross-map sightlines'), hence non-trivial LONG. EA says LMs and Rifles can pick players off in the corridor.",
+   "source": "https://www.ea.com/games/battlefield/battlefield-6/news/cairo-bazaar-developer-map-guide",
+   "source2": null
+  },
+  {
+   "slug": "contaminated",
+   "name": "Contaminated",
+   "size": "Large (between Eastwood and Mirak Valley)",
+   "profile": {
+    "cqb": 0.275,
+    "mid": 0.35,
+    "long": 0.375
+   },
+   "modes": [
+    "Conquest",
+    "Breakthrough",
+    "Escalation",
+    "Rush",
+    "Domination",
+    "King of the Hill",
+    "Team Deathmatch",
+    "Squad Deathmatch",
+    "Strikepoint"
+   ],
+   "layout": "Mountainside German airbase (Hagental) in the Bavarian Alps; rocky cliffs, tall trees, bunkers. Six Conquest flags: Hagental Village, Zone C Bunker, Hagental Tunnel, Siegfried Line, Pohl Control Center, Maintenance Hangar. Sector flow (EA Operation Augur): Hamlet house+trenches; Siegfried Line bunkers + breachable Hagental Tunnel; Maintenance Hangar trench->hangar; open Ramp/Apron valley staging lane; multi-level climbable bunkers at Hagental Base entrance. VL-7 psychoactive smoke is a mode gimmick.",
+   "notes": "EA explicitly: 'Contaminated's hillsides and Hagental Base's tunnels demand different loadouts for success.' Ramp/Apron = 'serious long-range duels for valley control' over an otherwise open staging lane; hamlet/tunnel/bunkers = close-quarters breach-and-clear. Size: 'between Eastwood and Mirak Valley', comparable to St. Quentin Scar / Arras (EA). Vehicles: land + helicopters (Fandom also lists jets - flagged inconsistent). inferred: genuinely tri-modal; near-equal split.",
+   "source": "https://www.ea.com/games/battlefield/battlefield-6/news/battlefield-6-and-redsec-season-2-roadmap-everything-you-need-to-know",
+   "source2": "https://www.ea.com/games/battlefield/battlefield-6/news/operation-augur-mode-guide-tips-and-tricks"
+  },
+  {
+   "slug": "eastwood",
+   "name": "Eastwood",
+   "size": "Medium/Large (all combat sizes)",
+   "profile": {
+    "cqb": 0.425,
+    "mid": 0.375,
+    "long": 0.2
+   },
+   "modes": [
+    "Conquest",
+    "Breakthrough",
+    "Escalation",
+    "Rush",
+    "Domination",
+    "King of the Hill",
+    "Team Deathmatch",
+    "Squad Deathmatch",
+    "Strikepoint",
+    "Sabotage"
+   ],
+   "layout": "Southern California golf-resort suburb (Battle of Hunter's Ridge). Five Conquest flags: Suburbs, Neighbourhood, Country Club, Gazebos, Villa. Dense suburban streets (A/B), a central lodge/clubhouse with tiled roofs (Assault Ladder) and destructible walls, an open golf course green at C, a covered car park, hills up to D/E, and swimming pools. Roughly 10 drivable Turfpro PTV golf carts. Vehicles: light/heavy armor + helicopters (no jets).",
+   "notes": "Documented: 'tight suburban streets around A and especially B', 'open golf course at the back of C', 'a good balance of long streets and open zones where vehicles shine'; TheGamer says it 'leans into a focus on infantry' with cluttered suburban-home capture points. Windows Central calls it the largest game map aside from Operation Firestorm. Supports all combat sizes (EA). inferred: CQB+MID dominant, LONG on the golf course/wide roads.",
+   "source": "https://allthings.how/battlefield-6-season-1-maps-blackwell-fields-eastwood-ice-lock/",
+   "source2": "https://www.pcgamer.com/games/fps/battlefield-6s-new-eastwood-map-is-the-large-instantly-iconic-warzone-ive-been-waiting-for-but-wait-for-it-i-shall/"
+  },
+  {
+   "slug": "empire-state",
+   "name": "Empire State",
+   "size": "Small (smallest launch map; infantry-only)",
+   "profile": {
+    "cqb": 0.525,
+    "mid": 0.35,
+    "long": 0.125
+   },
+   "modes": [
+    "Conquest",
+    "Domination",
+    "King of the Hill",
+    "Team Deathmatch",
+    "Squad Deathmatch"
+   ],
+   "layout": "Infantry-only Brooklyn, NYC urban map of tight city blocks, L-shaped alleys, side streets, rooftops and tall multi-story buildings with many entry points and windows; destructible interiors/breechable walls. Five Conquest flags: Basketball Court, Construction Zone, Skybridge, Summit Center, Furman Courtyard. Verticality is strong (roofs, skybridge; enemies firing up/down). Winter 'Ice Lock' visual variant. No vehicles.",
+   "notes": "Documented: 'close, crowded infantry-only... SMGs and shotguns are king'; 'highly vertical urban combat... narrow spaces'; but dblTap notes 'long open stretches for snipers outdoors' while interiors favor shotguns/SMGs. GameWatcher: 'rather open streets around the buildings at the center'. inferred: CQB-dominant with meaningful MID and some LONG on open streets. No vehicle play.",
+   "source": "https://screenrant.com/all-9-battlefield-6-maps-ranked/",
+   "source2": "https://www.pcgamesn.com/battlefield-6/maps"
+  },
+  {
+   "slug": "fort-lyndon",
+   "name": "Fort Lyndon",
+   "size": "XL (Battle Royale map; largest Battlefield battleground to date)",
+   "profile": {
+    "cqb": 0.325,
+    "mid": 0.35,
+    "long": 0.325
+   },
+   "modes": [
+    "Battle Royale",
+    "Gauntlet"
+   ],
+   "layout": "Battlefield REDSEC battle-royale map; Southern California/Los Angeles coastal region ('redacted military facility hidden between beaches and a residential community'). 21 named POIs across cities, military bases, industrial landscapes, open wilderness, a golf course, marina/beachfront, hilltops and mountains. Includes full vehicular support (tanks, helicopters, boats/RHIB) and a shrinking wall-of-fire hazard; 100 players. Season 2 added Defense Testing Complex 3 (underground tunnel network).",
+   "notes": "Worlds: Downtown/Boutique District = dense room-to-room CQB; Chemical Storage/Ground Zero = vertical CQB; Radar Site/mountains/golf fairways/beaches/Marina = long-range; military/industrial compounds = MID. Fandom: largest map since Firestorm's Halvøy; not the same map as Eastwood (EA). inferred: genuinely mixed tri-modal BR sandbox; weights reflect broad spread.",
+   "source": "https://www.gamesradar.com/games/battlefield/battlefield-redsec-battle-royale-map-full/",
+   "source2": "https://www.ea.com/games/battlefield/redsec/features/redsec-overview"
+  },
+  {
+   "slug": "hagental-base",
+   "name": "Hagental Base",
+   "size": "Small-Medium (infantry-only, mostly underground)",
+   "profile": {
+    "cqb": 0.575,
+    "mid": 0.275,
+    "long": 0.15
+   },
+   "modes": [
+    "Team Deathmatch",
+    "Squad Deathmatch",
+    "Domination",
+    "Gauntlet: Nightfall"
+   ],
+   "layout": "Infantry-only underground base beneath the Bavarian Alps (Hagental Airbase). All action funnels into the wide Central Tunnel (loading area with a huge impact crater and wreckage), plus narrow/deep East and West Tunnels and an intricate tunnel network; areas include Generator, Maintenance, Depot and Server. Unstable ceilings/walls are destructible, collapsing on enemies or opening flank routes. No vehicles.",
+   "notes": "EA: 'gripping underground close-quarters combat'; CQB users fit Generator/Maintenance/Depot/Server and small rooms/pillars; conversely 'long-range weapon users, such as sniper rifles or LMGs, will find this tunnel - as well as the narrow and deep East/West Tunnels - incredible for their effective range'. Inspiration: Metro, Locker, BF3 Close Quarters. EA calls it 'supporting infantry-only modes'. inferred: most engagements CQB/MID with strong long-lane exceptions.",
+   "source": "https://www.ea.com/games/battlefield/battlefield-6/news/season-2-multiplayer-nightfall-mode-guide",
+   "source2": null
+  },
+  {
+   "slug": "iberian-offensive",
+   "name": "Iberian Offensive",
+   "size": "Medium",
+   "profile": {
+    "cqb": 0.45,
+    "mid": 0.35,
+    "long": 0.2
+   },
+   "modes": [
+    "Conquest",
+    "Breakthrough",
+    "Escalation",
+    "Rush",
+    "Domination",
+    "King of the Hill",
+    "Team Deathmatch",
+    "Squad Deathmatch",
+    "Strikepoint"
+   ],
+   "layout": "Upper Town, Gibraltar; urban map of winding streets, alleyways, plazas and partly-destructible multi-story buildings with elevation. Five Conquest flags; B Townhouses and C Apartment are the town core, A/D/E are outer vehicle flags. C Apartment has floor-by-floor destruction opening sightlines; D Supply Depot has a flank route and a 'crater of death'. Vehicles: light transports + 1 IFV per side in Conquest (EA blurb and some guides also mention tanks).",
+   "notes": "Strongest documented dual-range statement: 'emphasizes Close Quarters infantry combat at the capture points within the town (Being B and C), and long-ranged, light vehicle combat at the outer flags (A, D, and E)'. dblTap: 'more open stretches to the sides that allow for sniper gameplay'. PCGamesN: 'winding streets create chokepoints'. inferred: CQB core with real LONG edges and MID plazas.",
+   "source": "https://esportsinsider.com/battlefield-6-maps-ranked",
+   "source2": "https://battlefield.fandom.com/wiki/Iberian_Offensive"
+  },
+  {
+   "slug": "liberation-peak",
+   "name": "Liberation Peak",
+   "size": "Large",
+   "profile": {
+    "cqb": 0.225,
+    "mid": 0.325,
+    "long": 0.45
+   },
+   "modes": [
+    "Conquest",
+    "Breakthrough",
+    "Escalation",
+    "Rush",
+    "Domination",
+    "King of the Hill",
+    "Team Deathmatch",
+    "Squad Deathmatch",
+    "Strikepoint"
+   ],
+   "layout": "Pamir Mountains / Murghob District, Tajikistan; vast rocky mountainside with ridges, valleys, military installations and settlements. Six Conquest flags: Ambush Site, Checkpoint, Ravine Outpost, Village, Vehicle Depot, Command Post. Strong verticality and high-ground advantage; some community sources note caves/tunnels (uncorroborated). Vehicles: light/heavy armor, helicopters, jets.",
+   "notes": "Documented: 'wide sightlines, steep ridges, and limited cover - making it a haven for long-range players'; 'Long sight lines are also a dream for skilled marksmen'; 'the most open of the beta maps'; 'a favorite for eager snipers'. Infantry can sneak between settlements/buildings, so CQB pockets exist in the central village compound. inferred: LONG-dominant with MID ridge fights and limited CQB.",
+   "source": "https://esportsinsider.com/battlefield-6-maps-ranked",
+   "source2": "https://battlefield.fandom.com/wiki/Liberation_Peak"
+  },
+  {
+   "slug": "manhattan-bridge",
+   "name": "Manhattan Bridge",
+   "size": "Medium/Large (most flexible map)",
+   "profile": {
+    "cqb": 0.475,
+    "mid": 0.35,
+    "long": 0.175
+   },
+   "modes": [
+    "Conquest",
+    "Breakthrough",
+    "Escalation",
+    "Rush",
+    "Domination",
+    "King of the Hill",
+    "Team Deathmatch",
+    "Squad Deathmatch",
+    "Strikepoint"
+   ],
+   "layout": "DUMBO neighbourhood, Brooklyn, NYC; streets beneath and around the Manhattan Bridge, brownstone blocks, bridge underpasses and sides. Destructible structures create new angles; upper deck vs lower underpass lanes; roof access mostly by helicopter. Play space is larger than Empire State. Vehicles: light transports, IFVs, tanks, transport and attack helicopters.",
+   "notes": "Documented: 'close-quarters map set in the streets below the Manhattan Bridge... weave between cars and buildings with an SMG'; EA: 'close-quarters gunplay on the streets'. PCGamesN: 'the play space is much larger, giving license for vehicles to roam the streets'. BoostRoom: 'vehicles and infantry can both be effective if they respect the narrow lanes'. inferred: CQB-dominant, MID along vehicle streets, LONG only from aircraft.",
+   "source": "https://esportsinsider.com/battlefield-6-maps-ranked",
+   "source2": "https://battlefield.fandom.com/wiki/Manhattan_Bridge"
+  },
+  {
+   "slug": "mirak-valley",
+   "name": "Mirak Valley",
+   "size": "Large ('largest map at launch')",
+   "profile": {
+    "cqb": 0.2,
+    "mid": 0.3,
+    "long": 0.5
+   },
+   "modes": [
+    "Conquest",
+    "Breakthrough",
+    "Escalation",
+    "Rush",
+    "Domination",
+    "King of the Hill",
+    "Team Deathmatch",
+    "Squad Deathmatch",
+    "Strikepoint"
+   ],
+   "layout": "Tajikistan valley between two mountain ranges: ruined/destroyed villages, farmlands, a trench system, two construction sites and a central river. Five Conquest flags: Destroyed Village, Construction Site Building (large), Farmland, Construction Site Building (small), Intact Village. Rooftops on the construction buildings are used for sniping/anti-armor; a large crane can be dropped to restrict vehicle movement. Every vehicle type incl. tanks, helicopters and jets.",
+   "notes": "Documented: 'a wide sandbox, and its central area is open for combat for your vehicles as well as for your planes'; trenches let infantry move 'in relative safety'; construction sites give 'intense CQC' but also long-ranged duels between the two buildings; hilltops watch key bridges. Scale baseline: later Railway to Golmud is ~4x Mirak Valley (TechRadar). inferred: LONG-dominant with CQB islands at construction sites/villages.",
+   "source": "https://esportsinsider.com/battlefield-6-maps-ranked",
+   "source2": "https://battlefield.fandom.com/wiki/Mirak_Valley"
+  },
+  {
+   "slug": "new-sobek-city",
+   "name": "New Sobek City",
+   "size": "Medium-Large",
+   "profile": {
+    "cqb": 0.325,
+    "mid": 0.35,
+    "long": 0.325
+   },
+   "modes": [
+    "Conquest",
+    "Breakthrough",
+    "Escalation",
+    "Rush",
+    "Domination",
+    "King of the Hill",
+    "Team Deathmatch",
+    "Squad Deathmatch",
+    "Strikepoint"
+   ],
+   "layout": "Construction yard on the outskirts of Cairo's suburbs; sandwiched between construction sites and massive sand dunes. Five Conquest flags incl. Abandoned Foundations, Housing District, Logistics Outpost (A-C named). Semi-urban construction interiors with cover, stairwells/rooftops for verticality, plus open desert. Vehicles: light/heavy armor, attack helicopters and AA (one of few launch maps with attack helis).",
+   "notes": "Documented as a genuine split: 'construction yard creates semi-urban fighting while the desert areas let vehicles really stretch their legs'; 'close-quarters construction combat and open-field vehicle warfare'; Radio Times cites 'sniper spots, helicopters, tanks'. GameWatcher calls it the big 'peak Battlefield' experience vs Siege of Cairo's street fights. EA-confirmed rework planned Season 5. inferred: CQB/MID construction + LONG dunes.",
+   "source": "https://esportsinsider.com/battlefield-6-maps-ranked",
+   "source2": "https://battlefield.fandom.com/wiki/New_Sobek_City"
+  },
+  {
+   "slug": "operation-firestorm",
+   "name": "Operation Firestorm",
+   "size": "XL (Battlefield 3 remake)",
+   "profile": {
+    "cqb": 0.2,
+    "mid": 0.35,
+    "long": 0.45
+   },
+   "modes": [
+    "Conquest",
+    "Breakthrough",
+    "Escalation",
+    "Rush",
+    "Domination",
+    "King of the Hill",
+    "Team Deathmatch",
+    "Squad Deathmatch",
+    "Strikepoint"
+   ],
+   "layout": "Balkanabat, Turkmenistan oil refinery (BF3 remake); a huge combined-arms field of wide-open outdoor areas and industrial interior spaces. Five Conquest flags: Logistics Hub, Warehouses, Filling Station, Construction Site, Army Outpost. High smokestacks/distilling tower act as sniper nests with map-wide views; warehouses are tight indoor fight spaces. Vehicles: light/heavy armor, AA, helicopters and jets.",
+   "notes": "PS.Blog: 'a mix of wide-open outdoor areas, high smokestacks that are great sniper nests, and lots of interior spaces'; 'very long sightlines... and snipers were a major force... that said, both maps have a wide variety of terrain and structures that provide a lot of cover'. Legacy (layout carried to BF6): tight warehouse CQB for shotguns/PDWs, medium between-flag vehicle fights, extremely long sightlines for sniping. inferred: MID+LONG dominant with CQB pockets.",
+   "source": "https://screenrant.com/all-9-battlefield-6-maps-ranked/",
+   "source2": "https://blog.playstation.com/2025/09/17/battlefield-6-hands-on-with-operation-firestorm-mirak-valley/"
+  },
+  {
+   "slug": "railway-to-golmud",
+   "name": "Railway to Golmud",
+   "size": "XL (biggest official BF6 MP map; playable area larger than Mirak Valley)",
+   "profile": {
+    "cqb": 0.25,
+    "mid": 0.325,
+    "long": 0.425
+   },
+   "modes": [
+    "Conquest",
+    "Breakthrough",
+    "Escalation",
+    "Rush",
+    "Domination",
+    "King of the Hill",
+    "Team Deathmatch",
+    "Squad Deathmatch",
+    "Strikepoint"
+   ],
+   "layout": "Reimagined Golmud Railway (BF4) moved to Tajikistan: several square kilometres of ruined village, rolling hills/valleys, an industrial site and a moving train (double engines, cover cars, parkour). Seven Conquest POIs: Construction Site & Village, VIP Compound, Train, Bridge Construction, Warehouse (two multi-story warehouses + elevated walkways), Farm. Expanded airspace/largest jet space to date; added flank routes and cover between objectives.",
+   "notes": "EA: added 'verticality and flanking opportunities for better engagements at all distances'; train cars invite CQB (SMG/Carbine/Shotgun); Warehouse = 'cat-and-mouse' infantry play; open landscape 'ablaze with tank shootouts'; construction/village rubble gives infantry cover. Dominated by combined-arms vehicles and long-range tank/jet play, with genuine CQB objectives. inferred: broad MID/LONG leaning, meaningful CQB on train/warehouses/village.",
+   "source": "https://www.ea.com/games/battlefield/battlefield-6/news/railway-to-golmud-developer-map-guide",
+   "source2": null
+  },
+  {
+   "slug": "saints-quarter",
+   "name": "Saints Quarter",
+   "size": "Small ('smallest BF6 map by a mile')",
+   "profile": {
+    "cqb": 0.725,
+    "mid": 0.24,
+    "long": 0.035
+   },
+   "modes": [
+    "Domination",
+    "King of the Hill",
+    "Team Deathmatch",
+    "Squad Deathmatch"
+   ],
+   "layout": "Old Town, Gibraltar; close-quarters map built around a central fountain courtyard flanked by destructible houses. Exclusive to CQB modes (no Conquest/Rush/Breakthrough/Escalation); Domination has three flags. Documented focal points: central courtyard, a long side street, and a corner stairwell over a storm drain; second floors and destructible floorboards; the whole area is on a slope.",
+   "notes": "Documented: 'sightlines are tight, and there's no empty space where vehicles would usually be'; 'combat distances heavily favor close-range weapons. Master your SMG and shotgun skills'; 'layout is fixed to maximise the close combat fights'. Infantry-only. inferred: almost pure CQB with only short MID; zero long-range. (Radio Times' 'full of sniper spots' contradicts primary CQB evidence - flagged outlier.)",
+   "source": "https://esportsinsider.com/battlefield-6-maps-ranked",
+   "source2": "https://www.pcgamer.com/games/fps/call-of-duty-could-learn-a-thing-or-two-from-battlefield-6s-smallest-map"
+  },
+  {
+   "slug": "siege-of-cairo",
+   "name": "Siege of Cairo",
+   "size": "Medium (smaller of the two Egypt maps)",
+   "profile": {
+    "cqb": 0.55,
+    "mid": 0.35,
+    "long": 0.1
+   },
+   "modes": [
+    "Conquest",
+    "Breakthrough",
+    "Escalation",
+    "Rush",
+    "Domination",
+    "King of the Hill",
+    "Team Deathmatch",
+    "Squad Deathmatch",
+    "Strikepoint"
+   ],
+   "layout": "Central Cairo; urban map of tight alleyways and small buildings mixed with large open streets and courtyards, split by a main road running through the middle. Five Conquest flags: Plaza, Palace (interior chambers), Crossing (centre/main road with a crater and bus cover), Souk (courtyard market), Supply Point. Two-storey buildings overlook objectives; destructible walls expose firing angles. Infantry + light/heavy armor (cat-and-mouse with tanks).",
+   "notes": "Documented: 'cramped alleyways and frenetic indoor skirmishes'; 'you are going to get a lot of close-range fights as well as a lot of indoor fights. The map is filled with choke points'; PC Gamer: 'spaces between objectives are small, sightlines are wide open' (note: wide sightlines are at street scale, hence MID). No documented long-range/sniper reputation; classified relatively small. inferred: CQB-heavy with substantial MID, minimal LONG.",
+   "source": "https://screenrant.com/all-9-battlefield-6-maps-ranked/",
+   "source2": "https://battlefield.fandom.com/wiki/Siege_of_Cairo"
+  },
+  {
+   "slug": "tsuru-reef",
+   "name": "Tsuru Reef",
+   "size": "XL (largest BF6 map at Season 4 launch; archipelago)",
+   "profile": {
+    "cqb": 0.3,
+    "mid": 0.325,
+    "long": 0.375
+   },
+   "modes": [
+    "Conquest",
+    "Breakthrough",
+    "Escalation",
+    "Rush",
+    "Domination",
+    "King of the Hill",
+    "Team Deathmatch",
+    "Squad Deathmatch",
+    "Strikepoint"
+   ],
+   "layout": "Pacific island chain (six main islands) bridging a luxury resort, abandoned harbourside neighbourhood and military base via open ocean and inland waterways. POIs: Majestic Ikoi Resort (hotel/villas + pools), Mifune Landing & Tsuru Gate (central land-bridge island), Tsuru Air Base & Port, Crag Arch, Sunrise Harbor & Moon Shore (U-shaped harbour), Hitode Lagoon, plus NATO/Pax HQs; Mt. Hoshizora is an exposed high vantage. Supports all modes and Naval Warfare (boats, carrier).",
+   "notes": "EA: resort offers 'a mix of close-quarters and open combat areas, such as outdoor swimming pools and hotel rooms'; Sunrise Harbor 'welcomes close-quarters combat'; Harborside has 'clear sightlines across the island and into open waters'; Hitode Lagoon cliff is 'a great vantage point for long-range firefights'. Extensive open water/air traversal. inferred: balanced tri-modal with strong water/air LONG and CQB at resort/harbour compounds.",
+   "source": "https://www.ea.com/games/battlefield/battlefield-6/news/tsuru-reef-developer-map-guide",
+   "source2": null
+  },
+  {
+   "slug": "wake-island",
+   "name": "Wake Island",
+   "size": "Large (Pacific atoll)",
+   "profile": {
+    "cqb": 0.3,
+    "mid": 0.35,
+    "long": 0.35
+   },
+   "modes": [
+    "Conquest",
+    "Breakthrough",
+    "Escalation",
+    "Rush",
+    "Domination",
+    "King of the Hill",
+    "Team Deathmatch",
+    "Squad Deathmatch",
+    "Strikepoint"
+   ],
+   "layout": "Horseshoe-shaped Pacific atoll (Wake Atoll), rebuilt for BF6 with Naval Warfare. POIs: Taussig Radar Station, Heel Point Barracks, Hangar One/airstrip, Ammunition & Ordnance Depot, True Energy Hydrocarbons Fuel Storage, Toyoshima Docks, and the new central Shipwreck of the MV Cetus (ziplines). An underground tunnel network links most POIs (Barracks-Hangar, Ammo Depot-Hangar, Ammo Depot-Fuel Storage, Fuel Storage-Docks). Bridges between objectives; capture areas extend into water.",
+   "notes": "EA: at Taussig Radar Station 'close-quarters weapons thrive within the underground section, while the outdoor areas will be defined by vehicular combat and mid-to-long range infantry gunfights'; Hangar One is 'a large interior space' for CQB or mid-to-long sightlines; Shipwreck/tunnels/buildings = CQB; open water/beaches/bridges = LONG. EA: 'CQB has a home... stick to the underground tunnel network and in between buildings to limit exposure to long-range weapons'. inferred: balanced tri-modal atoll.",
+   "source": "https://www.ea.com/games/battlefield/battlefield-6/news/wake-island-developer-map-guide",
+   "source2": null
+  }
+ ],
+ "imageUrls": {
+  "blackwell-fields": "https://drop-assets.ea.com/images/n5zC7AzHHaepNQmyzI2g3/aa3af97848a332aea87f5209bc3e4446/BF6-Map-BlackwellFields-16x9.png",
+  "eastwood": "https://drop-assets.ea.com/images/6MNrWqyla26wRXRwkxyqeZ/75fec117d2c0c00578b4fabaf6957978/BF6-Map-Eastwood-16x9.png",
+  "siege-of-cairo": "https://drop-assets.ea.com/images/2gaOIu6z6JIJnh46jI3tGR/62da76819b468987bd6c7df80706b972/battlefield-6-map-siege-of-cairo-16x9.jpg",
+  "iberian-offensive": "https://drop-assets.ea.com/images/3oAmRCdrSQ654uFt5j62Qf/17eca08599af69206cd55f5f8c8c0d74/battlefield-6-map-iberian-offensive-16x9.jpg",
+  "liberation-peak": "https://drop-assets.ea.com/images/7pDTq8d8QnXMkDqiZe65x7/3caa1df2efb8a04656d8850d0f3ca475/battlefield-6-map-liberation-peak-16x9.jpg",
+  "empire-state": "https://drop-assets.ea.com/images/5f0CfcOL9vgGpwKxGUR6hY/d041670499c2a2ca89777d50f4e43a66/battlefield-6-map-operation-empire-state-16x9.jpg",
+  "operation-firestorm": "https://drop-assets.ea.com/images/3V3lXmPhgDags1WIUT6FeA/b308db42a568ae17d353b4b7b59301e9/battlefield-6-map-operation-firestorm-16x9.jpg",
+  "saints-quarter": "https://drop-assets.ea.com/images/6BnXoxhQVxVyPBb85vpvNY/6f784156ab5d9860fed48ad9c2d12950/battlefield-6-map-saints-quarter-16x9.jpg",
+  "new-sobek-city": "https://drop-assets.ea.com/images/3AnIaIVTpSwMAQFFtG8f8Q/07918caeb194a73bd1d2eb3be8a9ade9/battlefield-6-map-new-sobek-city-16x9.jpg",
+  "mirak-valley": "https://drop-assets.ea.com/images/Jh0ZF2620FOI9ZG98PozU/ff6f53f549f1570a1251d998ab39ffb5/battlefield-6-map-mirak-valley-16x9.jpg",
+  "manhattan-bridge": "https://drop-assets.ea.com/images/2gurRDG7kLT99I1fK9ilS0/825a55bc0b2c82de6466c0c10801d702/battlefield-6-map-manhattan-bridge-16x9.jpg",
+  "cairo-bazaar": "https://drop-assets.ea.com/images/4o05OKCBc0vFEiRYCLCYK8/d32f4ebdcd30734e7c18dff889675750/BF6_S3B2_Vista_Screenshot_CairoBazaar_05_1920x1080_NoLogo.jpg",
+  "railway-to-golmud": "https://drop-assets.ea.com/images/59OIVp8IYUELZkcsZSYSVI/ea1344930039434a8b01ccf34e410a25/BF6_S3B1_Vista_Screenshot_RailwayToGolmud_04_1920x1080_NoLogo.jpg",
+  "contaminated": "https://drop-assets.ea.com/images/sh0zn9ZdgpM77e4SmEXyQ/7077c8095ab9df01c308592c23bf4008/BF6_S2B1_Vista_Screenshot_Contaminated_03_1920x1080_NoLogo.jpg",
+  "hagental-base": "https://drop-assets.ea.com/images/7pHAJ4X3Zenp3kiQLHEyNG/fae86082c0fa6c4dbd5cc96100507401/BF6_S2B1_Vista_Screenshot_HagentalBase_05_1920x1080_NoLogo.jpg",
+  "fort-lyndon": "https://drop-assets.ea.com/images/5b24AyOBpCD5CY3oYuqepc/55f5fbb9967ca89f5325207cd55fe144/bf6-s2-roadmap-Action-Screenshot-FortLyndon.jpg",
+  "tsuru-reef": "https://drop-assets.ea.com/images/433K5GDvTd6anEbJ7gl6Q5/c464a290aad3136a8fd67cc06d0d72b6/BF6_S4B1_Vista_Screenshot_TsuruReef_04_1920x1080_NoLogo.png",
+  "wake-island": "https://drop-assets.ea.com/images/3Aq7LvtDfgpspBmGibM2mk/216b5886cde3ab47a2eb01ac46d904b0/BF6_S4B2_Action_Screenshot_WakeIsland_Bridge_1920x1080_NoLogo.png"
+ },
+ "consensusOf": 2
+}

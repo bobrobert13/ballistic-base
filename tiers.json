@@ -1,0 +1,317 @@
+{
+"AK4D": {
+"t": "A",
+"n": "Slow-firing 7.62 battle rifle with top-tier per-shot damage; wiki keeps it in the A-tier AR row (GameRant ranked it D in Nov 2025).",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"B36A4": {
+"t": "A",
+"n": "Jack-of-all-trades AR, stable across ranges; near-unanimous A-tier in recent lists.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"EF88": {
+"t": "A",
+"n": "Australian bullpup AR; sits in the Season 4 A-tier AR row.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"KORD 6P67": {
+"t": "S",
+"n": "Most controllable AR and safest Assault pick; survived every rework and is the consensus meta gun.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"L85A3": {
+"t": "A",
+"n": "Precision bullpup; versatile but a step behind the top ARs.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"M16A4": {
+"t": "A",
+"n": "Burst AR in the Season 4 A-row (RankedMeta's community list places it S).",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"M433": {
+"t": "A",
+"n": "Close/mid-range AR with strong TTK, just behind KORD/M4A1.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"NVO-228E": {
+"t": "A",
+"n": "High per-shot damage (ACE32/Galil); wiki A-tier, Beebom ranked it S in Jan 2026.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"SOR-556 MK2": {
+"t": "A",
+"n": "SCAR-pattern accurate AR; A-tier after earlier C/D placements elsewhere.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"TR7": {
+"t": "C",
+"n": "Bullpup CQB AR; wiki demotes it to C for large maps, though RankedMeta/BFTactics still rate it A/S.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"VCR-2": {
+"t": "A",
+"n": "Season 4 AR in the A-row; strong close-range option.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"Interdictor": {
+"t": "B",
+"n": "Season 4 event-unlock sniper; RankedMeta B, BFTactics C (wiki lists it as rank-later once owned).",
+"s": "https://rankedmeta.com/battlefield-6/meta-guns"
+},
+"L115": {
+"t": "B",
+"n": "Bolt-action AWM; RankedMeta B, BFTactics A.",
+"s": "https://rankedmeta.com/battlefield-6/meta-guns"
+},
+"M2010 ESR": {
+"t": "S",
+"n": "Undisputed top sniper — one-shot power, high bullet velocity, generous sweet spot.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"Mini Scout": {
+"t": "C",
+"n": "Pocket/marksman sniper; wiki slots it as a C secondary-style pick (GameRant calls it the best sniper).",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"PSR": {
+"t": "A",
+"n": "10-round mag, effective past 90 m; top long-range sniper of the standard pool.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"SV-98": {
+"t": "A",
+"n": "Aggressive repositioning sniper with better mobility.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"AK-205": {
+"t": "C",
+"n": "Low-recoil carbine but low damage; wiki C for large maps (Beebom had it S in Jan 2026).",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"BROD 3": {
+"t": "A",
+"n": "New Season 4 carbine; stable and sits in the A carbine row.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"GRT-BC": {
+"t": "C",
+"n": "Handles like an SMG but weak at range; Beebom C (recent lists split B/C).",
+"s": "https://beebom.com/battlefield-6-weapon-tier-list/"
+},
+"M277": {
+"t": "B",
+"n": "Small-mag carbine; usable but not a grind target.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"M417 A2": {
+"t": "A",
+"n": "Battle-rifle hybrid with solid tap-fire damage but punishing recoil/20-round mag.",
+"s": "https://beebom.com/battlefield-6-weapon-tier-list/"
+},
+"M4A1": {
+"t": "S",
+"n": "900 RPM, near-vertical recoil, works on every class; universal meta pick.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"QBZ-192": {
+"t": "A",
+"n": "Accurate, dependable carbine; stable platform with bipod.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"SG 553R": {
+"t": "S",
+"n": "Top carbine — AR-level power without giving up carbine mobility.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"SOR-300SC": {
+"t": "A",
+"n": ".300 BLK carbine; dropped from S after Winter Offensive but still A.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"GRT-CPS": {
+"t": "B",
+"n": "Recent bullpup carbine; RankedMeta B, BFTactics A.",
+"s": "https://rankedmeta.com/battlefield-6/meta-guns"
+},
+"LMR27": {
+"t": "C",
+"n": "Marksman rifle with low ceiling (RankedMeta/BFTactics C, GameRant F).",
+"s": "https://www.bftactics.com/weapon-tier-list"
+},
+"M39 EMR": {
+"t": "A",
+"n": "Patient long-range DMR with excellent damage and fire rate for its class.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"SVDM": {
+"t": "S",
+"n": "Top DMR — three-shot kill with high RPM and stability rather than one-shot potential.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"SVK-8.6": {
+"t": "B",
+"n": "Launch favorite that still works; not a priority unlock.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"VSSM": {
+"t": "A",
+"n": "Suppressed 9x39 DMR; A-tier in RankedMeta and BFTactics.",
+"s": "https://rankedmeta.com/battlefield-6/meta-guns"
+},
+"DRS-IAR": {
+"t": "S",
+"n": "LMG that plays like an AR — mobile, 700+ RPM, controllable recoil; aggressive LMG of choice.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"KTS100 MK8": {
+"t": "S",
+"n": "Mobile ULTIMAX LMG; S-tier in wiki, but Beebom/RankedMeta rank it lower (C).",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"L110": {
+"t": "A",
+"n": "First LMG; reliable and accurate — wiki A (Beebom had it S).",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"M/60": {
+"t": "C",
+"n": "M60 LMG; bulky with slow handling (Beebom/RankedMeta C).",
+"s": "https://beebom.com/battlefield-6-weapon-tier-list/"
+},
+"M121 A2": {
+"t": "C",
+"n": "MG5 LMG; RankedMeta C, BFTactics rates it S.",
+"s": "https://rankedmeta.com/battlefield-6/meta-guns"
+},
+"M123K": {
+"t": "B",
+"n": "Highest-RPM LMG with fast TTK; B in wiki and GameRant.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"M240L": {
+"t": "B",
+"n": "Lightened M240; more mobile but low muzzle velocity.",
+"s": "https://beebom.com/battlefield-6-weapon-tier-list/"
+},
+"M250": {
+"t": "B",
+"n": "Next-gen LMG; usable B-tier (GameRant ranked it D).",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"RPK-74M": {
+"t": "S",
+"n": "Mobile S-tier LMG with burst-friendly recoil.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"RPKM": {
+"t": "B",
+"n": "Slower/older RPK; B in wiki, D in Beebom.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"ES 5.7": {
+"t": "A",
+"n": "20-round, near-zero-recoil 5.7 sidearm; ahead of the standard pool.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"GGH-22": {
+"t": "A",
+"n": "Glock 22 (.40 S&W) pistol; BFTactics A (GameRant rated it F in Nov 2025).",
+"s": "https://www.bftactics.com/weapon-tier-list"
+},
+"M357 Trait": {
+"t": "S",
+"n": "Top revolver; competes with primaries as a finisher.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"M44": {
+"t": "S",
+"n": "Hard-hitting revolver that finishes fights outright.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"M45A1": {
+"t": "C",
+"n": "1911-pattern .45 pistol; Beebom C, older GameRant F.",
+"s": "https://beebom.com/battlefield-6-weapon-tier-list/"
+},
+"P18": {
+"t": "C",
+"n": "Glock 18-style full-auto pistol; a finisher, not a loadout.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"VZ. 61": {
+"t": "C",
+"n": "Skorpion machine pistol; niche close-range finisher.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"18.5KS-K": {
+"t": "D",
+"n": "Semi-auto KSG shotgun; Beebom's D-tier (GameRant liked it for clearing buildings).",
+"s": "https://beebom.com/battlefield-6-weapon-tier-list/"
+},
+"DB-12": {
+"t": "C",
+"n": "Double-barrel bullpup shotgun; RankedMeta C.",
+"s": "https://rankedmeta.com/battlefield-6/meta-guns"
+},
+"M1014": {
+"t": "A",
+"n": "Fast semi-auto shotgun; forgiving if the first shot misses.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"M87A1": {
+"t": "S",
+"n": "Only S-tier shotgun — raw close-range lethality with minimal attachment fuss.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"CZ3A1": {
+"t": "C",
+"n": "CZ Scorpion Evo 3 A1; RankedMeta C.",
+"s": "https://rankedmeta.com/battlefield-6/meta-guns"
+},
+"KV9": {
+"t": "A",
+"n": "Vector-pattern SMG — blistering 1080 RPM but tiny magazine; Beebom A.",
+"s": "https://beebom.com/battlefield-6-weapon-tier-list/"
+},
+"PP-19": {
+"t": "B",
+"n": "PP-19 Bizon SMG; RankedMeta B, BFTactics A.",
+"s": "https://rankedmeta.com/battlefield-6/meta-guns"
+},
+"PW5A3": {
+"t": "S",
+"n": "Most forgiving SMG — elite accuracy, very low recoil; S-tier consensus across sources.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"PW7A2": {
+"t": "B",
+"n": "MP7 SMG; fast but hard to control at range.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"SCW-10": {
+"t": "A",
+"n": "APC-10 SMG — fastest sub-9.5 m CQB TTK, but a small magazine.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"SGX": {
+"t": "A",
+"n": "Beginner-friendly MPX SMG; solid CQB TTK and easy handling.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"SL9": {
+"t": "B",
+"n": "APDW SMG; versatile mid-range option.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"UMG-40": {
+"t": "A",
+"n": "UMP40 SMG — six-shot kill out to 60 m, best ranged SMG.",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+},
+"USG-90": {
+"t": "C",
+"n": "P90 SMG with a 50-round mag; wiki C (RankedMeta's community list places it S).",
+"s": "https://battlefield-6.wiki/tier-list/weapons/"
+}
+}

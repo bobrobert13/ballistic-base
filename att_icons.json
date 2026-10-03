@@ -1,0 +1,23 @@
+{
+ "muzzle|flash_hider": "icons/muzzle__flash_hider.webp",
+ "muzzle|sp_brake": "icons/muzzle__sp_brake.webp",
+ "muzzle|dp_brake": "icons/muzzle__dp_brake.webp",
+ "muzzle|comp_brake": "icons/muzzle__comp_brake.webp",
+ "barrel|extended": "icons/barrel__extended.webp",
+ "barrel|short": "icons/barrel__short.webp",
+ "barrel|light": "icons/barrel__light.webp",
+ "grip|fold_vert": "icons/grip__fold_vert.webp",
+ "grip|6h64_vert": "icons/grip__6h64_vert.webp",
+ "grip|classic_vert": "icons/grip__classic_vert.webp",
+ "grip|underslung_mount": "icons/grip__underslung_mount.webp",
+ "grip|fold_stubby": "icons/grip__fold_stubby.webp",
+ "grip|adj_angled": "icons/grip__adj_angled.webp",
+ "laser|5mw_green": "icons/laser__5mw_green.webp",
+ "laser|50mw_green": "icons/laser__50mw_green.webp",
+ "mag|30_rnd": "icons/mag__30_rnd.webp",
+ "mag|20_fast": "icons/mag__20_fast.webp",
+ "mag|20_rnd": "icons/mag__20_rnd.webp",
+ "ammo|penetration": "icons/ammo__penetration.webp",
+ "ammo|lightweight": "icons/ammo__lightweight.webp",
+ "ergo|mag_flare": "icons/ergo__mag_flare.webp"
+}

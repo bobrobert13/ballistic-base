@@ -1,0 +1,569 @@
+{
+"AK4D": {
+"realName": "Ak 4D (Heckler & Koch G3 variant; in-game model resembles a PTR 91 GIRK/Ak 4D clone)",
+"manufacturer": "Heckler & Koch (license-built in Sweden by Husqvarna/FFV)",
+"country": "Sweden (Ak 4 variant); Germany (G3 origin)",
+"year": "1964",
+"realCaliber": "7.62x51mm NATO",
+"type": "Battle rifle",
+"source": "https://en.wikipedia.org/wiki/Heckler_%26_Koch_G3"
+},
+"B36A4": {
+"realName": "Heckler & Koch G36A4",
+"manufacturer": "Heckler & Koch",
+"country": "Germany",
+"year": "1997",
+"realCaliber": "5.56x45mm NATO",
+"type": "Assault rifle",
+"source": "https://en.wikipedia.org/wiki/Heckler_%26_Koch_G36"
+},
+"EF88": {
+"realName": "Thales EF88 Austeyr (F90)",
+"manufacturer": "Thales Australia (Lithgow)",
+"country": "Australia",
+"year": "2016",
+"realCaliber": "5.56x45mm NATO",
+"type": "Bullpup assault rifle",
+"source": "https://en.wikipedia.org/wiki/Enhanced_F88"
+},
+"KORD 6P67": {
+"realName": "KORD 6P67 (A-545)",
+"manufacturer": "Degtyaryov Plant (KORD)",
+"country": "Russia",
+"year": "2018",
+"realCaliber": "5.45x39mm",
+"type": "Assault rifle",
+"source": "https://en.wikipedia.org/wiki/A-545"
+},
+"L85A3": {
+"realName": "Enfield L85A3 (SA80)",
+"manufacturer": "BAE Systems",
+"country": "United Kingdom",
+"year": "1985 (L85A1); 2018 (A3)",
+"realCaliber": "5.56x45mm NATO",
+"type": "Bullpup assault rifle",
+"source": "https://en.wikipedia.org/wiki/SA80"
+},
+"M16A4": {
+"realName": "M16A4 (Colt)",
+"manufacturer": "Colt's Manufacturing Company",
+"country": "United States",
+"year": "1997",
+"realCaliber": "5.56x45mm NATO",
+"type": "Assault rifle",
+"source": "https://en.wikipedia.org/wiki/M16_rifle"
+},
+"M433": {
+"realName": "Heckler & Koch HK433",
+"manufacturer": "Heckler & Koch",
+"country": "Germany",
+"year": "2017",
+"realCaliber": "5.56x45mm NATO",
+"type": "Assault rifle",
+"source": "https://en.wikipedia.org/wiki/Heckler_%26_Koch_HK433"
+},
+"NVO-228E": {
+"realName": "IWI Galil ACE 32 (Galil ACE N)",
+"manufacturer": "Israel Weapon Industries (IWI)",
+"country": "Israel",
+"year": "2008",
+"realCaliber": "7.62x39mm",
+"type": "Assault rifle",
+"source": "https://en.wikipedia.org/wiki/IWI_Galil_ACE"
+},
+"SOR-556 MK2": {
+"realName": "FN SCAR-L Mk2 (Mk 16)",
+"manufacturer": "FN Herstal",
+"country": "Belgium",
+"year": "2004",
+"realCaliber": "5.56x45mm NATO",
+"type": "Assault rifle",
+"source": "https://en.wikipedia.org/wiki/FN_SCAR"
+},
+"TR7": {
+"realName": "IWI Tavor 7",
+"manufacturer": "Israel Weapon Industries (IWI)",
+"country": "Israel",
+"year": "2017",
+"realCaliber": "7.62x51mm NATO",
+"type": "Bullpup battle rifle",
+"source": "https://en.wikipedia.org/wiki/IWI_Tavor_7"
+},
+"VCR-2": {
+"realName": "HS Produkt VHS-2 (VHS-K2)",
+"manufacturer": "HS Produkt",
+"country": "Croatia",
+"year": "2013",
+"realCaliber": "5.56x45mm NATO",
+"type": "Bullpup assault rifle",
+"source": "https://en.wikipedia.org/wiki/HS_Produkt_VHS"
+},
+"Interdictor": {
+"realName": "Desert Tech HTI (Hard Target Interdiction)",
+"manufacturer": "Desert Tech",
+"country": "United States",
+"year": "2014",
+"realCaliber": ".50 BMG",
+"type": "Bullpup anti-materiel/sniper rifle",
+"source": "https://en.wikipedia.org/wiki/Desert_Tech_HTI"
+},
+"L115": {
+"realName": "Accuracy International AWM (L115A3)",
+"manufacturer": "Accuracy International",
+"country": "United Kingdom",
+"year": "1996",
+"realCaliber": ".338 Lapua Magnum",
+"type": "Bolt-action sniper rifle",
+"source": "https://en.wikipedia.org/wiki/Accuracy_International_AWM"
+},
+"M2010 ESR": {
+"realName": "Remington M2010 Enhanced Sniper Rifle",
+"manufacturer": "Remington Arms",
+"country": "United States",
+"year": "2010",
+"realCaliber": ".300 Winchester Magnum",
+"type": "Bolt-action sniper rifle",
+"source": "https://en.wikipedia.org/wiki/M2010_Enhanced_Sniper_Rifle"
+},
+"Mini Scout": {
+"realName": "Q Mini Fix",
+"manufacturer": "Q, LLC",
+"country": "United States",
+"year": "2018",
+"realCaliber": ".300 AAC Blackout / 5.56x45mm NATO",
+"type": "Bolt-action compact scout/sniper rifle",
+"source": "https://www.liveqordie.com/firearms/bolt-action/mini-fix"
+},
+"PSR": {
+"realName": "Barrett MRAD (Mk 22 PSR)",
+"manufacturer": "Barrett Firearms Manufacturing",
+"country": "United States",
+"year": "2009",
+"realCaliber": ".338 Lapua Magnum (multi-caliber)",
+"type": "Bolt-action sniper rifle",
+"source": "https://en.wikipedia.org/wiki/Barrett_MRAD"
+},
+"SV-98": {
+"realName": "Kalashnikov SV-98M",
+"manufacturer": "Kalashnikov Concern (Izhmash)",
+"country": "Russia",
+"year": "1998",
+"realCaliber": "7.62x54mmR",
+"type": "Bolt-action sniper rifle",
+"source": "https://en.wikipedia.org/wiki/SV-98"
+},
+"AK-205": {
+"realName": "Kalashnikov AK-205",
+"manufacturer": "Kalashnikov Concern",
+"country": "Russia",
+"year": "2017",
+"realCaliber": "5.45x39mm",
+"type": "Assault rifle/carbine",
+"source": "https://en.wikipedia.org/wiki/AK-205"
+},
+"BROD 3": {
+"realName": "CZ BREN 3",
+"manufacturer": "Česká zbrojovka (CZ)",
+"country": "Czech Republic",
+"year": "2024",
+"realCaliber": "5.56x45mm NATO",
+"type": "Assault rifle/battle rifle",
+"source": "https://en.wikipedia.org/wiki/CZ_805_BREN"
+},
+"GRT-BC": {
+"realName": "FB MSBS Grot B (bullpup)",
+"manufacturer": "FB \"Łucznik\" Radom",
+"country": "Poland",
+"year": "2016",
+"realCaliber": "5.56x45mm NATO",
+"type": "Bullpup assault rifle",
+"source": "https://en.wikipedia.org/wiki/FB_MSBS_Grot"
+},
+"M277": {
+"realName": "SIG Sauer XM7 (MCX-Spear)",
+"manufacturer": "SIG Sauer",
+"country": "United States",
+"year": "2022",
+"realCaliber": "6.8x51mm (.277 Fury)",
+"type": "Assault rifle",
+"source": "https://en.wikipedia.org/wiki/XM7_rifle"
+},
+"M417 A2": {
+"realName": "Heckler & Koch HK417 A2",
+"manufacturer": "Heckler & Koch",
+"country": "Germany",
+"year": "2005",
+"realCaliber": "7.62x51mm NATO",
+"type": "Battle rifle",
+"source": "https://en.wikipedia.org/wiki/Heckler_%26_Koch_HK417"
+},
+"M4A1": {
+"realName": "M4A1 carbine (Colt)",
+"manufacturer": "Colt's Manufacturing Company",
+"country": "United States",
+"year": "1994",
+"realCaliber": "5.56x45mm NATO",
+"type": "Carbine/assault rifle",
+"source": "https://en.wikipedia.org/wiki/M4_carbine"
+},
+"QBZ-192": {
+"realName": "QBZ-192 (Type 192)",
+"manufacturer": "Norinco",
+"country": "China",
+"year": "2020",
+"realCaliber": "5.8x42mm",
+"type": "Assault rifle/carbine",
+"source": "https://en.wikipedia.org/wiki/QBZ-191"
+},
+"SG 553R": {
+"realName": "SIG SG 553 R",
+"manufacturer": "SIG Sauer / Swiss Arms",
+"country": "Switzerland",
+"year": "2009",
+"realCaliber": "7.62x39mm",
+"type": "Assault rifle",
+"source": "https://en.wikipedia.org/wiki/SIG_SG_550"
+},
+"SOR-300SC": {
+"realName": "FN SCAR-SC",
+"manufacturer": "FN Herstal",
+"country": "Belgium",
+"year": "2019",
+"realCaliber": ".300 AAC Blackout",
+"type": "PDW/subcompact carbine",
+"source": "https://en.wikipedia.org/wiki/FN_SCAR"
+},
+"GRT-CPS": {
+"realName": "FB MSBS Grot C (classic)",
+"manufacturer": "FB \"Łucznik\" Radom",
+"country": "Poland",
+"year": "2016",
+"realCaliber": "5.56x45mm NATO",
+"type": "Assault rifle",
+"source": "https://en.wikipedia.org/wiki/FB_MSBS_Grot"
+},
+"LMR27": {
+"realName": "Fictional Battlefield-original bullpup DMR (in-universe maker \"Ara International\"; visual cues from Hera Arms CQR)",
+"manufacturer": "",
+"country": "",
+"year": "",
+"realCaliber": "5.56x45mm NATO",
+"type": "Bullpup designated marksman rifle",
+"source": "https://www.imfdb.org/wiki/Battlefield_6"
+},
+"M39 EMR": {
+"realName": "Springfield Armory M1A in Sage EBR chassis (Mk 14 Mod 0 EBR)",
+"manufacturer": "Springfield Armory",
+"country": "United States",
+"year": "2004",
+"realCaliber": "7.62x51mm NATO",
+"type": "Designated marksman rifle",
+"source": "https://en.wikipedia.org/wiki/M14_rifle"
+},
+"SVDM": {
+"realName": "Kalashnikov SVDM (modernized Dragunov SVD)",
+"manufacturer": "Kalashnikov Concern (Izhmash)",
+"country": "Russia",
+"year": "2016",
+"realCaliber": "7.62x54mmR",
+"type": "Designated marksman rifle",
+"source": "https://en.wikipedia.org/wiki/SVD_(rifle)"
+},
+"SVK-8.6": {
+"realName": "Chukavin SVCh (SVCh-8.6)",
+"manufacturer": "Kalashnikov Concern",
+"country": "Russia",
+"year": "2016",
+"realCaliber": "8.6x70mm",
+"type": "Designated marksman/sniper rifle",
+"source": "https://en.wikipedia.org/wiki/Chukavin_sniper_rifle"
+},
+"VSSM": {
+"realName": "VSSM Vintorez (modernized VSS Vintorez)",
+"manufacturer": "TsNIITochMash",
+"country": "Russia",
+"year": "1987",
+"realCaliber": "9x39mm",
+"type": "Suppressed sniper rifle",
+"source": "https://en.wikipedia.org/wiki/VSS_Vintorez"
+},
+"DRS-IAR": {
+"realName": "Heckler & Koch M27 Infantry Automatic Rifle",
+"manufacturer": "Heckler & Koch",
+"country": "Germany (US-produced)",
+"year": "2010",
+"realCaliber": "5.56x45mm NATO",
+"type": "Light machine rifle/assault rifle",
+"source": "https://en.wikipedia.org/wiki/M27_Infantry_Automatic_Rifle"
+},
+"KTS100 MK8": {
+"realName": "ST Kinetics Ultimax 100 Mk 8",
+"manufacturer": "ST Kinetics",
+"country": "Singapore",
+"year": "1978",
+"realCaliber": "5.56x45mm NATO",
+"type": "Light machine gun",
+"source": "https://en.wikipedia.org/wiki/Ultimax_100"
+},
+"L110": {
+"realName": "FN Minimi Mk3 (British L110A)",
+"manufacturer": "FN Herstal",
+"country": "Belgium",
+"year": "1974",
+"realCaliber": "5.56x45mm NATO",
+"type": "Light machine gun",
+"source": "https://en.wikipedia.org/wiki/FN_Minimi"
+},
+"M/60": {
+"realName": "M60E6",
+"manufacturer": "U.S. Ordnance (originally Saco Defense)",
+"country": "United States",
+"year": "1957 (M60); 2013 (E6)",
+"realCaliber": "7.62x51mm NATO",
+"type": "General-purpose machine gun",
+"source": "https://en.wikipedia.org/wiki/M60_machine_gun"
+},
+"M121 A2": {
+"realName": "Heckler & Koch MG5 A2 (HK121)",
+"manufacturer": "Heckler & Koch",
+"country": "Germany",
+"year": "2010",
+"realCaliber": "7.62x51mm NATO",
+"type": "General-purpose machine gun",
+"source": "https://en.wikipedia.org/wiki/Heckler_%26_Koch_MG5"
+},
+"M123K": {
+"realName": "Heckler & Koch MG4 KA3 (HK123)",
+"manufacturer": "Heckler & Koch",
+"country": "Germany",
+"year": "2001",
+"realCaliber": "5.56x45mm NATO",
+"type": "Light machine gun",
+"source": "https://en.wikipedia.org/wiki/Heckler_%26_Koch_MG4"
+},
+"M240L": {
+"realName": "FN M240L (lightweight M240)",
+"manufacturer": "FN Herstal / FN America",
+"country": "Belgium/United States",
+"year": "1977 (M240); 2010 (L)",
+"realCaliber": "7.62x51mm NATO",
+"type": "General-purpose machine gun",
+"source": "https://en.wikipedia.org/wiki/M240_machine_gun"
+},
+"M250": {
+"realName": "SIG Sauer M250 (XM250 / LMG 6.8)",
+"manufacturer": "SIG Sauer",
+"country": "United States",
+"year": "2019",
+"realCaliber": "6.8x51mm",
+"type": "Light machine gun",
+"source": "https://en.wikipedia.org/wiki/XM250"
+},
+"RPK-74M": {
+"realName": "RPK-74 (in-game mislabeled; model is the RPK-74N)",
+"manufacturer": "Izhmash / Kalashnikov Concern",
+"country": "Soviet Union/Russia",
+"year": "1974",
+"realCaliber": "5.45x39mm",
+"type": "Light machine gun/squad automatic weapon",
+"source": "https://en.wikipedia.org/wiki/RPK-74"
+},
+"RPKM": {
+"realName": "RPK (in-game mislabeled; model is the RPKS)",
+"manufacturer": "Izhmash",
+"country": "Soviet Union",
+"year": "1961",
+"realCaliber": "7.62x39mm",
+"type": "Light machine gun/squad automatic weapon",
+"source": "https://en.wikipedia.org/wiki/RPK"
+},
+"ES 5.7": {
+"realName": "FN Five-seveN Mk3 MRD",
+"manufacturer": "FN Herstal",
+"country": "Belgium",
+"year": "1998",
+"realCaliber": "5.7x28mm",
+"type": "Semi-automatic pistol",
+"source": "https://en.wikipedia.org/wiki/FN_Five-seven"
+},
+"GGH-22": {
+"realName": "Glock 22 MOS FS (Gen 5)",
+"manufacturer": "Glock Ges.m.b.H.",
+"country": "Austria",
+"year": "1990",
+"realCaliber": ".40 S&W",
+"type": "Semi-automatic pistol",
+"source": "https://en.wikipedia.org/wiki/Glock_22"
+},
+"M357 Trait": {
+"realName": "Smith & Wesson Model 327 TRR8 (Performance Center)",
+"manufacturer": "Smith & Wesson",
+"country": "United States",
+"year": "2007",
+"realCaliber": ".357 Magnum",
+"type": "Revolver",
+"source": "https://en.wikipedia.org/wiki/Smith_%26_Wesson_Model_327"
+},
+"M44": {
+"realName": "Taurus Raging Hunter",
+"manufacturer": "Taurus Armas",
+"country": "Brazil",
+"year": "2016",
+"realCaliber": ".44 Magnum",
+"type": "Revolver",
+"source": "https://en.wikipedia.org/wiki/Taurus_Raging_Bull"
+},
+"M45A1": {
+"realName": "Colt M45A1 CQBP (Close Quarters Battle Pistol)",
+"manufacturer": "Colt's Manufacturing Company",
+"country": "United States",
+"year": "2012",
+"realCaliber": ".45 ACP",
+"type": "Semi-automatic pistol",
+"source": "https://en.wikipedia.org/wiki/M45A1"
+},
+"P18": {
+"realName": "SIG Sauer M18 (P320-M18)",
+"manufacturer": "SIG Sauer",
+"country": "United States",
+"year": "2017",
+"realCaliber": "9x19mm Parabellum",
+"type": "Semi-automatic pistol",
+"source": "https://en.wikipedia.org/wiki/SIG_Sauer_P320"
+},
+"VZ. 61": {
+"realName": "Sa vz. 61 Škorpion",
+"manufacturer": "Česká zbrojovka (Uherský Brod)",
+"country": "Czechoslovakia",
+"year": "1961",
+"realCaliber": ".32 ACP (7.65x17mm SR)",
+"type": "Machine pistol",
+"source": "https://en.wikipedia.org/wiki/Skorpion_vz._61"
+},
+"18.5KS-K": {
+"realName": "Kalashnikov 18.5 KS-K (Izhmash KS-K)",
+"manufacturer": "Kalashnikov Concern (Izhmash)",
+"country": "Russia",
+"year": "2000s",
+"realCaliber": "12 gauge",
+"type": "Semi-automatic shotgun",
+"source": "https://modernfirearms.net/en/shotguns/russia-shotguns/185-ks-k-eng"
+},
+"DB-12": {
+"realName": "Standard Manufacturing DP-12",
+"manufacturer": "Standard Manufacturing",
+"country": "United States",
+"year": "2015",
+"realCaliber": "12 gauge",
+"type": "Pump-action double-barrel shotgun",
+"source": "https://en.wikipedia.org/wiki/Standard_Manufacturing_DP-12"
+},
+"M1014": {
+"realName": "Benelli M4 Super 90",
+"manufacturer": "Benelli Armi",
+"country": "Italy",
+"year": "1999",
+"realCaliber": "12 gauge",
+"type": "Semi-automatic shotgun",
+"source": "https://en.wikipedia.org/wiki/Benelli_M4"
+},
+"M87A1": {
+"realName": "Mossberg 590A1 (Magpul)",
+"manufacturer": "O.F. Mossberg & Sons",
+"country": "United States",
+"year": "1987",
+"realCaliber": "12 gauge",
+"type": "Pump-action shotgun",
+"source": "https://en.wikipedia.org/wiki/Mossberg_590"
+},
+"CZ3A1": {
+"realName": "CZ Scorpion Evo 3 A1",
+"manufacturer": "Česká zbrojovka (CZ)",
+"country": "Czech Republic",
+"year": "2009",
+"realCaliber": "9x19mm Parabellum",
+"type": "Submachine gun/carbine",
+"source": "https://en.wikipedia.org/wiki/CZ_Scorpion_Evo_3"
+},
+"KV9": {
+"realName": "KRISS Vector (Gen 3)",
+"manufacturer": "KRISS USA",
+"country": "United States",
+"year": "2006",
+"realCaliber": "9x19mm Parabellum",
+"type": "Submachine gun",
+"source": "https://en.wikipedia.org/wiki/KRISS_Vector"
+},
+"PP-19": {
+"realName": "PP-19-01 Vityaz-SN",
+"manufacturer": "Izhmash / Kalashnikov Concern",
+"country": "Russia",
+"year": "2004",
+"realCaliber": "9x19mm Parabellum",
+"type": "Submachine gun",
+"source": "https://en.wikipedia.org/wiki/PP-19_Vityaz"
+},
+"PW5A3": {
+"realName": "Heckler & Koch MP5 (MP5 MLI / MP5A3)",
+"manufacturer": "Heckler & Koch",
+"country": "Germany",
+"year": "1964",
+"realCaliber": "9x19mm Parabellum",
+"type": "Submachine gun",
+"source": "https://en.wikipedia.org/wiki/Heckler_%26_Koch_MP5"
+},
+"PW7A2": {
+"realName": "Heckler & Koch MP7A2",
+"manufacturer": "Heckler & Koch",
+"country": "Germany",
+"year": "2001",
+"realCaliber": "4.6x30mm",
+"type": "Personal defense weapon",
+"source": "https://en.wikipedia.org/wiki/Heckler_%26_Koch_MP7"
+},
+"SCW-10": {
+"realName": "Brügger & Thomet APC10",
+"manufacturer": "Brügger & Thomet (B&T)",
+"country": "Switzerland",
+"year": "2015",
+"realCaliber": "10mm Auto",
+"type": "Submachine gun/PDW",
+"source": "https://en.wikipedia.org/wiki/B%26T_APC"
+},
+"SGX": {
+"realName": "SIG Sauer MPX",
+"manufacturer": "SIG Sauer",
+"country": "United States (design Germany)",
+"year": "2013",
+"realCaliber": "9x19mm Parabellum",
+"type": "Submachine gun",
+"source": "https://en.wikipedia.org/wiki/SIG_Sauer_MPX"
+},
+"SL9": {
+"realName": "Fictional Battlefield-original SMG (in-universe maker \"Ara International\"; visual cues from ST Kinetics CPW)",
+"manufacturer": "",
+"country": "",
+"year": "",
+"realCaliber": "9x19mm Parabellum",
+"type": "Submachine gun",
+"source": "https://www.imfdb.org/wiki/Battlefield_6"
+},
+"UMG-40": {
+"realName": "Heckler & Koch UMP40",
+"manufacturer": "Heckler & Koch",
+"country": "Germany",
+"year": "1999",
+"realCaliber": ".40 S&W",
+"type": "Submachine gun",
+"source": "https://en.wikipedia.org/wiki/Heckler_%26_Koch_UMP"
+},
+"USG-90": {
+"realName": "FN P90 Tactical (P90 USG)",
+"manufacturer": "FN Herstal",
+"country": "Belgium",
+"year": "1990",
+"realCaliber": "5.7x28mm",
+"type": "Personal defense weapon",
+"source": "https://en.wikipedia.org/wiki/FN_P90"
+}
+}

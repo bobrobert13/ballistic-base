@@ -1,0 +1,2283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BF6 Ballistic Base — Weapon Catalog</title>
+<style>
+:root{
+  --bg:#0a0c0f; --panel:#12161b; --panel2:#171c22; --line:#242b33;
+  --txt:#e7ecf1; --dim:#8b97a4; --dim2:#5d6874;
+  --accent:#ffb020; --accent2:#4fd1c5;
+  --s:#ff5a5f; --a:#ff9f43; --b:#54a0ff; --c:#8b97a4; --d:#5d6874;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font:14px/1.45 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent2);text-decoration:none}
+.wrap{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:28px 20px 80px}
+[hidden]{display:none!important}
+
+/* ---------- catalog ---------- */
+header.top{display:flex;flex-wrap:wrap;align-items:flex-end;gap:18px;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:16px}
+.brand{display:flex;align-items:baseline;gap:12px}
+.brand h1{margin:0;font-size:22px;letter-spacing:.14em;font-weight:800;text-transform:uppercase;text-shadow:0 2px 14px rgba(6,8,10,.95)}
+.brand h1 b{color:var(--accent)}
+.brand .sub{color:var(--dim);font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 1px 10px rgba(6,8,10,.95)}
+.meta{color:var(--dim2);font-size:12px;text-align:right;line-height:1.7;text-shadow:0 1px 10px rgba(6,8,10,.95)}
+.meta b{color:var(--dim)}
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:20px 0 6px}
+.search{flex:1 1 240px;min-width:200px;position:relative}
+.search input{width:100%;background:var(--panel);border:1px solid var(--line);color:var(--txt);padding:10px 12px 10px 34px;border-radius:8px;font-size:14px;outline:none}
+.search input:focus{border-color:var(--accent)}
+.search svg{position:absolute;left:11px;top:11px;opacity:.5}
+select{background:var(--panel);border:1px solid var(--line);color:var(--txt);padding:10px 12px;border-radius:8px;font-size:13px;outline:none}
+select:focus{border-color:var(--accent)}
+.dist{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);padding:8px 14px;border-radius:8px}
+.dist label{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.dist output{min-width:46px;text-align:right;color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums}
+input[type=range]{-webkit-appearance:none;appearance:none;width:150px;height:4px;background:var(--line);border-radius:3px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--accent);cursor:pointer;border:none}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--accent);cursor:pointer;border:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 22px}
+.chip{border:1px solid var(--line);background:var(--panel);color:var(--dim);padding:7px 13px;border-radius:999px;font-size:12.5px;cursor:pointer;letter-spacing:.03em;transition:.12s}
+.chip:hover{color:var(--txt);border-color:#39424d}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#12161b;font-weight:700}
+.chip .n{opacity:.6;margin-left:5px;font-variant-numeric:tabular-nums}
+.toggle{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);color:var(--dim);padding:10px 13px;border-radius:8px;font-size:13px;cursor:pointer;white-space:nowrap;transition:.12s}
+.toggle:hover{color:var(--txt);border-color:#39424d}
+.toggle.on{background:var(--accent);border-color:var(--accent);color:#12161b;font-weight:700}
+.toggle .dot{width:8px;height:8px;border-radius:50%;background:var(--dim2);transition:.12s}
+.toggle.on .dot{background:#12161b}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:14px}
+.card{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;cursor:pointer;transition:.15s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px -14px #000;border-color:#3a444f}
+.card.contender{border-color:#46522f;box-shadow:0 0 0 1px rgba(255,176,32,.16)}
+.card.contender:hover{border-color:var(--accent);box-shadow:0 10px 28px -16px #000,0 0 0 1px rgba(255,176,32,.34)}
+.card.weak{opacity:.78}
+.card.weak:hover{opacity:1}
+.thumb{position:relative;background:linear-gradient(180deg,#141a1e,#0e1215);height:180px;display:flex;align-items:center;justify-content:center;padding:6px 10px 48px;border-bottom:1px solid var(--line);overflow:hidden}
+.thumb img{max-width:100%;max-height:100%;object-fit:contain;display:block;position:relative;z-index:1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.55))}
+.thumb .fade{position:absolute;left:0;right:0;bottom:0;height:62px;z-index:2;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(7,9,11,.9) 66%)}
+.tier{position:absolute;top:8px;left:8px;z-index:4;width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#0a0c0f;box-shadow:0 2px 8px rgba(0,0,0,.6);border:1px solid rgba(0,0,0,.35)}
+.tier.S{background:var(--s);color:#fff}.tier.A{background:var(--a)}.tier.B{background:var(--b);color:#fff}.tier.C{background:var(--c)}.tier.D{background:var(--d);color:#fff}
+.crank{position:absolute;top:8px;right:8px;z-index:4;background:rgba(10,12,15,.86);border:1px solid var(--line);border-radius:7px;font-size:11.5px;font-weight:800;padding:3px 8px;font-variant-numeric:tabular-nums}
+.crank small{color:var(--dim2);font-weight:600}
+.card.contender .crank{color:var(--accent);border-color:#4a3a18;background:rgba(34,25,7,.9)}
+/* mini kill-speed curve, overlaid on the render */
+.cmini{position:absolute;left:0;right:0;bottom:0;height:48px;z-index:3;pointer-events:none}
+.cmini svg{width:100%;height:100%;display:block}
+.cmini .cur{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--accent);transform:translate(-50%,-50%);box-shadow:0 0 0 2px rgba(7,9,11,.9),0 0 10px var(--accent)}
+.cmini .cl{position:absolute;left:9px;top:4px;font-size:8px;letter-spacing:.1em;color:var(--dim2)}
+.cmini .cw{position:absolute;right:9px;top:2px;font-size:11px;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums}
+.cbody{padding:11px 13px 13px;display:flex;flex-direction:column;gap:9px;flex:1}
+.cname{display:flex;align-items:baseline;gap:8px;justify-content:space-between}
+.cname h3{margin:0;font-size:15.5px;letter-spacing:.02em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cls{font-size:10.5px;color:var(--dim2);border:1px solid var(--line);padding:2px 7px;border-radius:5px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;flex:0 0 auto}
+.crow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:-3px}
+.vtag{font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:800;padding:2px 8px;border-radius:999px;white-space:nowrap;border:1px solid var(--line)}
+.vtag.top{color:#12161b;background:var(--accent);border-color:var(--accent)}
+.vtag.mid{color:var(--dim);background:var(--panel2)}
+.vtag.low{color:#e0707a;border-color:#4a2b2e;background:rgba(224,112,122,.08)}
+.rp3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;border-top:1px solid var(--line);padding-top:9px}
+.r3{display:flex;flex-direction:column;gap:4px}
+.r3 .h{display:flex;align-items:baseline;justify-content:space-between;gap:4px;font-size:8.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim2)}
+.r3 .h b{font-size:11.5px;color:var(--txt);font-variant-numeric:tabular-nums;letter-spacing:0}
+.r3 .bar{height:4px}
+.r3 .bar i{display:block;height:100%;width:0;border-radius:3px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;border-top:1px solid var(--line);padding-top:9px}
+.stat{display:flex;flex-direction:column;gap:1px}
+.stat .k{font-size:9.5px;color:var(--dim2);text-transform:uppercase;letter-spacing:.06em}
+.stat .v{font-size:13.5px;font-weight:700;font-variant-numeric:tabular-nums}
+.ttk{color:var(--accent)}
+.ammo{font-size:11px;color:var(--dim2);letter-spacing:.03em}
+.none{color:var(--dim);text-align:center;padding:60px 0;grid-column:1/-1}
+
+/* ---------- weapon page: app shell ---------- */
+.wapp{position:relative;z-index:1;min-height:100vh}
+/* hero backdrop: the weapon render, blurred and pinned to the viewport, so the
+   atmosphere is back without reserving any scroll height */
+.wbgwrap{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;animation:wdrift 54s ease-in-out infinite alternate}
+.wbgimg{position:absolute;inset:-14%;background:center 30%/cover no-repeat;filter:blur(30px) saturate(1.15) brightness(1.05);opacity:0;transition:opacity .55s ease}
+.wbgimg.on{opacity:.95}
+.wbgveil{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(10,12,15,.06) 0%,rgba(10,12,15,.38) 30%,rgba(10,12,15,.72) 56%,var(--bg) 80%,var(--bg) 100%)}
+/* the weapon page has bare text sitting on the backdrop (lede, rail), so it needs a
+   much faster fade to keep contrast; the catalog is an opaque grid and can take more */
+body.wpn .wbgveil{background:linear-gradient(180deg,rgba(10,12,15,.10) 0%,rgba(10,12,15,.38) 9%,rgba(10,12,15,.76) 20%,rgba(10,12,15,.94) 32%,var(--bg) 44%,var(--bg) 100%)}
+@keyframes wdrift{from{transform:scale(1)}to{transform:scale(1.07)}}
+@media(prefers-reduced-motion:reduce){.wbgwrap{animation:none}}
+.wbar{position:sticky;top:0;z-index:40;background:rgba(10,12,15,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.wbar-in{max-width:1560px;margin:0 auto;padding:9px 20px;display:flex;align-items:center;gap:16px}
+.back{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);color:var(--txt);padding:8px 13px;border-radius:9px;font-size:12.5px;cursor:pointer;white-space:nowrap;flex:0 0 auto}
+.back:hover{border-color:var(--accent);color:var(--accent)}
+.wid{display:flex;align-items:center;gap:14px;min-width:0;flex:1 1 auto}
+.wthumb{width:104px;height:58px;flex:0 0 104px;background:linear-gradient(180deg,#141a1e,#0e1215);border:1px solid var(--line);border-radius:9px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wthumb img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 4px 8px rgba(0,0,0,.6))}
+.wtt{min-width:0}
+.wkick{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.wkick .wsub{color:var(--dim);font-size:11px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wtt h2{margin:2px 0 0;font-size:22px;letter-spacing:.01em;font-weight:800;line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wreal{color:var(--dim2);font-size:11.5px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wstats{display:flex;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;flex:0 0 auto}
+.wst{background:rgba(14,18,22,.9);padding:6px 11px;min-width:66px}
+.wst .k{display:block;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim2);white-space:nowrap}
+.wst .v{font-size:16px;font-weight:800;font-variant-numeric:tabular-nums}
+.wst .v small{font-size:10px;color:var(--dim);font-weight:600;margin-left:2px}
+.wst.hl .v{color:var(--accent)}
+.wrange{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:7px 12px;flex:0 0 auto}
+.wrange label{color:var(--dim);font-size:10px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.wrange output{min-width:40px;text-align:right;color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums;font-size:13px}
+.wrange input[type=range]{width:118px}
+
+/* rail + content */
+.wbody{position:relative;z-index:1;max-width:1560px;margin:0 auto;display:grid;grid-template-columns:232px minmax(0,1fr);gap:26px;padding:22px 20px 90px;align-items:start}
+.wrail{position:sticky;top:86px;display:flex;flex-direction:column;gap:12px;background:linear-gradient(90deg,rgba(10,12,15,.62),rgba(10,12,15,0));border-radius:0 14px 14px 0}
+.wnav{display:flex;flex-direction:column;gap:2px}
+.wnav a{display:block;color:var(--dim);font-size:13px;padding:9px 13px;border-radius:8px;letter-spacing:.03em;transition:.12s;text-shadow:0 1px 8px rgba(6,8,10,.9)}
+.wnav a:hover{color:var(--txt);background:var(--panel)}
+.wnav a.on{color:#12161b;background:var(--accent);font-weight:700}
+.wrailmeta{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 13px}
+.wrailmeta .wrk{font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--dim2);margin-bottom:9px}
+.wrb{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;font-size:11px;margin-bottom:8px}
+.wrb:last-child{margin-bottom:0}
+.wrb span{color:var(--dim);letter-spacing:.06em}
+.wrb b{font-variant-numeric:tabular-nums;color:var(--txt)}
+.wrb .bar{grid-column:1/-1;margin:0}
+.wmain{min-width:0}
+
+/* panes: one visible at a time */
+section.pane{display:none}
+section.pane.on{display:block;animation:fadeup .2s ease}
+@keyframes fadeup{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+section.pane h3.sh{display:flex;align-items:center;gap:11px;margin:0 0 6px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);text-shadow:0 1px 8px rgba(6,8,10,.9)}
+section.pane h3.sh:after{content:'';flex:1;height:1px;background:var(--line)}
+section.pane .lede{color:var(--dim);font-size:13px;margin:0 0 22px;max-width:760px;text-shadow:0 1px 10px rgba(6,8,10,.95),0 0 3px rgba(6,8,10,.9)}
+.panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.panel h4{margin:0 0 12px;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim)}
+table.spec{width:100%;border-collapse:collapse;font-size:13px}
+table.spec td{padding:6px 0;border-bottom:1px solid var(--line)}
+table.spec td:first-child{color:var(--dim)}
+table.spec td:last-child{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.desc{font-size:14px;line-height:1.65;color:var(--dim);border-left:2px solid var(--accent);padding:2px 0 2px 14px;margin:0 0 20px;max-width:820px}
+.modes{display:flex;flex-wrap:wrap;gap:6px}
+.mode{font-size:11px;padding:3px 9px;border-radius:6px;background:var(--panel2);border:1px solid var(--line);font-variant-numeric:tabular-nums}
+.mode b{color:var(--accent)}
+
+/* gauges */
+.gauges{display:flex;flex-direction:column;gap:14px}
+.gauge .gl{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px}
+.gauge .gl span:first-child{color:var(--dim)}
+.gauge .gl b{font-variant-numeric:tabular-nums}
+.bar{height:6px;background:var(--panel2);border-radius:4px;overflow:hidden;border:1px solid var(--line)}
+.bar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#ffb020,#ffd479);transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.bar.c2 i{background:linear-gradient(90deg,#4fd1c5,#8ce9e0)}
+.bar.c3 i{background:linear-gradient(90deg,#54a0ff,#9dc8ff)}
+
+/* damage table + chart */
+.dmgrow{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.dmgrow .r{color:var(--dim)}
+.dmgrow b{font-variant-numeric:tabular-nums}
+svg.chart{width:100%;height:180px;display:block;background:var(--panel2);border-radius:10px;margin-top:6px}
+.lgd{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--dim2);margin-top:9px}
+.lgd i{display:inline-block;width:14px;height:8px;background:#ffb020;border-radius:2px;margin-right:5px;vertical-align:middle}
+
+/* ---------- attachments: slot selector + dense grid ---------- */
+.attbar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.attslot{display:inline-flex;align-items:center;gap:7px;background:var(--panel);border:1px solid var(--line);color:var(--dim);padding:7px 12px;border-radius:9px;font-size:12.5px;cursor:pointer;transition:.12s}
+.attslot:hover{color:var(--txt);border-color:#39424d}
+.attslot.on{background:var(--accent);border-color:var(--accent);color:#12161b;font-weight:700}
+.attslot svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.attslot .n{font-size:10.5px;opacity:.8;font-variant-numeric:tabular-nums;border-left:1px solid currentColor;padding-left:7px;margin-left:1px}
+.attq{width:100%;max-width:340px;background:var(--panel);border:1px solid var(--line);color:var(--txt);padding:8px 12px;border-radius:9px;font-size:13px;outline:none;margin-bottom:14px}
+.attq:focus{border-color:var(--accent)}
+.attgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:10px;align-content:start}
+.attcard{display:flex;align-items:flex-start;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.attcard .aic{width:32px;height:32px;flex:0 0 32px;object-fit:contain;opacity:.95}
+.attcard .glyph{width:20px;height:20px;flex:0 0 20px;margin-top:3px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;color:var(--dim2)}
+.attcard .txt{flex:1;min-width:0}
+.attcard .n{font-size:12.5px;display:flex;align-items:baseline;gap:8px}
+.attcard .n em{margin-left:auto;font-style:normal;color:var(--accent);font-size:11px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.attcard .td{font-size:10.5px;line-height:1.4;color:var(--dim2);margin-top:3px}
+.glyph{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;color:var(--dim2)}
+
+/* ---------- overview: kill dashboard ---------- */
+.kdash{display:grid;gap:14px}
+.khero{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:14px;padding:16px 20px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;
+  background:radial-gradient(120% 170% at 0% 0%,rgba(255,176,32,.17),transparent 62%),radial-gradient(90% 150% at 100% 100%,rgba(255,90,95,.15),transparent 60%),linear-gradient(180deg,#161b21,#0e1216)}
+.khero:before{content:'';position:absolute;inset:-40% -20%;pointer-events:none;background:repeating-linear-gradient(115deg,transparent 0 26px,rgba(255,255,255,.025) 26px 27px);animation:kscan 8s linear infinite}
+@keyframes kscan{from{transform:translateX(-90px)}to{transform:translateX(90px)}}
+.kdial{position:relative;width:130px;height:130px;flex:0 0 auto}
+.kdial svg{width:100%;height:100%;transform:rotate(-90deg)}
+.kdial .trk{fill:none;stroke:#1c232b;stroke-width:9}
+.kdial .arc{fill:none;stroke-width:9;stroke-linecap:round;transition:stroke-dashoffset 1.15s cubic-bezier(.2,.8,.2,1)}
+.kdial .mid{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.kdial .big{font-size:29px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
+.kdial .big small{font-size:11px;color:var(--dim);font-weight:600;margin-left:1px}
+.kdial .cap{font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim2);margin-top:4px;text-align:center;padding:0 8px}
+.khead{min-width:0}
+.khead .klabel{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.khead h4{margin:4px 0 3px;font-size:22px;font-weight:800;letter-spacing:.01em}
+.khead .krank{font-size:12.5px;color:var(--dim)}
+.khead .krank b{color:var(--txt)}
+.khead .knote{font-size:11px;color:var(--dim2);margin-top:6px;max-width:560px;line-height:1.5}
+.khead .knote b{color:var(--dim)}
+.kpips{display:flex;align-items:center;gap:3px;margin-top:10px;flex-wrap:wrap}
+.kpips i{width:4px;height:15px;border-radius:1px;background:var(--accent);opacity:0;transform:translateY(4px);animation:kpip .16s ease forwards;animation-delay:calc(var(--i) * var(--step,80ms))}
+.kpips i.last{background:var(--s);height:19px;box-shadow:0 0 10px var(--s)}
+@keyframes kpip{to{opacity:1;transform:none}}
+.kbadge{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
+.kbadge .lb{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim2)}
+.kbadge .rk{font-size:34px;font-weight:800;line-height:1;color:var(--accent);text-shadow:0 0 24px rgba(255,176,32,.45)}
+.kbadge .rk small{font-size:13px;color:var(--dim);font-weight:700}
+.kbadge .kpill{font-size:10.5px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--dim);white-space:nowrap}
+
+.kgrid2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:14px}
+.kpanel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpanel h4{margin:0 0 12px;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim)}
+
+.krace{display:flex;flex-direction:column;gap:11px}
+.krow{display:grid;grid-template-columns:118px minmax(0,1fr) 62px;align-items:center;gap:10px;font-size:12px}
+.krow .n{color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.krow.me .n{color:var(--accent);font-weight:700}
+.krow .b{height:12px;background:var(--panel2);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.krow .b i{display:block;height:100%;width:0;border-radius:5px;background:linear-gradient(90deg,#39424d,#5d6874);transition:width .95s cubic-bezier(.2,.8,.2,1)}
+.krow.me .b i{background:linear-gradient(90deg,#ff9f43,#ffd479);box-shadow:0 0 12px rgba(255,176,32,.55)}
+.krow .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.krow .v small{font-size:9.5px;color:var(--dim2);font-weight:600;margin-left:1px}
+
+.kcurvewrap{position:relative}
+svg.kcurve{width:100%;height:174px;display:block}
+.kline{stroke-dasharray:var(--len,4000);stroke-dashoffset:var(--len,4000);animation:kdraw 1.35s cubic-bezier(.3,.7,.2,1) forwards}
+@keyframes kdraw{to{stroke-dashoffset:0}}
+.kdot{position:absolute;width:9px;height:9px;border-radius:50%;transform:translate(-50%,-50%);background:var(--accent2);box-shadow:0 0 0 2px #0a0c0f}
+.kdot.cur{width:13px;height:13px;background:var(--accent);box-shadow:0 0 0 3px #0a0c0f,0 0 16px var(--accent)}
+.kxaxis{position:relative;height:15px;margin-top:7px;font-size:9.5px;color:var(--dim2)}
+.kxaxis span{position:absolute;top:0;white-space:nowrap}
+.ky{position:absolute;left:2px;font-size:9px;font-variant-numeric:tabular-nums;color:var(--dim2);background:rgba(10,12,15,.72);padding:1px 4px;border-radius:3px;pointer-events:none}
+
+.ktiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.ktile{background:var(--panel);padding:12px 14px;position:relative;overflow:hidden}
+.ktile .k{display:block;font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:var(--dim2);white-space:nowrap}
+.ktile .v{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.2}
+.ktile .v small{font-size:10.5px;color:var(--dim);font-weight:600;margin-left:2px}
+.ktile.hot .v{color:var(--accent)}
+.ktile:after{content:'';position:absolute;left:0;bottom:0;height:2px;width:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--accent),transparent);animation:kbar .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:var(--i,0ms)}
+@keyframes kbar{to{transform:scaleX(1)}}
+
+.kload{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:12px}
+.klcard{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px 13px;transition:.15s}
+.klcard:hover{border-color:#3a444f;transform:translateY(-2px);box-shadow:0 8px 22px -16px #000}
+.klcard .goal{font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
+.klcard .pick{display:flex;align-items:center;gap:10px}
+.klcard .pick .aic,.klcard .pick .glyph{width:30px;height:30px;flex:0 0 30px;margin:0}
+.klcard .pick .nm{font-size:13.5px;font-weight:700;line-height:1.2}
+.klcard .pick .meta{font-size:10px;color:var(--dim2);margin-top:2px;letter-spacing:.04em}
+.klcard .pt{margin-left:auto;color:var(--accent);font-weight:700;font-size:11px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.klcard .why{font-size:10.5px;color:var(--dim);line-height:1.5;margin-top:9px;padding-top:9px;border-top:1px dashed var(--line)}
+.klalts{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.klalt{font-size:10px;color:var(--dim2);border:1px solid var(--line);border-radius:999px;padding:2px 8px}
+
+.kbuild{display:flex;flex-wrap:wrap;gap:8px}
+.kbslot{display:flex;align-items:center;gap:9px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 11px}
+.kbslot .aic,.kbslot .glyph{width:24px;height:24px;flex:0 0 24px;margin:0}
+.kbslot .sl{display:block;font-size:8.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--dim2)}
+.kbslot .nm{font-size:12.5px;font-weight:700;line-height:1.25}
+.kbslot .pt{color:var(--accent);font-size:11px;font-weight:700;margin-left:4px}
+
+/* disable motion on live re-render (range slider) and on request */
+.noanim *{animation:none!important;transition:none!important}
+.noanim .kpips i{opacity:1;transform:none}
+.noanim .ktile:after{transform:scaleX(1)}
+.noanim .kline{stroke-dashoffset:0}
+.noanim .radar .poly{transform:none;opacity:1}
+@media(prefers-reduced-motion:reduce){
+  .khero:before{animation:none}
+  .kpips i,.ktile:after,.kline,.radar .poly,.spulse{animation:none!important}
+  .kpips i{opacity:1;transform:none}
+  .ktile:after{transform:scaleX(1)}
+  .kline{stroke-dashoffset:0}
+  .radar .poly{transform:none;opacity:1}
+}
+@media(max-width:1180px){.kgrid2{grid-template-columns:1fr}}
+@media(max-width:1080px){.ktiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:620px){
+  .khero{grid-template-columns:auto minmax(0,1fr);gap:14px;padding:14px}
+  .kbadge{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;text-align:left}
+  .kdial{width:104px;height:104px}
+  .kdial .big{font-size:23px}
+  .ktiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* ---------- shared rank bars (ballistics, damage, maps) ---------- */
+.prow{display:grid;grid-template-columns:minmax(0,1fr) minmax(60px,110px) 74px 44px;align-items:center;gap:10px;padding:5px 0;font-size:12px}
+.prow+.prow{border-top:1px solid #1b2128}
+.prow .n{color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prow .b{height:10px;background:var(--panel2);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+.prow .b i{display:block;height:100%;width:0;border-radius:4px;transition:width .85s cubic-bezier(.2,.8,.2,1)}
+.tone0{background:linear-gradient(90deg,#ff5a5f,#ff9f43)}
+.tone1{background:linear-gradient(90deg,#ff9f43,#ffc078)}
+.tone2{background:linear-gradient(90deg,#ffb020,#ffd479)}
+.tone3{background:linear-gradient(90deg,#4fd1c5,#8ce9e0)}
+.prow .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.prow .v small{font-size:9.5px;color:var(--dim2);font-weight:600;margin-left:1px}
+.prow .r{text-align:right;font-size:10px;color:var(--dim2);font-variant-numeric:tabular-nums;white-space:nowrap}
+@media(max-width:620px){.prow{grid-template-columns:minmax(0,1fr) 74px;grid-template-areas:'n v' 'b r'}.prow .n{grid-area:n}.prow .v{grid-area:v}.prow .b{grid-area:b}.prow .r{grid-area:r}}
+
+/* ---------- radar (range profile, spread cone) ---------- */
+.radar{display:flex;flex-wrap:wrap;gap:20px;align-items:center}
+.radar svg{width:236px;height:236px;flex:0 0 236px}
+.radar .legend{flex:1;min-width:190px;display:flex;flex-direction:column;gap:9px}
+.radar .lg{display:flex;align-items:center;gap:9px;font-size:12px}
+.radar .lg i{width:10px;height:10px;border-radius:3px;flex:0 0 10px}
+.radar .lg span{color:var(--dim)}
+.radar .lg b{margin-left:auto;font-variant-numeric:tabular-nums;white-space:nowrap}
+.radar .poly{transform-box:view-box;transform-origin:100px 100px;animation:rpop .75s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rpop{from{transform:scale(.08);opacity:0}to{transform:none;opacity:1}}
+
+/* ---------- arsenal scatter (range profile) ---------- */
+.scatter{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-start}
+.scatter svg{width:400px;max-width:100%;height:auto;flex:0 0 400px}
+.scatter .snotes{flex:1;min-width:220px;font-size:12px;color:var(--dim);line-height:1.65}
+.scatter .snotes b{color:var(--txt)}
+.spulse{transform-box:fill-box;transform-origin:center;animation:spulse 1.9s ease-out infinite}
+@keyframes spulse{0%{r:9;opacity:.5}70%{r:21;opacity:0}100%{r:21;opacity:0}}
+
+/* ---------- maps: diverging delta + composition ---------- */
+.mrow{display:grid;grid-template-columns:134px minmax(0,1fr) 50px;align-items:center;gap:10px;padding:3px 0;font-size:12px}
+.mrow .n{color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mrow.best .n{color:var(--txt);font-weight:700}
+.mtrack{position:relative;height:12px;background:var(--panel2);border:1px solid var(--line);border-radius:6px}
+.mtrack:before{content:'';position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:#3a444f}
+.mtrack i{position:absolute;top:0;bottom:0;width:0}
+.mtrack i.pos{left:50%;background:linear-gradient(90deg,#3f9d54,#6fd48a);border-radius:0 5px 5px 0}
+.mtrack i.neg{right:50%;background:linear-gradient(270deg,#a8434a,#e0707a);border-radius:5px 0 0 5px}
+.mrow .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.comp{display:flex;height:6px;border-radius:4px;overflow:hidden;border:1px solid var(--line)}
+.comp i{display:block;height:100%;width:0;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.comp i.c1{background:#ff9f43}.comp i.c2{background:#ffb020}.comp i.c3{background:#4fd1c5}
+
+/* ---------- meta: tier ladder ---------- */
+.tierladder{display:flex;align-items:flex-end;gap:10px;height:132px;padding:0 2px 0}
+.tl{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:7px}
+.tl .t{font-size:12px;font-weight:800;letter-spacing:.1em}
+.tl .b{width:100%;min-height:4px;border-radius:6px 6px 0 0;background:var(--panel2);border:1px solid var(--line);border-bottom:none;height:0;transition:height .8s cubic-bezier(.2,.8,.2,1)}
+.tl.on .b{box-shadow:0 0 0 1px var(--accent),0 0 20px -6px var(--accent);background:#2a2415}
+.tl.on .t{color:var(--accent)}
+.tl .c{font-size:11px;color:var(--dim2);font-variant-numeric:tabular-nums}
+
+/* ---------- attachments: effect pills + goal filter ---------- */
+.efx{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.efx span{font-size:8.5px;letter-spacing:.06em;padding:1px 6px;border-radius:999px;border:1px solid;text-transform:uppercase;font-weight:700}
+.efx .up{color:#6fd48a;border-color:#2c4a37;background:rgba(111,212,138,.08)}
+.efx .dn{color:#e0707a;border-color:#4a2b2e;background:rgba(224,112,122,.08)}
+.gchips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.gchip{font-size:11.5px;padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--dim);cursor:pointer;transition:.12s}
+.gchip:hover{color:var(--txt);border-color:#39424d}
+.gchip.on{background:var(--accent2);border-color:var(--accent2);color:#08110f;font-weight:700}
+.attcard .slot{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim2);margin-left:7px}
+
+/* ---------- cadence: to-scale shot / reload strip ---------- */
+.ctimeline{display:flex;height:32px;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--panel2)}
+.ctimeline i{display:block;height:100%;width:0;transition:width .85s cubic-bezier(.2,.8,.2,1)}
+.ctimeline i.s-dep{background:#39424d}
+.ctimeline i.s-cyc{background:linear-gradient(180deg,#ffb020,#c9821a);box-shadow:inset 2px 0 0 rgba(10,12,15,.8)}
+.ctimeline i.s-more{background:repeating-linear-gradient(45deg,#9a7519,#9a7519 5px,#bd9020 5px,#bd9020 10px);box-shadow:inset 2px 0 0 rgba(10,12,15,.8)}
+.ctimeline i.s-rld{background:linear-gradient(180deg,#54a0ff,#3a7bd5);box-shadow:inset 2px 0 0 rgba(10,12,15,.8)}
+.clegend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:11px;color:var(--dim2);margin-top:10px}
+.clegend span{white-space:nowrap}
+.clegend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.clegend i.s-dep{background:#39424d}.clegend i.s-cyc{background:#ffb020}.clegend i.s-rld{background:#54a0ff}
+.clegend b{color:var(--txt);font-variant-numeric:tabular-nums}
+
+/* ---------- map recommendations ---------- */
+.mapwrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
+.mapcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.mapcard.top{border-color:#4a5a2e;box-shadow:0 0 0 1px rgba(255,176,32,.18)}
+.mapcard .art{height:132px;background:#0d1013 center/cover no-repeat;position:relative}
+.mapcard .art:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,12,.15),rgba(18,22,27,.95))}
+.mapcard .rank{position:absolute;top:9px;left:9px;z-index:2;background:rgba(10,12,15,.85);border:1px solid var(--line);border-radius:7px;font-size:11px;font-weight:800;padding:3px 8px;color:var(--accent)}
+.mapcard .fit{position:absolute;top:9px;right:9px;z-index:2;background:rgba(10,12,15,.85);border:1px solid var(--line);border-radius:7px;font-size:11px;font-weight:700;padding:3px 8px;font-variant-numeric:tabular-nums}
+.mapcard .mb{padding:13px 15px 15px;display:flex;flex-direction:column;gap:10px;flex:1}
+.mapcard h5{margin:0;font-size:15px}
+.mapcard .ms{font-size:11px;color:var(--dim2);letter-spacing:.04em;text-transform:uppercase}
+.mapcard .why{font-size:12px;color:var(--dim);line-height:1.5}
+.mapcard .tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-size:10px;color:var(--dim2);border:1px solid var(--line);border-radius:999px;padding:2px 8px}
+.pfit{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:auto}
+.pfit .c{font-size:9.5px;color:var(--dim2);letter-spacing:.08em;text-transform:uppercase}
+.pfit .bar{margin-top:3px}
+.mtags{display:flex;flex-wrap:wrap;gap:5px}
+.mapsum{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:20px}
+.msum{background:var(--panel);padding:12px 15px}
+.msum .k{display:block;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--dim2)}
+.msum .v{font-size:14.5px;margin-top:3px;display:block}
+.msum .v b{font-variant-numeric:tabular-nums}
+.avoid{font-size:12px;color:var(--dim);background:var(--panel);border:1px dashed var(--line);border-radius:10px;padding:11px 14px;margin-top:14px}
+.note{font-size:11px;color:var(--dim2);margin-top:14px;line-height:1.6}
+.pill{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--dim);margin:0 6px 0 0}
+.tierpill{font-weight:800;letter-spacing:.08em;border:none;color:#0a0c0f}
+.tierpill.S{background:var(--s);color:#fff}.tierpill.A{background:var(--a)}
+.tierpill.B{background:var(--b);color:#fff}.tierpill.C{background:var(--c)}.tierpill.D{background:var(--d);color:#fff}
+.rw{font-size:13px;line-height:1.65}
+.rw .kv{color:var(--dim)}
+.rw .rvb{font-size:15px;color:var(--txt)}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;color:var(--dim2);font-size:11.5px;line-height:1.8}
+@media(max-width:1080px){
+  .wbody{grid-template-columns:1fr;gap:0;padding:14px 16px 80px}
+  .wrail{position:static;flex-direction:row;flex-wrap:wrap;gap:8px;padding-bottom:12px}
+  .wnav{flex-direction:row;flex-wrap:wrap;gap:6px}
+  .wnav a{padding:7px 12px}
+  .wrailmeta{display:none}
+  .wrange{display:none}
+  .wid .wreal,.wkick .wsub{display:none}
+  .mapwrap{grid-template-columns:1fr}
+  .attgrid{grid-template-columns:1fr}
+  .meta{text-align:left}
+}
+@media(max-width:620px){
+  .wbar-in{gap:10px;padding:8px 14px}
+  .wthumb{display:none}
+  .wtt h2{font-size:18px}
+  .wstats{overflow-x:auto;flex:1 1 auto}
+  .wst{min-width:56px;padding:5px 9px}
+  .wst .v{font-size:14px}
+}
+
+/* ---------- playground: gunsmith sandbox ---------- */
+.pgo{display:flex;align-items:center;gap:8px;background:linear-gradient(180deg,#2a2415,#1c1a10);border:1px solid #4a3a18;color:var(--accent);padding:9px 14px;border-radius:9px;font-size:12.5px;font-weight:800;letter-spacing:.1em;cursor:pointer;white-space:nowrap;flex:0 0 auto}
+.pgo:hover{background:var(--accent);color:#12161b;border-color:var(--accent)}
+.playbody{position:relative;z-index:1;max-width:1560px;margin:0 auto;padding:20px 20px 90px}
+/* goal bar: sticks right under the command bar so the objective is always one tap away.
+   --wbarh is measured at runtime because the command bar changes height across breakpoints. */
+.pgbar{position:sticky;top:var(--wbarh,76px);z-index:30;margin:0 0 16px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+  padding:10px 13px;background:rgba(10,12,15,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--line);border-radius:12px;box-shadow:0 14px 28px -22px #000}
+.pgbar .pglb{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim2);white-space:nowrap}
+.pgbar .sp{flex:1 1 auto}
+.pgbar .pgsum{font-size:11px;color:var(--dim);white-space:nowrap;font-variant-numeric:tabular-nums}
+.pgbar .pgsum b{color:var(--accent)}
+.pghero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;background:radial-gradient(120% 170% at 0% 0%,rgba(255,176,32,.13),transparent 60%),linear-gradient(180deg,#161b21,#0e1216);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:16px}
+.pggoals{display:flex;flex-wrap:wrap;gap:7px}
+.pgchip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--panel2);color:var(--dim);padding:7px 12px;border-radius:9px;font-size:12.5px;cursor:pointer;transition:.12s}
+.pgchip:hover{color:var(--txt);border-color:#39424d}
+.pgchip.on{background:var(--accent);border-color:var(--accent);color:#12161b;font-weight:700}
+.pgpot{display:flex;align-items:center;gap:14px;flex:0 0 auto}
+.pgpot .dial{position:relative;width:92px;height:92px;flex:0 0 auto}
+.pgpot .dial svg{width:100%;height:100%;transform:rotate(-90deg)}
+.pgpot .trk{fill:none;stroke:#1c232b;stroke-width:9}
+.pgpot .arc{fill:none;stroke:#ffb020;stroke-width:9;stroke-linecap:round;transition:stroke-dashoffset .8s cubic-bezier(.2,.8,.2,1)}
+.pgpot .mid{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.pgpot .big{font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
+.pgpot .cap{font-size:8px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim2);margin-top:3px;text-align:center}
+.pgpot .side{font-size:11px;color:var(--dim);line-height:1.7}
+.pgpot .side b{color:var(--txt);font-variant-numeric:tabular-nums}
+.pggrid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:16px;align-items:start}
+@media(max-width:1180px){.pggrid{grid-template-columns:1fr}}
+.pgslots{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.pgopts{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:9px}
+.pgopt{display:flex;gap:10px;align-items:flex-start;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:9px 11px;cursor:pointer;transition:.12s;text-align:left;font:inherit;color:var(--txt)}
+.pgopt:hover{border-color:#3a444f}
+.pgopt.on{border-color:var(--accent);box-shadow:0 0 0 1px rgba(255,176,32,.35);background:rgba(255,176,32,.06)}
+.pgopt .aic{width:28px;height:28px;flex:0 0 28px;object-fit:contain;opacity:.95}
+.pgopt .glyph{width:22px;height:22px;flex:0 0 22px;margin-top:3px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;color:var(--dim2)}
+.pgopt .txt{flex:1;min-width:0}
+.pgopt .nm{font-size:12.5px;font-weight:700;line-height:1.25;display:flex;align-items:baseline;gap:7px}
+.pgopt .nm em{font-style:normal;color:var(--accent);font-size:11px;margin-left:auto;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sfx{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
+.sfx span{font-size:8.5px;letter-spacing:.05em;padding:1px 6px;border-radius:999px;border:1px solid;font-weight:700;text-transform:uppercase;white-space:nowrap}
+.sfx .up{color:#6fd48a;border-color:#2c4a37;background:rgba(111,212,138,.08)}
+.sfx .dn{color:#e0707a;border-color:#4a2b2e;background:rgba(224,112,122,.08)}
+.sfx .nu{color:var(--dim);border-color:var(--line);background:var(--panel)}
+.pglane{display:grid;grid-template-columns:124px minmax(0,1fr) 62px;gap:10px;align-items:center;padding:8px 0}
+.pglane+.pglane{border-top:1px solid #1b2128}
+.pglane .n{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pglane.sel .n{color:var(--accent);font-weight:700}
+.pglane .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;font-size:12px}
+.pglane .v small{font-size:9.5px;color:var(--dim2);font-weight:600;margin-left:2px}
+.pgenv{position:relative;height:18px;background:var(--panel2);border:1px solid var(--line);border-radius:9px}
+.pgenv .rng{position:absolute;top:2px;bottom:2px;background:linear-gradient(90deg,#333c46,#4a5a6b);border-radius:7px}
+.pgenv .zero{position:absolute;top:-3px;bottom:-3px;width:1px;background:#5d6874}
+.pgenv .cur{position:absolute;top:-2px;bottom:-2px;width:4px;border-radius:2px;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.pgenv .lb{position:absolute;top:-1px;font-size:8px;color:var(--dim2);letter-spacing:.05em;white-space:nowrap}
+.pgmx{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:9.5px}
+.pgmxwrap{overflow-x:auto}
+.pgmx{min-width:430px}
+.pgmx i{font-style:normal;padding:5px 3px;text-align:center;background:var(--panel);font-variant-numeric:tabular-nums}
+.pgmx i.h{color:var(--dim2);letter-spacing:.05em;text-transform:uppercase;font-size:8px;background:var(--panel2);line-height:1.15}
+.pgmx i.rh{text-align:right;color:var(--dim);text-transform:uppercase;letter-spacing:.04em;font-size:8px;background:var(--panel2);padding-right:7px;line-height:1.15}
+.pgmx i.up{color:#6fd48a;font-weight:800}
+.pgmx i.dn{color:#e0707a;font-weight:800}
+.pgmx i.z{color:var(--dim2)}
+.pgmx i.hi{background:#2a2415}
+.pgbuild{display:flex;flex-wrap:wrap;gap:7px}
+.pgb{display:flex;align-items:center;gap:8px;background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:7px 10px}
+.pgb .aic,.pgb .glyph{width:22px;height:22px;flex:0 0 22px;margin:0}
+.pgb .sl{display:block;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim2)}
+.pgb .nm{font-size:12px;font-weight:700;line-height:1.2}
+@media(max-width:620px){
+  .pghero{grid-template-columns:1fr}
+  .pgpot{flex-direction:row}
+  .pglane{grid-template-columns:96px minmax(0,1fr) 54px}
+}
+</style>
+</head>
+<body>
+
+<!-- weapon-render backdrop: shared by the catalog and the weapon page -->
+<div class="wbgveil" id="wbgveil"></div>
+<div class="wbgwrap"><div class="wbgimg" id="wbgA"></div><div class="wbgimg" id="wbgB"></div></div>
+
+<!-- ============ CATALOG ============ -->
+<div id="viewCatalog">
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">
+        <h1><b>BF6</b> BALLISTIC BASE</h1>
+        <span class="sub">Weapon Catalog</span>
+      </div>
+      <div class="meta" id="catMeta"></div>
+    </header>
+
+    <div class="toolbar">
+      <div class="search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+        <input id="q" type="search" placeholder="Search weapon, caliber, real gun…" autocomplete="off">
+      </div>
+      <select id="sort">
+        <option value="name">Sort: Name</option>
+        <option value="ttk">Sort: TTK @ range</option>
+        <option value="rof">Sort: Fire rate</option>
+        <option value="dps">Sort: DPS @ range</option>
+        <option value="vel">Sort: Bullet velocity</option>
+        <option value="mag">Sort: Magazine</option>
+        <option value="class">Sort: Class</option>
+      </select>
+      <div class="dist">
+        <label>Range</label>
+        <input id="dist" type="range" min="0" max="100" step="5" value="20">
+        <output id="distv">20m</output>
+      </div>
+      <button class="toggle" id="only" type="button" aria-pressed="false" title="Hide everything that does not beat the arsenal median at the selected range"><span class="dot"></span>Only contenders</button>
+    </div>
+
+    <div class="chips" id="chips"></div>
+    <div class="grid" id="grid"></div>
+    <footer id="foot"></footer>
+  </div>
+</div>
+
+<!-- ============ WEAPON PAGE ============ -->
+<div id="viewWeapon" hidden>
+  <div class="wapp">
+    <header class="wbar">
+      <div class="wbar-in">
+        <button class="back" id="back">← All weapons</button>
+        <div class="wid" id="whead"></div>
+        <div class="wstats" id="wstats"></div>
+        <div class="wrange">
+          <label for="wdist">Range</label>
+          <input id="wdist" type="range" min="0" max="100" step="5" value="20">
+          <output id="wdistv">20m</output>
+        </div>
+        <button class="pgo" id="pgopen" type="button" title="Open the gunsmith playground: build, compare and see the weapon's full potential">⌗ PLAYGROUND</button>
+      </div>
+    </header>
+
+    <div class="wbody">
+      <aside class="wrail">
+        <nav class="wnav" id="subnav"></nav>
+        <div class="wrailmeta" id="wrailmeta"></div>
+      </aside>
+      <main class="wmain">
+        <div id="sections"></div>
+      </main>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PLAYGROUND ============ -->
+<div id="viewPlay" hidden>
+  <div class="wapp">
+    <header class="wbar">
+      <div class="wbar-in">
+        <button class="back" id="pback">← Weapon details</button>
+        <div class="wid" id="phead"></div>
+        <div class="wstats" id="pstats"></div>
+        <div class="wrange">
+          <label for="pdist">Range</label>
+          <input id="pdist" type="range" min="0" max="100" step="5" value="20">
+          <output id="pdistv">20m</output>
+        </div>
+      </div>
+    </header>
+    <div class="playbody">
+      <div class="pgbar" id="pgbar"></div>
+      <div id="pbody"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const WEAPONS = /*__DATA__*/[];
+const RW = /*__RW__*/{};
+const TIER = /*__TIER__*/{};
+const TIPS = /*__TIPS__*/[];
+const ICONS = /*__ICONS__*/[];
+const MAPS = /*__MAPS__*/[];
+const MAPIMG = /*__MAPIMG__*/{};
+const VER = /*__VER__*/'';
+const SEASON = /*__SEASON__*/'';
+const HEALTH = 100;
+
+/* ---------- damage model: constant within each range band (game-accurate) ---------- */
+function dmgAt(w, d){
+  const p = w.pts;
+  if(!p.length) return 0;
+  let v = p[0][1];
+  for(let i=0;i<p.length;i++){ if(d >= p[i][0]) v = p[i][1]; else break; }
+  return v;
+}
+function shellDmg(w,d){ return dmgAt(w,d) * (w.pellets||1); }
+function btk(w,d){ return Math.max(1, Math.ceil(HEALTH / (shellDmg(w,d)+1e-9))); }
+/* One cycle source for the whole page. The raw RoF field is the real cycle for
+   semi/bolt/belt guns, but pump weapons publish an action rate that is not a
+   cycle, so we substitute the catalog's standing estimate there. */
+const CYCLE_MS = (w) => 60000 / (w.mech==='pump' ? 75 : Math.max(30, w.rof));
+function ttk(w,d){ return (btk(w,d)-1) * CYCLE_MS(w); }
+function dps(w,d){ return shellDmg(w,d) * 1000/CYCLE_MS(w); }
+const r1 = n => Math.round(n*10)/10;
+/* effective rate: the cycle the gun can actually sustain (differs from the raw field only for pump guns) */
+const rpmOf = w => Math.round(60000/CYCLE_MS(w));
+const RANGES = {cqb:10, mid:35, long:100};
+
+/* ================= range effectiveness (percentile per bracket, from game data) =================
+   Time-to-kill is extended by the weapon's own cycle time, because a miss or a second
+   target costs you that cycle — and that cost matters most where fights are fast.
+   Distance weighting: heavy at CQB (0.9), moderate at mid (0.5), light at long (0.15),
+   so one-shot weapons are not punished for a slow bolt/pump cycle where precision rules.
+   Pellet count is discounted with distance (pellets disperse), and pump/bolt cycle times
+   use the mechanism rather than the raw datamined RoF field. */
+const PELLET_FACTOR = (w,d) => (w.pellets<=1 ? 1 : (d<=15 ? 1 : (d<=35 ? 0.45 : 0.22)));
+const W_DIST = {cqb:0.9, mid:0.5, long:0.15};
+function shellDmgAt(w,d){ return dmgAt(w,d) * (w.pellets||1) * PELLET_FACTOR(w,d); }
+function cyclePenalty(w,d,b){
+  const g = CYCLE_MS(w);
+  return g * W_DIST[b] * (btk(w,d)<=1 ? 0.25 : 1);
+}
+function killTime(w,d,b){ return (btk(w,d)-1)*CYCLE_MS(w) + cyclePenalty(w,d,b); }
+
+const BUCKETS = ['cqb','mid','long'];
+const EFFECT = (() => {
+  const out = {};
+  for(const b of BUCKETS){
+    const d = RANGES[b];
+    const arr = WEAPONS.map(w=>({s:w.slug, t:killTime(w,d,b)})).sort((a,b)=>a.t-b.t);
+    const n = arr.length;
+    arr.forEach((o,i)=>{ (out[o.s] = out[o.s]||{})[b] = Math.round(100*(1 - i/(n-1))); });
+  }
+  return out;
+})();
+
+/* ---------- attachment art ---------- */
+const GLYPH = {
+  'Optic':'<circle cx="12" cy="12" r="6.2"/><path d="M12 3.4v2.6M12 18v2.6M3.4 12h2.6M18 12h2.6"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/>',
+  'Muzzle':'<rect x="3.5" y="9" width="17" height="6" rx="1.6"/><path d="M8 9v6M12 9v6M16 9v6"/>',
+  'Barrel':'<rect x="3" y="10" width="14.5" height="4" rx="1.2"/><path d="M17.5 9.2h3.4v5.6h-3.4z"/>',
+  'Magazine':'<path d="M8.2 4.2h7.6v5.4l-1.6 10.2H9.8L8.2 9.6z"/><path d="M9.6 12.4h4.8"/>',
+  'Ammo':'<path d="M12 3.2c1.9 2.3 2.9 4.2 2.9 6.2V19a1.9 1.9 0 0 1-1.9 1.9h-2A1.9 1.9 0 0 1 9.1 19V9.4c0-2 1-3.9 2.9-6.2z"/><path d="M9.1 13.6h5.8"/>',
+  'Underbarrel':'<path d="M3.5 7.2h17v3h-17z"/><path d="M9.4 10.2h5.2l-.9 10.4h-3.4z"/>',
+  'Laser':'<rect x="3.2" y="9.6" width="10.5" height="4.8" rx="1.3"/><path d="M13.7 11h6.1M13.7 13h6.1" opacity=".75"/>',
+  'Light':'<path d="M3.6 8.6h8.8l3.4-2.2v11.2l-3.4-2.2H3.6z"/><path d="M18.4 10.4a2.3 2.3 0 0 1 0 3.2"/>',
+  'Ergonomics':'<circle cx="12" cy="12" r="3.3"/><path d="M12 4.2v2.4M12 17.4v2.4M4.2 12h2.4M17.4 12h2.4M6.5 6.5l1.7 1.7M15.8 15.8l1.7 1.7M17.5 6.5l-1.7 1.7M8.2 15.8l-1.7 1.7"/>',
+  'Accessory':'<path d="M3.4 8.8h17.2v3.2H3.4z"/><path d="M6.2 12v2.6M12 12v3.4M17.8 12v2.6"/><circle cx="12" cy="18.4" r="1.9"/>'
+};
+function attIcon(slot, idx){
+  if(idx >= 0 && ICONS[idx]) return `<img class="aic" src="${ICONS[idx]}" alt="" decoding="async">`;
+  const p = GLYPH[slot];
+  return p ? `<svg class="glyph" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>` : '';
+}
+const esc = s => String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---- map fit: how much a map's engagement mix favours this weapon ----
+   fit      = Σ w_b · e_b            (weighted effectiveness, 0–100)
+   neutral  = mean(e_b)              (a hypothetical map with an even mix)
+   delta    = fit − neutral          (signed advantage of this map, in percentile points)
+   Ranking by fit and by delta are equivalent (neutral is constant per weapon);
+   delta is what we display because it discriminates: a flexible weapon scores
+   near 0 on every map, a specialist swings hard between maps. */
+function mapFit(w){
+  const e = EFFECT[w.slug];
+  const neutral = (e.cqb + e.mid + e.long) / 3;
+  const scored = MAPS.map(m=>{
+    const p = m.profile || {cqb:1/3,mid:1/3,long:1/3};
+    const fit = (p.cqb||0)*e.cqb + (p.mid||0)*e.mid + (p.long||0)*e.long;
+    const delta = fit - neutral;
+    const parts = [
+      {k:'CQB', w:p.cqb||0, v:(p.cqb||0)*e.cqb, e:e.cqb},
+      {k:'Mid', w:p.mid||0, v:(p.mid||0)*e.mid, e:e.mid},
+      {k:'Long',w:p.long||0,v:(p.long||0)*e.long,e:e.long}
+    ];
+    return {map:m, fit:Math.round(fit), delta:Math.round(delta*10)/10, parts};
+  }).sort((a,b)=> b.delta - a.delta);
+  return scored;
+}
+function fitReason(w, s){
+  const dom = s.parts.slice().sort((a,b)=>(b.w*b.e)-(a.w*a.e))[0].k.toLowerCase();
+  const d = dom==='cqb'?RANGES.cqb : dom==='mid'?RANGES.mid : RANGES.long;
+  const killed = btk(w,d)<=1 ? `one shot at ${d} m` : `${btk(w,d)} hits (${Math.round(ttk(w,d))} ms) at ${d} m`;
+  const label = {cqb:'close-quarters fighting', mid:'mid-range streets and compounds', long:'long sightlines'}[dom];
+  return `Kills in ${killed}; this map is won by ${label}.`;
+}
+function weaponTagline(w){
+  const e = EFFECT[w.slug];
+  const names = {cqb:'close-quarters', mid:'mid-range', long:'long-range'};
+  const order = BUCKETS.map(b=>({b, v:e[b]})).sort((a,b)=>b.v-a.v);
+  const [a,b] = order;
+  if(a.v < 25) return 'below average at every range';
+  if(a.v >= 60 && a.v - b.v < 8) return 'all-rounder — strong at every range';
+  if(b.v >= 55) return `${names[a.b]} specialist · also strong at ${names[b.b]}`;
+  if(b.v >= 30) return `${names[a.b]} specialist · ${names[b.b]} capable`;
+  return `${names[a.b]} specialist · limited at other ranges`;
+}
+
+/* ---------- sub-nav + sections ---------- */
+const SECTIONS = [
+  ['overview','Overview'], ['ballistics','Ballistics'], ['range','Range profile'],
+  ['damage','Damage'], ['cadence','Cadence'], ['attachments','Attachments'],
+  ['maps','Maps'], ['meta','Meta & real world']
+];
+
+/* ---------- shared backdrop: the blurred weapon render behind every view ----------
+   Two stacked layers so switching weapons crossfades instead of flashing. */
+const BG = {ids:['wbgA','wbgB'], active:0, url:'', hover:false, def:''};
+function setBackdrop(url){
+  if(!url || url === BG.url) return;
+  const next = 1 - BG.active;
+  const el = document.getElementById(BG.ids[next]);
+  const cur = document.getElementById(BG.ids[BG.active]);
+  if(!el) return;
+  el.style.backgroundImage = `url("${url}")`;
+  el.classList.add('on');
+  if(cur) cur.classList.remove('on');
+  BG.active = next; BG.url = url;
+}
+/* the catalog's resting image: only applies while the pointer is not over a card */
+function backdropDefault(url){ BG.def = url; if(!BG.hover) setBackdrop(url); }
+
+/* ================= router ================= */
+function route(){
+  const h = location.hash;
+  const mp = h.match(/^#\/w\/([^\/]+)\/play$/);
+  if(mp){
+    const w = WEAPONS.find(x=>x.slug===mp[1]);
+    if(w){ document.body.classList.add('wpn'); renderPlay(w); return; }
+  }
+  const m = h.match(/^#\/w\/(.+)$/);
+  if(m){
+    const w = WEAPONS.find(x=>x.slug===m[1]);
+    if(w){ document.body.classList.add('wpn'); renderWeapon(w); return; }
+  }
+  document.body.classList.remove('wpn');
+  document.getElementById('viewWeapon').hidden = true;
+  document.getElementById('viewPlay').hidden = true;
+  document.getElementById('viewCatalog').hidden = false;
+  window.scrollTo(0,0);
+}
+function go(slug){ location.hash = '#/w/'+slug; }
+function goPlay(slug){ location.hash = '#/w/'+slug+'/play'; }
+window.addEventListener('hashchange', route);
+
+/* ================= catalog ================= */
+const state = {cls:'all', q:'', sort:'name', dist:20, only:false};
+const CLASSES = ['assaultrifle','carbine','smg','mg','dmr','boltaction','shotgun','secondary'];
+document.getElementById('catMeta').innerHTML =
+  `<b>${WEAPONS.length}</b> weapons · <b>${CLASSES.length}</b> classes · <b>${MAPS.length}</b> maps<br>`+
+  `Meta: ${SEASON}<br>Stats: sym.gg game files ${VER}`;
+
+function renderChips(){
+  const box = document.getElementById('chips');
+  const counts = {}; WEAPONS.forEach(w=>counts[w.cls]=(counts[w.cls]||0)+1);
+  let html = `<div class="chip ${state.cls==='all'?'on':''}" data-c="all">All<span class="n">${WEAPONS.length}</span></div>`;
+  CLASSES.forEach(c=>{ if(!counts[c]) return;
+    html += `<div class="chip ${state.cls===c?'on':''}" data-c="${c}">${WEAPONS.find(w=>w.cls===c).clsLabel}<span class="n">${counts[c]}</span></div>`; });
+  box.innerHTML = html;
+  box.querySelectorAll('.chip').forEach(el=>el.onclick=()=>{state.cls=el.dataset.c;renderChips();renderGrid();});
+}
+function filtered(){
+  let list = WEAPONS.filter(w=>{
+    if(state.cls!=='all' && w.cls!==state.cls) return false;
+    if(state.q){
+      const q = state.q.toLowerCase();
+      const hay = (w.name+' '+w.ammo+' '+w.clsLabel+' '+((RW[w.name]&&RW[w.name].realName)||'')).toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  });
+  const d = state.dist;
+  const cmp = {
+    name:(a,b)=>a.name.localeCompare(b.name),
+    rof:(a,b)=>CYCLE_MS(a)-CYCLE_MS(b), vel:(a,b)=>b.velocity-a.velocity, mag:(a,b)=>b.mag-a.mag,
+    ttk:(a,b)=>ttk(a,d)-ttk(b,d), dps:(a,b)=>dps(b,d)-dps(a,d),
+    class:(a,b)=>CLASSES.indexOf(a.cls)-CLASSES.indexOf(b.cls)||a.name.localeCompare(b.name)
+  }[state.sort];
+  return list.sort(cmp);
+}
+/* Kill-speed standing of every weapon at one distance, plus its rank inside its own
+   class. Computed once per render so the grid costs one sort, not 63. */
+function rankTable(d){
+  const m = new Map();
+  const rows = WEAPONS.map(w=>({w, t:ttk(w,d)})).sort((a,b)=>a.t-b.t);
+  const n = rows.length;
+  rows.forEach((r,i)=>{
+    const pct = Math.round(100*(n-1-i)/Math.max(1,n-1));
+    m.set(r.w.slug, {rank:i+1, n, pct:Math.max(1,pct),
+      verdict: pct>=90?'top':pct>=75?'top':pct>=50?'mid':pct>=25?'mid':'low'});
+  });
+  CLASSES.forEach(c=>{
+    const sub = rows.filter(r=>r.w.cls===c);
+    sub.forEach((r,i)=>{ const e = m.get(r.w.slug); e.clsRank = i+1; e.clsN = sub.length; });
+  });
+  return m;
+}
+const verdictText = r => r.pct>=90 ? 'TOP 10%' : r.pct>=75 ? 'TOP 25%' : r.pct>=50 ? 'ABOVE AVG' : r.pct>=25 ? 'BELOW AVG' : 'WEAK';
+function renderGrid(){
+  const grid = document.getElementById('grid');
+  const d = state.dist;
+  const ranks = rankTable(d);
+  let list = filtered();
+  if(state.only) list = list.filter(w=>ranks.get(w.slug).pct > 50);
+  if(!list.length){
+    grid.innerHTML = `<div class="none">${state.q ? 'No weapons match “'+esc(state.q)+'”.' : (state.only ? 'No weapon beats the arsenal median at '+d+' m — widen the range or turn the filter off.' : 'No weapons match.')}</div>`;
+    return;
+  }
+  grid.innerHTML = list.map(w=>{
+    const ti = TIER[w.name], r = ranks.get(w.slug);
+    const tb = ti ? `<div class="tier ${ti.t}" title="Meta tier ${ti.t}">${ti.t}</div>` : '';
+    const cardCls = r.pct>75 ? 'contender' : r.pct<25 ? 'weak' : '';
+    return `<div class="card ${cardCls}" data-s="${w.slug}">
+      <div class="thumb">
+        ${tb}
+        <div class="crank" title="Ranked ${r.rank} of ${r.n} weapons · #${r.clsRank} of ${r.clsN} ${esc(w.clsLabel)}s at ${d} m">#${r.rank}<small>/${r.n}</small></div>
+        <img src="${w.img||''}" alt="${esc(w.name)}" loading="lazy" decoding="async">
+        <div class="fade"></div>
+        ${miniTTK(w, d, r)}
+      </div>
+      <div class="cbody">
+        <div class="cname"><h3>${esc(w.name)}</h3><span class="cls">${w.clsLabel}</span></div>
+        <div class="crow"><span class="ammo">${esc(w.ammo)}</span><span class="vtag ${r.verdict}">${verdictText(r)}</span></div>
+        <div class="rp3">${BUCKETS.map(b=>{
+          const p = EFFECT[w.slug][b];
+          return `<div class="r3"><div class="h"><span>${{cqb:'CQB',mid:'MID',long:'LNG'}[b]}</span><b>${p}</b></div>
+            <div class="bar"><i class="${toneOf(p)}" data-w="${Math.max(3,p)}"></i></div></div>`;
+        }).join('')}</div>
+        <div class="stats">
+          <div class="stat"><span class="k">Fire rate</span><span class="v">${rpmOf(w)}</span></div>
+          <div class="stat"><span class="k">Mag</span><span class="v">${w.mag}</span></div>
+          <div class="stat"><span class="k">Velocity</span><span class="v">${w.velocity}</span></div>
+          <div class="stat"><span class="k">BTK</span><span class="v">${btk(w,d)}</span></div>
+          <div class="stat"><span class="k">TTK</span><span class="v ttk">${btk(w,d)<=1?'1-shot':Math.round(ttk(w,d))+'<small>ms</small>'}</span></div>
+          <div class="stat"><span class="k">DPS</span><span class="v">${Math.round(dps(w,d))}</span></div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  grid.querySelectorAll('.card').forEach(el=>el.onclick=()=>go(el.dataset.s));
+  grid.querySelectorAll('.r3 .bar i[data-w]').forEach(i=>{ i.style.width = i.dataset.w+'%'; });
+
+  // backdrop: the fastest weapon in the current result set, previewed on hover
+  let champ = list[0];
+  for(const x of list) if(ranks.get(x.slug).rank < ranks.get(champ.slug).rank) champ = x;
+  backdropDefault(champ.img || '');
+  grid.onmouseover = e => {
+    const card = e.target.closest('.card');
+    if(!card) return;
+    const w = WEAPONS.find(x=>x.slug===card.dataset.s);
+    if(w){ BG.hover = true; setBackdrop(w.img || ''); }
+  };
+  grid.onmouseleave = () => { BG.hover = false; setBackdrop(BG.def); };
+}
+
+/* ================= weapon page ================= */
+function damageChart(w){
+  const p = w.pts, W=760, H=180, ml=40, mb=24, mt=12, mr=14;
+  const maxD = Math.max(100, ...p.map(q=>q[0]));
+  const maxY = Math.max(...p.map(q=>q[1])) * 1.14;
+  const X = d => ml + (d/maxD)*(W-ml-mr);
+  const Y = v => mt + (1 - v/maxY)*(H-mt-mb);
+  let path='';
+  for(let i=0;i<p.length;i++){
+    const x0=X(p[i][0]), y=Y(p[i][1]), x1=X(i+1<p.length?p[i+1][0]:maxD);
+    path += (i===0?`M${x0.toFixed(1)},${y.toFixed(1)}`:`L${x0.toFixed(1)},${y.toFixed(1)}`) + `L${x1.toFixed(1)},${y.toFixed(1)}`;
+  }
+  const gy=[0,25,50,75,100].filter(v=>v<=maxY);
+  const grid=gy.map(v=>`<line x1="${ml}" y1="${Y(v)}" x2="${W-mr}" y2="${Y(v)}" stroke="#242b33"/><text x="${ml-7}" y="${Y(v)+3.5}" fill="#5d6874" font-size="10" text-anchor="end">${v}</text>`).join('');
+  const gx=[0,25,50,75,100].filter(v=>v<=maxD).map(v=>`<text x="${X(v)}" y="${H-7}" fill="#5d6874" font-size="10" text-anchor="middle">${v}m</text>`).join('');
+  // mark the three bucket distances
+  const marks = BUCKETS.map(b=>{ const d=RANGES[b]; return `<line x1="${X(d)}" y1="${mt}" x2="${X(d)}" y2="${H-mb}" stroke="#4fd1c533" stroke-dasharray="3 3"/><text x="${X(d)}" y="${mt+11}" fill="#4fd1c5" font-size="9" text-anchor="middle">${b.toUpperCase()}</text>`; }).join('');
+  const area = path + ` L${X(maxD).toFixed(1)},${H-mb} L${ml},${H-mb} Z`;
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">${grid}${marks}${gx}
+    <path d="${area}" fill="#ffb02018"/><path class="kline" d="${path}" fill="none" stroke="#ffb020" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg>`;
+}
+function gauge(label, val, max, fmt, cls){
+  const pct = Math.max(2, Math.min(100, 100*val/max));
+  return `<div class="gauge"><div class="gl"><span>${label}</span><b>${fmt}</b></div><div class="bar ${cls||''}"><i style="width:${pct}%"></i></div></div>`;
+}
+
+/* ================= kill dashboard (overview) =================
+   Everything here is derived from the same numbers the rest of the page uses
+   (btk / ttk / dps at the current range) plus the weapon's own attachment list.
+   Attachment advice comes from the in-game attachment text: each sentence is
+   split at "at the cost of" / "but", the benefit half is credited to the goal
+   it names and the cost half is debited, so a recommendation can never be an
+   attachment whose own text says it hurts that goal. */
+const AXES = [
+  ['handling','SNAP ON TARGET', /handling|transition to aim down sights|transition to ads|draw speed|deploy/],
+  ['recoil','BEAM IT',         /recoil/],
+  ['accuracy','STAY ON TARGET',/accuracy|weapon sway|spread/],
+  ['velocity','REACH OUT',     /velocity/],
+  ['hipfire','NO-SCOPE',       /hip-?fire/],
+  ['capacity','STAY IN THE FIGHT', /capacity|rounds|ammunition/],
+  ['reload','RELOAD FASTER',   /reload/],
+  ['stealth','GO DARK',        /not visible to enemy soldiers|spotting|minimap/],
+  ['mobility','KEEP MOVING',   /movement speed/],
+];
+const ATTEFF = new Map();
+function attEffects(slot, tipIdx){
+  if(tipIdx<0 || !TIPS[tipIdx]) return null;
+  const key = slot+'|'+tipIdx;
+  const hit = ATTEFF.get(key); if(hit) return hit;
+  const s = TIPS[tipIdx].toLowerCase();
+  let cut = s.indexOf(' at the cost of ');
+  const alt = s.indexOf(' but ');
+  if(cut<0 || (alt>=0 && alt<cut)) cut = alt;
+  const good = cut<0 ? s : s.slice(0,cut);
+  const bad  = cut<0 ? '' : s.slice(cut);
+  const out = {};
+  for(const [id,,re] of AXES){
+    if(re.test(good)) out[id] = 1;
+    if(re.test(bad))  out[id] = -1;
+  }
+  ATTEFF.set(key, out);
+  return out;
+}
+const ordinal = n => n + (n%100>=11 && n%100<=13 ? 'th' : (['th','st','nd','rd'][n%10] || 'th'));
+function arsenalStanding(w, d){
+  const rows = WEAPONS.map(x=>({slug:x.slug, cls:x.cls, t: ttk(x,d)}));
+  const my = ttk(w,d);
+  const slower = rows.filter(r=>r.t > my).length;
+  const cls = rows.filter(r=>r.cls===w.cls);
+  const cs = cls.filter(r=>r.t > my).length;
+  const med = a => { const s = a.map(r=>r.t).sort((x,y)=>x-y); return s.length ? s[Math.floor(s.length/2)] : 0; };
+  return {
+    rank: rows.filter(r=>r.t < my).length + 1, n: rows.length,
+    beat: Math.round(100*slower/Math.max(1, rows.length-1)),
+    clsRank: cls.filter(r=>r.t < my).length + 1, clsN: cls.length,
+    clsBeat: Math.round(100*cs/Math.max(1, cls.length-1)),
+    medTTK: med(rows), clsMedTTK: med(cls), bestTTK: rows.reduce((m,r)=>Math.min(m,r.t), Infinity),
+  };
+}
+function attPicks(w){
+  const byAxis = {}, build = {};
+  const OFF = {handling:1.1, recoil:1.15, accuracy:1, velocity:.8, hipfire:.7};
+  for(const [slot, items] of Object.entries(w.atts||{})){
+    for(const [name, pts, tipIdx, ic] of items){
+      const eff = attEffects(slot, tipIdx);
+      if(eff) for(const [id] of AXES) if(eff[id]===1)
+        (byAxis[id] = byAxis[id] || []).push({slot, name, pts, ic, tip:tipIdx>=0?TIPS[tipIdx]:''});
+      let score = 0;
+      if(eff) for(const k in OFF) if(eff[k]===1) score += OFF[k];
+      if(score>0){
+        const cur = build[slot];
+        if(!cur || score>cur.score+1e-9 || (Math.abs(score-cur.score)<1e-9 && pts>cur.pts))
+          build[slot] = {slot, name, pts, ic, score, tip:tipIdx>=0?TIPS[tipIdx]:''};
+      }
+    }
+  }
+  for(const k in byAxis) byAxis[k].sort((a,b)=> b.pts-a.pts || a.name.localeCompare(b.name));
+  return {byAxis, build};
+}
+function curveMaxD(w){
+  return Math.min(140, Math.max(100, Math.ceil(Math.max(...w.pts.map(p=>p[0])))));
+}
+/* Exact staircase geometry. Damage — and therefore TTK — is constant inside each of the
+   game's range bands, so the curve needs one segment per band, not one per metre. */
+function ttkGeom(w){
+  const maxD = curveMaxD(w), P = w.pts, segs = [];
+  for(let i=0;i<P.length;i++){
+    const a = P[i][0], b = Math.min(i+1<P.length ? P[i+1][0] : maxD, maxD);
+    segs.push([a, b, ttk(w, a)]);
+  }
+  return {maxD, segs, maxY: Math.max(1, ...segs.map(s=>s[2]))};
+}
+function ttkPath(g, H, p){
+  p = p||2;
+  const X = x => (x/g.maxD*1000).toFixed(1);
+  const Y = v => (p + (v/g.maxY)*(H-2*p)).toFixed(1);
+  let d = '';
+  for(const [a,b,v] of g.segs) d += (d?'L':'M') + X(a) + ',' + Y(v) + 'L' + X(b) + ',' + Y(v);
+  return d;
+}
+/* screen position (%) of a point on the curve — fast (low TTK) sits at the top */
+const ttkPos = (g, dist, v, H, p) => {
+  p = p||2;
+  return {left:(dist/g.maxD*100).toFixed(2), top:((p + (v/g.maxY)*(H-2*p))/H*100).toFixed(2)};
+};
+/* full-size kill-speed curve */
+function killCurve(w, d){
+  const H = 190, p = 2, g = ttkGeom(w);
+  const path = ttkPath(g, H, p);
+  const area = path + `L1000,${H-p} L0,${H-p} Z`;
+  const grid = [0.25,0.5,0.75].map(f=>{ const y=(p+f*(H-2*p)).toFixed(1);
+    return `<line x1="0" y1="${y}" x2="1000" y2="${y}" stroke="#242b33" vector-effect="non-scaling-stroke"/>`; }).join('');
+  const svg = `<svg class="kcurve" viewBox="0 0 1000 ${H}" preserveAspectRatio="none" aria-hidden="true">
+    <defs><linearGradient id="kgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffb020" stop-opacity=".4"/><stop offset="1" stop-color="#ffb020" stop-opacity="0"/>
+    </linearGradient></defs>${grid}
+    <path d="${area}" fill="url(#kgrad)"/>
+    <path class="kline" d="${path}" fill="none" stroke="#ffb020" stroke-width="3" vector-effect="non-scaling-stroke"/></svg>`;
+  const dot = (dist, v, cur) => { const q = ttkPos(g, dist, v, H, p);
+    return `<span class="kdot ${cur?'cur':''}" style="left:${q.left}%;top:${q.top}%"></span>`; };
+  const dots = BUCKETS.map(b=>RANGES[b]<=g.maxD ? dot(RANGES[b], ttk(w,RANGES[b])) : '').join('') + dot(d, ttk(w,d), 'cur');
+  return {svg, dots, maxD:g.maxD, maxY:Math.round(g.maxY)};
+}
+/* the same curve, minified into the catalog card */
+function miniTTK(w, d, r){
+  const H = 48, p = 6, g = ttkGeom(w);
+  const path = ttkPath(g, H, p);
+  const q = ttkPos(g, d, ttk(w,d), H, p);
+  const x = (d/g.maxD*1000).toFixed(1);
+  const gid = 'mg-'+w.slug;
+  return `<div class="cmini">
+    <svg viewBox="0 0 1000 ${H}" preserveAspectRatio="none" aria-hidden="true">
+      <defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffb020" stop-opacity=".34"/><stop offset="1" stop-color="#ffb020" stop-opacity="0"/></linearGradient></defs>
+      <path d="${path + `L1000,${H-p} L0,${H-p} Z`}" fill="url(#${gid})"/>
+      <line x1="${x}" y1="${p}" x2="${x}" y2="${H-p}" stroke="#ffb020" stroke-opacity=".35" stroke-width="1" stroke-dasharray="2 3" vector-effect="non-scaling-stroke"/>
+      <path d="${path}" fill="none" stroke="#ffb020" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    </svg>
+    <span class="cl">TTK 0–${g.maxD} m</span>
+    <span class="cw">${btk(w,d)<=1?'1 shot':Math.round(ttk(w,d))+' ms'}</span>
+    <span class="cur" style="left:${q.left}%;top:${q.top}%"></span>
+  </div>`;
+}
+/* to-scale strip: raise the weapon, fire the magazine, reload — widths are real time */
+function cadenceStrip(w, cycle, fullReload){
+  const shots = Math.max(0, w.mag-1), CAP = 18, shown = Math.min(shots, CAP);
+  const segs = [{cls:'s-dep', t:w.deploy*1000, tip:'Raise the weapon · '+r1(w.deploy)+' s'}];
+  for(let i=0;i<shown;i++) segs.push({cls:'s-cyc', t:cycle, tip:'Shot '+(i+2)+' · '+Math.round(cycle)+' ms after the previous'});
+  if(shots>shown) segs.push({cls:'s-more', t:cycle*(shots-shown), tip:(shots-shown)+' more shots · '+r1(cycle*(shots-shown)/1000)+' s'});
+  if(fullReload) segs.push({cls:'s-rld', t:fullReload*1000, tip:'Reload from empty · '+r1(fullReload)+' s'});
+  const total = segs.reduce((a,s)=>a+s.t,0) || 1;
+  return `<div class="ctimeline">${segs.map(s=>
+      `<i class="${s.cls}" data-w="${(s.t/total*100).toFixed(2)}" title="${esc(s.tip)}"></i>`).join('')}</div>
+    <div class="clegend">
+      <span><i class="s-dep"></i>raise ${r1(w.deploy)} s</span>
+      <span><i class="s-cyc"></i>${w.mag} shots · ${Math.round(cycle)} ms apart</span>
+      ${fullReload?`<span><i class="s-rld"></i>reload ${r1(fullReload)} s</span>`:''}
+      <span><b>${r1(total/1000)} s</b> from sprint to fully loaded</span>
+    </div>`;
+}
+function killDash(w, d){
+  const st = arsenalStanding(w, d);
+  const myBTK = btk(w,d), oneShot = myBTK<=1, myTTK = Math.round(ttk(w,d));
+  const cycle = CYCLE_MS(w);
+  const efk = Math.max(1, Math.floor(w.mag/myBTK));
+  const squad = Math.round(myTTK + 3*cycle);
+  const hue = st.beat>=75 ? 'var(--accent2)' : st.beat>=50 ? 'var(--accent)' : st.beat>=25 ? 'var(--a)' : 'var(--s)';
+  const R = 56, C = +(2*Math.PI*R).toFixed(1), off = +(C*(1 - st.beat/100)).toFixed(1);
+  const shown = Math.min(myBTK, 14);
+  const step = Math.min(150, Math.round(820/Math.max(1,myBTK))) + 'ms';
+  const pips = Array.from({length:shown}, (_,i)=>`<i class="${i===shown-1?'last':''}" style="--i:${i}"></i>`).join('');
+
+  const bars = [['This weapon', ttk(w,d), 1], [w.clsLabel+' median', st.clsMedTTK, 0],
+                ['Arsenal median', st.medTTK, 0], ['Fastest in the game', st.bestTTK, 0]];
+  const maxT = Math.max(1, ...bars.map(b=>b[1]));
+  const race = bars.map(([n,t,me])=>`<div class="krow ${me?'me':''}">
+      <span class="n">${esc(n)}</span>
+      <span class="b"><i data-w="${Math.max(4, Math.round(100 - t/maxT*86))}"></i></span>
+      <span class="v">${t<=0?'1-shot':Math.round(t)+'<small>ms</small>'}</span></div>`).join('');
+
+  const tiles = [
+    {k:'Arsenal rank', pre:'#', num:st.rank, suf:'/'+st.n, hot:true},
+    oneShot ? {k:'Time to kill', text:'1-SHOT', hot:true} : {k:'Time to kill', num:myTTK, suf:'ms', hot:true},
+    {k:'Shots to kill', num:myBTK},
+    {k:'Enemies / mag', num:efk},
+    {k:'Squad wipe ×4', num:squad, suf:'ms', hot:true},
+    {k:'DPS @ '+d+'m', num:Math.round(dps(w,d))},
+  ];
+  const tilesHTML = tiles.map((t,i)=>{
+    const val = t.text != null ? esc(t.text)
+      : `${t.pre||''}<span data-count="${t.num}">0</span>${t.suf||''}`;
+    return `<div class="ktile ${t.hot?'hot':''}" style="--i:${i*70}ms"><span class="k">${t.k}</span><span class="v">${val}</span></div>`;
+  }).join('');
+
+  const picks = attPicks(w);
+  const order = ['handling','recoil','accuracy','velocity','hipfire','capacity','reload','stealth'];
+  const used = new Set();
+  const cards = order.filter(id=>picks.byAxis[id] && picks.byAxis[id].length).slice(0,6).map(id=>{
+    const list = picks.byAxis[id];
+    const top = list.find(a=>!used.has(a.name)) || list[0];
+    used.add(top.name);
+    const alts = list.filter(a=>a!==top).slice(0,4);
+    return `<div class="klcard">
+      <div class="goal">${AXES.find(a=>a[0]===id)[1]}</div>
+      <div class="pick">${attIcon(top.slot, top.ic)}
+        <div><div class="nm">${esc(top.name)}</div><div class="meta">${esc(top.slot)}</div></div>
+        ${top.pts?`<span class="pt">${top.pts} pt</span>`:''}</div>
+      ${top.tip?`<div class="why">${esc(top.tip)}</div>`:''}
+      ${alts.length?`<div class="klalts">${alts.map(a=>`<span class="klalt">${esc(a.name)} · ${a.pts} pt</span>`).join('')}</div>`:''}
+    </div>`;
+  }).join('');
+
+  const SLOT_ORDER = ['Muzzle','Barrel','Underbarrel','Magazine','Ammo','Optic','Laser','Ergonomics','Light'];
+  const build = SLOT_ORDER.filter(s=>picks.build[s]).map(s=>{
+    const b = picks.build[s];
+    return `<div class="kbslot">${attIcon(s, b.ic)}<div><span class="sl">${esc(s)}</span><span class="nm">${esc(b.name)}</span></div>${b.pts?`<span class="pt">${b.pts} pt</span>`:''}</div>`;
+  }).join('');
+
+  const curve = killCurve(w, d);
+  return `<div class="kdash" id="kdash">
+    <div class="khero">
+      <div class="kdial"><svg viewBox="0 0 132 132">
+        <circle class="trk" cx="66" cy="66" r="${R}"/>
+        <circle class="arc" cx="66" cy="66" r="${R}" stroke="${hue}"
+          style="stroke-dasharray:${C};stroke-dashoffset:${C}" data-off="${off}"/></svg>
+        <div class="mid"><div class="big" data-count="${oneShot?0:myTTK}">${oneShot?'∞':myTTK}</div>
+        <div class="cap">${oneShot?'one shot':'ms to kill'}</div></div></div>
+      <div class="khead">
+        <div class="klabel">Kill speed @ ${d} m</div>
+        <h4>${esc(w.name)}</h4>
+        <div class="krank">Beats <b>${st.beat}%</b> of all ${st.n} weapons · ranked <b>#${st.clsRank}</b> of ${st.clsN} ${esc(w.clsLabel)}s</div>
+        <div class="kpips" style="--step:${step}">${pips}<span class="knote" style="margin:0 0 0 9px">${myBTK} hit${myBTK>1?'s':''} · ${oneShot?'instant kill':'≈ '+myTTK+' ms'}</span></div>
+        <div class="knote">Squad wipe (4 targets) in <b>${squad} ms</b> · <b>${efk}</b> enemies per magazine · <b>${Math.round(dps(w,d))}</b> DPS</div>
+      </div>
+      <div class="kbadge">
+        <div class="lb">Arsenal rank</div>
+        <div class="rk">#${st.rank}<small>/${st.n}</small></div>
+        <div class="kpill">${ordinal(st.beat)} percentile</div>
+      </div>
+    </div>
+
+    <div class="kgrid2">
+      <div class="kpanel"><h4>Time to kill by distance — lower is faster</h4>
+        <div class="kcurvewrap">${curve.svg}${curve.dots}
+          <span class="ky" style="top:1px">0 ms · fastest</span>
+          <span class="ky" style="bottom:1px">${curve.maxY} ms · slowest</span></div>
+        <div class="kxaxis">${[...new Set([0, RANGES.cqb, RANGES.mid, RANGES.long, curve.maxD].filter(v=>v<=curve.maxD))].map(v=>{
+          const pct = v/curve.maxD*100;
+          return `<span style="left:${pct.toFixed(2)}%;transform:translateX(${v===0?'0':v===curve.maxD?'-100%':'-50%'})">${v} m</span>`;
+        }).join('')}</div>
+      </div>
+      <div class="kpanel"><h4>Kill speed race</h4><div class="krace">${race}</div>
+        <div class="note">Teal dots on the curve mark the 10 / 35 / 100 m brackets, amber is the range you are evaluating. Times use the catalog model: 100 HP chest, constant damage per band, no attachments.</div>
+      </div>
+    </div>
+
+    <div class="ktiles">${tilesHTML}</div>
+
+    <div class="kpanel"><h4>Best upgrades for this weapon — tuned for kills</h4>
+      ${cards ? `<div class="kload">${cards}</div>` : '<div class="none">No attachment data.</div>'}
+    </div>
+
+    <div class="kpanel"><h4>One pick per slot</h4>
+      ${build ? `<div class="kbuild">${build}</div>` : '<div class="none">No attachment data.</div>'}
+      <div class="note">Ranked by the weapon's own attachment text (point cost is the game's measure of effect strength). Suggestions, not verdicts — test them on the range.</div>
+    </div>
+  </div>`;
+}
+
+/* Replays the chart animations of a pane; with animate=false it snaps to the final
+   state (used while dragging the range slider, where replays would flicker). */
+function playAnim(root, animate){
+  if(!root) return;
+  root.classList.toggle('noanim', !animate);
+  root.querySelectorAll('[data-count]').forEach(el=>{
+    const to = +el.dataset.count, dec = +(el.dataset.dec||0);
+    const fmt = v => dec ? v.toFixed(dec) : String(Math.round(v));
+    if(!animate){ el.textContent = fmt(to); return; }
+    const t0 = performance.now();
+    const tick = t => {
+      const k = Math.min(1, (t-t0)/900), e = 1-Math.pow(1-k,3);
+      el.textContent = fmt(to*e);
+      if(k<1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+  root.querySelectorAll('.kline').forEach(l=>l.style.setProperty('--len', String(l.getTotalLength ? l.getTotalLength() : 4000)));
+  const apply = () => {
+    root.querySelectorAll('[data-w]').forEach(i=>{ i.style.width = i.dataset.w+'%'; });
+    root.querySelectorAll('[data-h]').forEach(i=>{ i.style.height = i.dataset.h+'%'; });
+    root.querySelectorAll('.arc[data-off]').forEach(c=>{ c.style.strokeDashoffset = c.dataset.off; });
+  };
+  if(animate) requestAnimationFrame(apply); else apply();
+}
+
+/* ---------- shared ranking + chart helpers (ballistics / range / damage / maps) ---------- */
+function rankOf(get, value, lowerBetter){
+  const all = WEAPONS.map(get).filter(v=>typeof v==='number' && isFinite(v));
+  const n = all.length;
+  const rank = all.filter(v=> lowerBetter ? v < value : v > value).length + 1;
+  return {rank, n, pct: Math.max(3, Math.round(100*(n-rank)/Math.max(1, n-1)))};
+}
+const toneOf = pct => pct>=75 ? 'tone3' : pct>=50 ? 'tone2' : pct>=25 ? 'tone1' : 'tone0';
+function prow(label, value, fmt, r){
+  return `<div class="prow"><span class="n">${esc(label)}</span>
+    <span class="b"><i class="${toneOf(r.pct)}" data-w="${r.pct}"></i></span>
+    <span class="v">${fmt(value)}</span>
+    <span class="r">#${r.rank}<small>/${r.n}</small></span></div>`;
+}
+/* n-axis radar; radius is the value itself, so "further out = better" */
+function radar(axes){
+  const n = axes.length, C = 100, R = 74;
+  const pt = (i, r) => { const a = -Math.PI/2 + i*2*Math.PI/n; return [C + Math.cos(a)*r, C + Math.sin(a)*r]; };
+  const rings = [.25,.5,.75,1].map(f=>`<polygon points="${axes.map((_,i)=>pt(i,R*f).map(v=>v.toFixed(1)).join(',')).join(' ')}" fill="none" stroke="#242b33"/>`).join('');
+  const spokes = axes.map((_,i)=>{ const [x,y]=pt(i,R); return `<line x1="${C}" y1="${C}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#242b33"/>`; }).join('');
+  const poly = axes.map((a,i)=>pt(i, R*Math.max(.07, Math.min(1, a.v))).map(v=>v.toFixed(1)).join(',')).join(' ');
+  const dots = axes.map((a,i)=>{ const [x,y]=pt(i, R*Math.max(.07, Math.min(1, a.v)));
+    return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.6" fill="${a.c||'#ffb020'}"/>`; }).join('');
+  const labels = axes.map((a,i)=>{ const [x,y]=pt(i, R+18);
+    return `<text x="${x.toFixed(1)}" y="${(y+3.5).toFixed(1)}" fill="#8b97a4" font-size="10.5" text-anchor="middle" font-weight="700" letter-spacing=".06em">${a.label}</text>`; }).join('');
+  return `<div class="radar">
+    <svg viewBox="-20 -16 240 232" role="img">
+      ${rings}${spokes}
+      <g class="poly"><polygon points="${poly}" fill="rgba(255,176,32,.15)" stroke="#ffb020" stroke-width="2" stroke-linejoin="round"/>${dots}</g>
+      ${labels}
+    </svg>
+    <div class="legend">${axes.map(a=>`<div class="lg"><i style="background:${a.c||'#ffb020'}"></i><span>${esc(a.name)}</span><b>${esc(a.text)}</b></div>`).join('')}</div>
+  </div>`;
+}
+/* recoil direction vector: real datamined magnitude + lateral bias + shot-to-shot variation */
+function recoilVector(w){
+  const rc = w.recoil || {};
+  if(rc.v==null || rc.dir==null) return '<div class="none">No recoil data.</div>';
+  const mx = Math.max(1, ...WEAPONS.map(x=>(x.recoil&&x.recoil.v)||0));
+  const C = 100, R = 76;
+  const ang = (rc.dir - 90) * Math.PI/180;
+  const len = R * (0.4 + 0.6*Math.min(1, rc.v/mx));
+  const half = Math.max(4, Math.min(70, rc.var||0)) * Math.PI/180;
+  const px = (a,r)=>[C+Math.cos(a)*r, C+Math.sin(a)*r];
+  const [c1x,c1y] = px(ang-half, R+6), [c2x,c2y] = px(ang+half, R+6);
+  const [ax,ay] = px(ang, len);
+  const rings = [.33,.66,1].map(f=>`<circle cx="${C}" cy="${C}" r="${(R*f).toFixed(1)}" fill="none" stroke="#242b33"/>`).join('');
+  return `<div class="radar">
+    <svg viewBox="0 0 200 200" role="img">
+      ${rings}
+      <line x1="${C}" y1="${C}" x2="${C}" y2="${C-R}" stroke="#3a444f" stroke-dasharray="3 4"/>
+      <path d="M${C},${C} L${c1x.toFixed(1)},${c1y.toFixed(1)} A${R+6},${R+6} 0 0 1 ${c2x.toFixed(1)},${c2y.toFixed(1)} Z" fill="rgba(224,112,122,.14)" stroke="rgba(224,112,122,.4)"/>
+      <line class="rvarrow" x1="${C}" y1="${C}" x2="${ax.toFixed(1)}" y2="${ay.toFixed(1)}" stroke="#ffb020" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="${C}" cy="${C}" r="4" fill="#ffb020"/>
+    </svg>
+    <div class="legend">
+      <div class="lg"><i style="background:#ffb020"></i><span>Vertical recoil</span><b>${rc.v}</b></div>
+      <div class="lg"><i style="background:#ff9f43"></i><span>Direction (bias)</span><b>${rc.dir}°</b></div>
+      <div class="lg"><i style="background:#e0707a"></i><span>Variation (cone)</span><b>±${rc.var}°</b></div>
+      ${rc.incAds!=null?`<div class="lg"><i style="background:#54a0ff"></i><span>Recoil growth in ADS</span><b>${rc.incAds}</b></div>`:''}
+    </div>
+  </div>`;
+}
+/* every weapon plotted by CQB vs long-range percentile */
+function scatterRange(w){
+  const S = 330, P = 36;
+  const X = v => P + v/100*(S-2*P);
+  const Y = v => S - P - v/100*(S-2*P);
+  const grid = [25,50,75].map(f=>`<line x1="${X(f)}" y1="${P}" x2="${X(f)}" y2="${S-P}" stroke="#1e252c"/><line x1="${P}" y1="${Y(f)}" x2="${S-P}" y2="${Y(f)}" stroke="#1e252c"/>`).join('');
+  const frame = `<rect x="${P}" y="${P}" width="${S-2*P}" height="${S-2*P}" fill="none" stroke="#242b33"/>`;
+  const e = EFFECT[w.slug];
+  const dots = WEAPONS.map(x=>{
+    const p = EFFECT[x.slug]; if(!p) return '';
+    const me = x.slug===w.slug, same = x.cls===w.cls && !me;
+    return `<circle cx="${X(p.cqb).toFixed(1)}" cy="${Y(p.long).toFixed(1)}" r="${me?6:same?4.2:3}" fill="${me?'#ffb020':same?'#54a0ff':'#3a444f'}"><title>${esc(x.name)}</title></circle>`;
+  }).join('');
+  const quad = (x,y,t,anchor)=>`<text x="${x}" y="${y}" fill="#5d6874" font-size="9" letter-spacing=".08em" text-anchor="${anchor}" stroke="#0a0c0f" stroke-width="3" paint-order="stroke">${t}</text>`;
+  const ax = `<text x="${S/2}" y="${S-8}" fill="#8b97a4" font-size="10" text-anchor="middle">close-quarters percentile →</text>
+    <text x="12" y="${S/2}" fill="#8b97a4" font-size="10" text-anchor="middle" transform="rotate(-90 12 ${S/2})">long-range percentile →</text>`;
+  return `<div class="scatter">
+    <svg viewBox="0 0 ${S} ${S}" role="img">
+      ${frame}${grid}${dots}
+      <circle class="spulse" cx="${X(e.cqb).toFixed(1)}" cy="${Y(e.long).toFixed(1)}" r="9" fill="none" stroke="#ffb020" stroke-width="2"/>
+      <circle cx="${X(e.cqb).toFixed(1)}" cy="${Y(e.long).toFixed(1)}" r="6" fill="#ffb020" stroke="#0a0c0f" stroke-width="2"/>
+      ${quad(S-P-2, P+12, 'ALL-ROUNDER', 'end')}${quad(P+2, P+12, 'LONG SPECIALIST', 'start')}
+      ${quad(S-P-2, S-P-4, 'CQB SPECIALIST', 'end')}${quad(P+2, S-P-4, 'STRUGGLES', 'start')}
+      ${ax}
+    </svg>
+    <div class="snotes">
+      Every one of the ${WEAPONS.length} weapons plotted by how it ranks in close-quarters and long-range brackets.
+      <b>${esc(w.name)}</b> sits at <b>${e.cqb}th</b> CQB / <b>${e.long}th</b> long-range percentile.
+      Blue dots are other ${esc(w.clsLabel)}s. Top-right is the flex all-rounder corner.<br>
+      <span style="color:var(--dim2)">Percentiles come from kill time at each bracket's representative distance (${RANGES.cqb} / ${RANGES.mid} / ${RANGES.long} m), the same model used across the catalog.</span>
+    </div>
+  </div>`;
+}
+/* diverging per-map advantage chart */
+function mapDeltaChart(w){
+  const rows = mapFit(w);
+  const maxAbs = Math.max(1, ...rows.map(r=>Math.abs(r.delta)));
+  return rows.map((s,i)=>`<div class="mrow ${i===0?'best':''}">
+    <span class="n">${esc(s.map.name)}</span>
+    <span class="mtrack"><i class="${s.delta>=0?'pos':'neg'}" data-w="${Math.max(1.2, Math.abs(s.delta)/maxAbs*50).toFixed(1)}"></i></span>
+    <span class="v" style="color:${s.delta>2?'#6fd48a':s.delta<-2?'#e0707a':'#8b97a4'}">${s.delta>0?'+':''}${s.delta}</span></div>`).join('');
+}
+/* S–D distribution across the arsenal with this weapon's tier lit up */
+function tierLadder(ti){
+  const T = ['S','A','B','C','D'], dist = {S:0,A:0,B:0,C:0,D:0};
+  for(const k in TIER){ const t = TIER[k] && TIER[k].t; if(dist[t]!=null) dist[t]++; }
+  const max = Math.max(1, ...T.map(t=>dist[t]));
+  const col = t => t==='S'?'#ff5a5f':t==='A'?'#ff9f43':t==='B'?'#54a0ff':t==='C'?'#8b97a4':'#5d6874';
+  return `<div class="tierladder">${T.map(t=>`<div class="tl ${ti&&ti.t===t?'on':''}">
+    <span class="t" style="color:${col(t)}">${t}</span>
+    <span class="c">${dist[t]||0}</span>
+    <div class="b" data-h="${Math.round((dist[t]||0)/max*100)}"></div></div>`).join('')}</div>`;
+}
+const EFX_LABEL = {handling:'ADS', recoil:'recoil', accuracy:'accuracy', velocity:'velocity', hipfire:'hipfire', capacity:'mag', reload:'reload', stealth:'stealth', mobility:'move'};
+function efxPills(eff){
+  if(!eff) return '';
+  const parts = [];
+  for(const [id] of AXES){
+    if(eff[id]===1) parts.push(`<span class="up">+${EFX_LABEL[id]}</span>`);
+    else if(eff[id]===-1) parts.push(`<span class="dn">−${EFX_LABEL[id]}</span>`);
+  }
+  return parts.length ? `<div class="efx">${parts.slice(0,5).join('')}</div>` : '';
+}
+/* hits-to-kill ladder across distance */
+function btkCurve(w){
+  const maxD = curveMaxD(w), H = 190, mt = 10, mb = 10;
+  const S = []; for(let x=0;x<=maxD;x++) S.push([x, btk(w,x)]);
+  const maxB = Math.max(2, ...S.map(p=>p[1]));
+  const X = x => (x/maxD*1000).toFixed(1);
+  const Y = v => (mt + (v/maxB)*(H-mt-mb)).toFixed(1);
+  let path = ''; for(let i=0;i<S.length;i++) path += (i?'L':'M') + X(S[i][0]) + ',' + Y(S[i][1]);
+  const grid = [.25,.5,.75].map(f=>{ const y=(mt+f*(H-mt-mb)).toFixed(1);
+    return `<line x1="0" y1="${y}" x2="1000" y2="${y}" stroke="#242b33" vector-effect="non-scaling-stroke"/>`; }).join('');
+  const svg = `<svg class="kcurve" viewBox="0 0 1000 ${H}" preserveAspectRatio="none" aria-hidden="true">
+    <defs><linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#54a0ff" stop-opacity=".34"/><stop offset="1" stop-color="#54a0ff" stop-opacity="0"/></linearGradient></defs>
+    ${grid}<path d="${path}L${X(maxD)},${H-mb} L0,${H-mb} Z" fill="url(#bg2)"/>
+    <path class="kline" d="${path}" fill="none" stroke="#54a0ff" stroke-width="3" vector-effect="non-scaling-stroke"/></svg>`;
+  const d = state.dist;
+  const dot = (x,v,cls)=>`<span class="kdot ${cls||''}" style="left:${(x/maxD*100).toFixed(2)}%;top:${(mt+(v/maxB)*(H-mt-mb))/H*100}%;background:${cls?'#ffb020':'#54a0ff'}"></span>`;
+  const dots = BUCKETS.map(b=>RANGES[b]<=maxD ? dot(RANGES[b], btk(w,RANGES[b])) : '').join('') + dot(d, btk(w,d), 'cur');
+  return {svg, dots, maxB, maxD};
+}
+let curW = null;
+const paneState = {pane:'overview', att:null, attGoal:null, attq:''};
+
+function renderWeapon(w, keepScroll){
+  curW = w;
+  document.getElementById('viewCatalog').hidden = true;
+  document.getElementById('viewPlay').hidden = true;
+  const vw = document.getElementById('viewWeapon');
+  vw.hidden = false;
+  const rw = RW[w.name]||{}, ti = TIER[w.name], e = EFFECT[w.slug];
+  const d = state.dist;
+
+  // ---- command bar: identity + headline stats ----
+  setBackdrop(w.img);
+  document.getElementById('whead').innerHTML = `
+    <div class="wthumb"><img src="${w.img||''}" alt="${esc(w.name)}" decoding="async"></div>
+    <div class="wtt">
+      <div class="wkick">
+        <span class="cls">${w.clsLabel}</span>
+        ${ti?`<span class="pill tierpill ${ti.t}">TIER ${ti.t}</span>`:''}
+        <span class="wsub">${esc(weaponTagline(w))}</span>
+      </div>
+      <h2>${esc(w.name)}</h2>
+      <div class="wreal">${esc(rw.realName || w.ammo)}</div>
+    </div>`;
+
+  document.getElementById('wstats').innerHTML = [
+    ['RPM', rpmOf(w), ''],
+    ['Mag', w.mag, 'rds'],
+    ['Vel', w.velocity, 'm/s'],
+    ['TTK '+d+'m', btk(w,d)<=1?'1-shot':Math.round(ttk(w,d)), btk(w,d)<=1?'':'ms', true],
+    ['BTK', btk(w,d), ''],
+    ['DPS '+d+'m', Math.round(dps(w,d)), '', true],
+  ].map(([k,v,u,hl])=>`<div class="wst ${hl?'hl':''}"><span class="k">${k}</span><span class="v">${v}${u?`<small>${u}</small>`:''}</span></div>`).join('');
+
+  // ---- rail: section nav + bracket percentiles ----
+  document.getElementById('subnav').innerHTML = SECTIONS.map(([id,l])=>`<a href="#" data-s="${id}">${l}</a>`).join('');
+  document.getElementById('subnav').querySelectorAll('a').forEach(a=>a.onclick=ev=>{ ev.preventDefault(); showPane(a.dataset.s); });
+  document.getElementById('wrailmeta').innerHTML =
+    `<div class="wrk">Range profile · percentile</div>` +
+    BUCKETS.map(b=>`<div class="wrb"><span>${b.toUpperCase()}</span><b>${e[b]}</b>
+      <div class="bar c2"><i style="width:${Math.max(2,e[b])}%"></i></div></div>`).join('');
+  syncRange();
+
+  // ---- sections ----
+  const specRows = [
+    ['RoF field (datamined)', Math.round(w.rof)+' RPM'],
+    ['Burst / single', Math.round(w.burst)+' / '+Math.round(w.single)+' RPM'],
+    ['Muzzle velocity', w.velocity+' m/s'],
+    ['Magazine', w.mag+(w.mags?' ('+w.mags+' mags)':'')],
+    ['Reload (tac / empty)', (w.reloadLeft??'—')+' / '+(w.reloadEmpty??'—')+' s'],
+    ['Deploy / undeploy', w.deploy+' / '+w.undeploy+' s'],
+    ['ADS spread (stand/move)', w.adsStand+'° / '+w.adsMove+'°'],
+    ['Hip spread (stand/move)', w.hipStand+'° / '+w.hipMove+'°'],
+    ['Recoil (vert / dir / var)', w.recoil&&w.recoil.v!=null?`${w.recoil.v} / ${w.recoil.dir}° / ${w.recoil.var}°`:'—'],
+    ['Drag coefficient', w.drag],
+  ].map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join('');
+
+  const quickRows = [
+    ['Reload (tac / empty)', (w.reloadLeft??'—')+' / '+(w.reloadEmpty??'—')+' s'],
+    ['Deploy / undeploy', w.deploy+' / '+w.undeploy+' s'],
+    ['ADS spread (stand/move)', w.adsStand+'° / '+w.adsMove+'°'],
+    ['Hip spread (stand/move)', w.hipStand+'° / '+w.hipMove+'°'],
+    ['Recoil (vert / dir / var)', w.recoil&&w.recoil.v!=null?`${w.recoil.v} / ${w.recoil.dir}° / ${w.recoil.var}°`:'—'],
+    ['Drag coefficient', w.drag],
+  ].map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join('');
+
+  const dmgRows = w.pts.map((q,i)=>{
+    const a=q[0], b=(i+1<w.pts.length)?w.pts[i+1][0]:null;
+    return `<div class="dmgrow"><span class="r">${a}${b===null?'m+':'–'+b+'m'}</span><span>${r1(shellDmg(w,a))} dmg</span>
+      <b>${btk(w,a)<=1?'1 shot':btk(w,a)+' hits · '+Math.round(ttk(w,a))+' ms'}</b></div>`;
+  }).join('');
+
+  const gaugeMax = {rof:1200, vel:1100, mag:110};
+
+  const mapScores = mapFit(w);
+  const top = mapScores.slice(0,6);
+  const worst = mapScores[mapScores.length-1];
+  const best = mapScores[0];
+  const spread = Math.round((best.delta - worst.delta)*10)/10;
+  const maxAbs = Math.max(1, ...mapScores.map(s=>Math.abs(s.delta)));
+  const dcolor = v => v>2 ? '#6fd48a' : (v<-2 ? '#e0707a' : '#8b97a4');
+  const mapCards = top.map((s,i)=>{
+    const m = s.map;
+    const art = MAPIMG[m.slug] ? `style="background-image:url('${MAPIMG[m.slug]}')"` : '';
+    const maxPart = Math.max(...s.parts.map(p=>p.v), 1);
+    const pr = m.profile || {cqb:1/3, mid:1/3, long:1/3};
+    const mix = Math.round((pr.cqb+pr.mid+pr.long)*100) || 100;
+    return `<div class="mapcard ${i===0?'top':''}">
+      <div class="art" ${art}><span class="rank">#${i+1}</span><span class="fit" style="color:${dcolor(s.delta)}">${s.delta>0?'+':''}${s.delta}</span></div>
+      <div class="mb">
+        <div><h5>${esc(m.name)}</h5><div class="ms">${esc(m.size||'')}</div></div>
+        <div class="comp" title="Documented engagement mix">
+          <i class="c1" data-w="${(pr.cqb*100).toFixed(1)}"></i>
+          <i class="c2" data-w="${(pr.mid*100).toFixed(1)}"></i>
+          <i class="c3" data-w="${(pr.long*100).toFixed(1)}"></i>
+        </div>
+        <div class="ms" style="letter-spacing:.02em">mix — CQB ${Math.round(pr.cqb*mix)}% · mid ${Math.round(pr.mid*mix)}% · long ${Math.round(pr.long*mix)}%</div>
+        <div class="why">${esc(fitReason(w, s))}</div>
+        ${m.notes?`<div class="why" style="color:var(--dim2)">${esc(m.notes.replace(/^inferred: ?/i,''))}</div>`:''}
+        <div class="pfit">${s.parts.map(p=>`<div><div class="c">${p.k} ${Math.round(p.v)}</div><div class="bar c3"><i data-w="${Math.max(3,Math.round(p.v/maxPart*100))}"></i></div></div>`).join('')}</div>
+        <div class="mtags">${(m.modes||[]).slice(0,3).map(x=>`<span class="tag">${esc(x)}</span>`).join('')}<span class="tag">fit ${s.fit}/100</span></div>
+      </div>
+    </div>`;
+  }).join('');
+
+  const attTotal = Object.values(w.atts||{}).reduce((a,b)=>a+b.length,0);
+
+  // ---- ballistics: ranked rows, spread cone, recoil vector ----
+  const BSTATS = [
+    ['Fire rate',            x=>60000/CYCLE_MS(x),   false, v=>Math.round(v)+' rpm'],
+    ['Muzzle velocity',      x=>x.velocity,          false, v=>Math.round(v)+' m/s'],
+    ['Magazine',             x=>x.mag,               false, v=>v+' rds'],
+    ['Reload · tactical',    x=>x.reloadLeft,        true,  v=>v+' s'],
+    ['Reload · empty',       x=>x.reloadEmpty,       true,  v=>v+' s'],
+    ['Deploy time',          x=>x.deploy,            true,  v=>v+' s'],
+    ['Vertical recoil',      x=>x.recoil&&x.recoil.v,true,  v=>String(v)],
+    ['Recoil direction',     x=>x.recoil&&x.recoil.dir,true,v=>v+'°'],
+    ['Recoil variation',     x=>x.recoil&&x.recoil.var,true,v=>v+'°'],
+    ['Recoil growth in ADS', x=>x.recoil&&x.recoil.incAds,true,v=>String(v)],
+    ['ADS spread · standing',x=>x.adsStand,          true,  v=>v+'°'],
+    ['ADS spread · moving',  x=>x.adsMove,           true,  v=>v+'°'],
+    ['Hip spread · standing',x=>x.hipStand,          true,  v=>v+'°'],
+    ['Hip spread · moving',  x=>x.hipMove,           true,  v=>v+'°'],
+  ];
+  const statRows = BSTATS.map(([label,get,lb,fmt])=>{
+    const val = get(w);
+    if(typeof val!=='number' || !isFinite(val)) return '';
+    return prow(label, val, fmt, rankOf(get, val, lb));
+  }).join('');
+
+  const spreadMax = Math.max(0.5, ...WEAPONS.map(x=>Math.max(x.adsStand||0, x.adsMove||0, x.hipStand||0, x.hipMove||0)));
+  const tight = v => Math.max(0.08, 1 - Math.min(1, (v||0)/spreadMax));
+  const spreadAxes = [
+    {label:'ADS-S', name:'ADS · standing', text:w.adsStand+'°', v:tight(w.adsStand), c:'#4fd1c5'},
+    {label:'ADS-M', name:'ADS · moving',   text:w.adsMove+'°',  v:tight(w.adsMove),  c:'#54a0ff'},
+    {label:'HIP-M', name:'Hip · moving',   text:w.hipMove+'°',  v:tight(w.hipMove),  c:'#ff5a5f'},
+    {label:'HIP-S', name:'Hip · standing', text:w.hipStand+'°', v:tight(w.hipStand), c:'#ffb020'},
+  ];
+
+  // ---- range: radar + bracket ranks ----
+  const rangeAxes = BUCKETS.map(b=>({
+    label:b.toUpperCase(),
+    name:{cqb:'Close quarters',mid:'Mid range',long:'Long range'}[b],
+    text:e[b]+'th pct', v:e[b]/100, c:{cqb:'#ff5a5f',mid:'#ffb020',long:'#4fd1c5'}[b]
+  }));
+
+  // ---- damage: tiles + hits-to-kill ladder ----
+  const muzzleDmg = shellDmg(w,0), farDmg = shellDmg(w, w.pts[w.pts.length-1][0]);
+  const damMaxD = Math.max(...w.pts.map(p=>p[0]));
+  let oneShotMax = -1, twoShotMax = -1;
+  for(let x=0;x<=damMaxD;x++){ const b = btk(w,x); if(b<=1) oneShotMax = x; if(b<=2) twoShotMax = x; }
+  const dmgTiles = [
+    {k:'Muzzle damage',   num:muzzleDmg, dec:1, hot:true},
+    {k:'At '+damMaxD+' m',num:farDmg, dec:1},
+    {k:'Damage kept',     num:Math.round(100*farDmg/Math.max(0.1,muzzleDmg)), suf:'%'},
+    {k:'1-shot range',    text:oneShotMax>=0 ? '≤ '+oneShotMax+' m' : '—', hot:oneShotMax>=0},
+    {k:'2-hit range',     text:twoShotMax>=0 ? '≤ '+twoShotMax+' m' : '—'},
+    {k:'First falloff at',text:w.pts.length>1 ? w.pts[1][0]+' m' : '—'},
+  ];
+  const dmgTilesHTML = dmgTiles.map((t,i)=>{
+    const val = t.text!=null ? esc(t.text)
+      : `${t.pre||''}<span${t.dec?` data-dec="${t.dec}"`:''} data-count="${t.num}">0</span>${t.suf||''}`;
+    return `<div class="ktile ${t.hot?'hot':''}" style="--i:${i*70}ms"><span class="k">${t.k}</span><span class="v">${val}</span></div>`;
+  }).join('');
+  const bc = btkCurve(w);
+
+  // ---- cadence: shot-to-shot and reload timing ----
+  const cycle = CYCLE_MS(w);
+  const rl = w.rl || {};
+  const fullReload = rl.empty!=null ? rl.empty : null;
+  const magDump = (w.mag-1)*cycle;
+  const loopSec = w.deploy + magDump/1000 + (fullReload||0);
+  const sustRpm = fullReload ? Math.round(w.mag/(magDump/1000 + fullReload)*60) : null;
+  const CSTATS = [
+    ['Shot → shot',         x=>CYCLE_MS(x), true, v=>Math.round(v)+' ms'],
+    ['Magazine dump',       x=>(x.mag-1)*CYCLE_MS(x), true, v=>Math.round(v)+' ms'],
+    ['Reload · from empty', x=>(x.rl && x.rl.empty!=null) ? x.rl.empty*1000 : null, true, v=>r1(v/1000)+' s'],
+    ['Reload · tactical',   x=>(x.rl && !x.rl.perShell && x.rl.tac!=null) ? x.rl.tac*1000 : null, true, v=>r1(v/1000)+' s'],
+    ['Raise / deploy',      x=>x.deploy*1000, true, v=>r1(v/1000)+' s'],
+    ['Holster',             x=>x.undeploy*1000, true, v=>r1(v/1000)+' s'],
+    ['Full loop',           x=>x.deploy*1000 + (x.mag-1)*CYCLE_MS(x) + ((x.rl && x.rl.empty!=null) ? x.rl.empty*1000 : 0), true, v=>r1(v/1000)+' s'],
+  ];
+  const cadRows = CSTATS.map(([label,get,lb,fmt])=>{
+    const val = get(w);
+    if(typeof val!=='number' || !isFinite(val)) return '';
+    return prow(label, val, fmt, rankOf(get, val, lb));
+  }).join('');
+  const medOf = a => { a = a.slice().sort((x,y)=>x-y); return a[Math.floor(a.length/2)]; };
+  const cycAll = WEAPONS.map(x=>CYCLE_MS(x));
+  const cycCls = WEAPONS.filter(x=>x.cls===w.cls).map(x=>CYCLE_MS(x));
+  const cadBars = [['This weapon', cycle, 1], [w.clsLabel+' median', medOf(cycCls), 0],
+                   ['Arsenal median', medOf(cycAll), 0], ['Fastest in the game', Math.min(...cycAll), 0]];
+  const cadMax = Math.max(1, ...cadBars.map(b=>b[1]));
+  const cadRace = cadBars.map(([n,t,me])=>`<div class="krow ${me?'me':''}">
+      <span class="n">${esc(n)}</span>
+      <span class="b"><i data-w="${Math.max(4, Math.round(100 - t/cadMax*86))}"></i></span>
+      <span class="v">${t<40?'instant':Math.round(t)+'<small>ms</small>'}</span></div>`).join('');
+  const autoMode = (w.modes||[]).includes('auto');
+  const mechNote = w.mech==='bolt'
+    ? `<b>Bolt action.</b> The action locks the gun for the full ${Math.round(cycle)} ms between shots — a miss costs an entire cycle, and there is no follow-up until the bolt is worked again.`
+    : w.mech==='pump'
+    ? `<b>Pump action.</b> You cycle between every shell${rl.perShell?`, and the tube loads one at a time (+${r1(rl.tac)} s each)`:''}. The game files publish no pump cycle time, so the catalog uses its standing ${Math.round(cycle)} ms estimate — verify it on the range.`
+    : autoMode
+    ? `<b>Automatic.</b> ${Math.round(cycle)} ms between rounds is the ceiling while the magazine lasts; after that the ${fullReload!=null?r1(fullReload)+' s':''} reload is what actually costs you the fight.`
+    : `<b>Semi-automatic.</b> One trigger pull per shot — ${Math.round(cycle)} ms is the trigger reset, so your own sight picture sets the real pace.`;
+  const cadTiles = [
+    {k:'Shot → shot', num:Math.round(cycle), suf:'ms', hot:true},
+    {k:'Shots / second', num:+(1000/cycle).toFixed(2), dec:2},
+    {k:'Magazine dump', num:+(magDump/1000).toFixed(2), dec:2, suf:'s'},
+    {k:'Reload from empty', text: fullReload!=null ? (fullReload>=10 ? Math.round(fullReload) : r1(fullReload)) + ' s' + (rl.est?'*':'') : '—', hot:fullReload!=null},
+    {k:'Full loop', num:+loopSec.toFixed(2), dec:2, suf:'s', hot:true},
+    {k:'Sustained', text: sustRpm!=null ? sustRpm+' rpm' : '—'},
+  ];
+  const cadTilesHTML = cadTiles.map((t,i)=>{
+    const val = t.text!=null ? esc(t.text)
+      : `${t.pre||''}<span${t.dec?` data-dec="${t.dec}"`:''} data-count="${t.num}">0</span>${t.suf||''}`;
+    return `<div class="ktile ${t.hot?'hot':''}" style="--i:${i*70}ms"><span class="k">${t.k}</span><span class="v">${val}</span></div>`;
+  }).join('');
+
+  document.getElementById('sections').innerHTML = `
+    <section class="pane" id="overview">
+      <h3 class="sh">Kill profile</h3>
+      ${killDash(w, d)}
+      <h3 class="sh" style="margin-top:28px">Details</h3>
+      ${w.desc?`<p class="desc">${esc(w.desc)}</p>`:''}
+      <div class="panels">
+        <div class="panel"><h4>At ${d} m — current range</h4>
+          <table class="spec">
+            <tr><td>Bullets to kill</td><td>${btk(w,d)}</td></tr>
+            <tr><td>Time to kill</td><td>${btk(w,d)<=1?'instant (1 shot)':Math.round(ttk(w,d))+' ms'}</td></tr>
+            <tr><td>Damage per hit</td><td>${r1(shellDmg(w,d))}</td></tr>
+            <tr><td>DPS</td><td>${Math.round(dps(w,d))}</td></tr>
+            <tr><td>Range bracket</td><td>${d<=RANGES.cqb?'close quarters':d<=RANGES.mid?'mid range':'long range'}</td></tr>
+          </table>
+          <div class="note">Adjust the Range control to re-evaluate every number on this page.</div>
+        </div>
+        <div class="panel"><h4>Handling</h4><div class="gauges">
+          ${gauge('Fire rate', rpmOf(w), gaugeMax.rof, rpmOf(w)+' RPM', '')}
+          ${gauge('Muzzle velocity', w.velocity, gaugeMax.vel, w.velocity+' m/s', 'c2')}
+          ${gauge('Magazine', w.mag, gaugeMax.mag, w.mag+' rds', 'c3')}
+        </div></div>
+        <div class="panel"><h4>Fire modes & loadout</h4><div class="modes">${
+          (w.modes||[]).map(m=>{const f=w.modeData&&w.modeData[m];
+            return `<span class="mode">${({auto:'Auto',single:'Single',burst:'Burst'})[m]||m}${f?` <b>${Math.round(f)}</b>`:''}</span>`}).join('') || '—'
+        }</div>
+        <table class="spec" style="margin-top:12px">
+          <tr><td>Caliber</td><td>${esc(w.ammo)}</td></tr>
+          ${w.pellets>1?`<tr><td>Pellets per shell</td><td>${w.pellets}</td></tr>`:''}
+          <tr><td>Attachment slots</td><td>${Object.keys(w.atts||{}).length}</td></tr>
+          <tr><td>Attachments</td><td>${attTotal}</td></tr>
+          <tr><td>Meta tier</td><td>${ti?`<span class="pill tierpill ${ti.t}">TIER ${ti.t}</span>`:'—'}</td></tr>
+        </table>
+        </div>
+        <div class="panel"><h4>Ballistics at a glance</h4><table class="spec">${quickRows}</table></div>
+      </div>
+    </section>
+
+    <section class="pane" id="ballistics">
+      <h3 class="sh">Ballistics & handling</h3>
+      <p class="lede">Every bar below is this weapon ranked against all ${WEAPONS.length} guns — a full bar means it is currently the best in the arsenal at that metric, and the number on the right is its rank.</p>
+      <div class="panels">
+        <div class="panel"><h4>Versus the arsenal</h4>${statRows || '<div class="none">No data.</div>'}</div>
+        <div class="panel"><h4>Spread cone — further out is tighter</h4>
+          ${radar(spreadAxes)}
+          <div class="note">Standalone cone half-angle in degrees at the muzzle. The shaded polygon is scaled against the widest weapon in the game (${r1(spreadMax)}°), not against this gun's own numbers.</div>
+        </div>
+      </div>
+      <div class="panels" style="margin-top:16px">
+        <div class="panel"><h4>Recoil vector</h4>${recoilVector(w)}
+          <div class="note">Arrow length is the datamined vertical magnitude; its angle is the lateral bias; the red wedge is the shot-to-shot variation. A short arrow inside a wide wedge means the pattern walks around unpredictably.</div>
+        </div>
+        <div class="panel"><h4>Weapon data</h4><table class="spec">${specRows}</table></div>
+      </div>
+      <div class="panel" style="margin-top:16px"><h4>Damage by range band</h4>${dmgRows}
+        <div class="note">${w.pellets>1?`Per-shell total (${w.pellets} pellets × ${r1(dmgAt(w,0))}).`:'Damage per bullet'} · constant inside each band · 100 HP chest.</div>
+      </div>
+    </section>
+
+    <section class="pane" id="range">
+      <h3 class="sh">Range profile</h3>
+      <p class="lede">How this weapon ranks against all ${WEAPONS.length} weapons in each engagement bracket, measured by kill time at the bracket's representative distance.</p>
+      <div class="panels">
+        <div class="panel"><h4>Bracket percentiles</h4>${radar(rangeAxes)}
+          <div class="note">100 = fastest killing weapon of the arsenal in that bracket, 0 = slowest. The triangle is scaled in absolute percentile, so a weapon that is only good up close points hard to one corner.</div>
+        </div>
+        <div class="panel"><h4>Where it lands</h4>
+          ${BUCKETS.map(b=>{
+            const dd = RANGES[b], kt = killTime(w,dd,b), rk = rankOf(x=>killTime(x,dd,b), kt, true);
+            return `<div class="prow"><span class="n">${{cqb:'Close quarters',mid:'Mid range',long:'Long range'}[b]} · ${dd} m</span>
+              <span class="b"><i class="${toneOf(e[b])}" data-w="${Math.max(3,e[b])}"></i></span>
+              <span class="v">${Math.round(ttk(w,dd))}<small>ms</small></span>
+              <span class="r">#${rk.rank}<small>/${rk.n}</small></span></div>`;
+          }).join('')}
+          <div class="note">Times are first-kill TTK at the bracket distance; ranks use the weighted kill-time model that also charges the weapon's own cycle time, which is why they can differ slightly from raw TTK.</div>
+        </div>
+      </div>
+      <div class="panel" style="margin-top:16px"><h4>Arsenal landscape</h4>${scatterRange(w)}</div>
+    </section>
+
+    <section class="pane" id="damage">
+      <h3 class="sh">Damage & falloff</h3>
+      <p class="lede">Chest damage and hits-to-kill across distance. Dashed lines mark the three engagement brackets used for map recommendations.</p>
+      <div class="ktiles">${dmgTilesHTML}</div>
+      <div class="kgrid2" style="margin-top:14px">
+        <div class="kpanel"><h4>Chest damage by distance</h4>
+          <div class="kcurvewrap">${damageChart(w)}</div>
+          <div class="lgd"><span><i></i>damage per ${w.pellets>1?'shell':'bullet'}</span><span style="color:#4fd1c5">┆ bracket reference distance</span></div>
+        </div>
+        <div class="kpanel"><h4>Hits to kill by distance</h4>
+          <div class="kcurvewrap">${bc.svg}${bc.dots}
+            <span class="ky" style="top:1px">1 hit</span>
+            <span class="ky" style="bottom:1px">${bc.maxB} hits</span></div>
+          <div class="kxaxis">${[...new Set([0, RANGES.cqb, RANGES.mid, RANGES.long, bc.maxD].filter(v=>v<=bc.maxD))].map(v=>{
+            const pct = v/bc.maxD*100;
+            return `<span style="left:${pct.toFixed(2)}%;transform:translateX(${v===0?'0':v===bc.maxD?'-100%':'-50%'})">${v} m</span>`;
+          }).join('')}</div>
+          <div class="note">Steps are the game's real damage bands — damage is constant inside each band, so the ladder only moves where the game changes the multiplier.</div>
+        </div>
+      </div>
+      <div class="panel" style="margin-top:14px"><h4>Band by band</h4>${dmgRows}
+        <div class="note">${w.pellets>1?`Per-shell total (${w.pellets} pellets × ${r1(dmgAt(w,0))}).`:'Damage per bullet'} · 100 HP chest · no headshot or limb multiplier in the model.</div>
+      </div>
+    </section>
+
+    <section class="pane" id="cadence">
+      <h3 class="sh">Cadence</h3>
+      <p class="lede">How fast the gun comes back for the next shot, and how long it sits out while reloading. These are the numbers that decide the <b>second</b> engagement, not the first.</p>
+      <div class="kpanel" style="margin-bottom:16px">
+        <h4>Sprint → empty magazine → reloaded, to scale</h4>
+        ${cadenceStrip(w, cycle, fullReload)}
+        <div class="note">Bar widths are real time, drawn from the game's own deploy, fire-rate and reload fields. Hover a segment for its duration.</div>
+      </div>
+      <div class="kgrid2">
+        <div class="kpanel"><h4>Cadence vs the arsenal</h4>${cadRows || '<div class="none">No timing data.</div>'}</div>
+        <div class="kpanel"><h4>Shot-to-shot race</h4><div class="krace">${cadRace}</div>
+          <div class="note">${mechNote}</div>
+        </div>
+      </div>
+      <div class="ktiles" style="margin-top:14px">${cadTilesHTML}</div>
+      ${rl.perShell?`<div class="avoid" style="border-color:#3d4a2e"><b>Shell-fed.</b> The magazine loads one shell at a time — ${r1(rl.tac)} s each. Filling a ${w.mag}-shell tube from empty costs ${r1(fullReload)} s${rl.est?', derived from the game’s per-shell animation timings (pre-delay + first shell + each shell + post-delay)':''}. A tactical top-up is only worth it when you have a moment.</div>`:''}
+      ${rl.est && !rl.perShell?`<div class="note">* reload time reconstructed from the game's reload component timings.</div>`:''}
+    </section>
+
+    <section class="pane" id="attachments">
+      <h3 class="sh">Attachments</h3>
+      <p class="lede">${attTotal} attachments across ${Object.keys(w.atts||{}).length} slots. Every card is tagged with what its own in-game text says it does. Pick a slot, or filter the whole gun by the improvement you are chasing.</p>
+      <div class="attbar" id="attbar"></div>
+      <div class="gchips" id="attgoals"></div>
+      <input id="attq" class="attq" type="search" placeholder="Filter by name…" autocomplete="off">
+      <div class="attgrid" id="attgrid"></div>
+    </section>
+
+    <section class="pane" id="maps">
+      <h3 class="sh">Recommended maps</h3>
+      <p class="lede">Each map is scored by how well its documented engagement mix matches this weapon's kill speed in the three brackets. The number shown is the <b>advantage over an evenly mixed map</b>, in percentile points — so a flexible weapon sits near 0 everywhere, while a specialist swings hard between maps.</p>
+      ${MAPS.length ? `<div class="mapsum">
+        <div class="msum"><span class="k">Best</span><span class="v" style="color:#6fd48a">${esc(best.map.name)} <b>${best.delta>0?'+':''}${best.delta}</b></span></div>
+        <div class="msum"><span class="k">Weakest</span><span class="v" style="color:#e0707a">${esc(worst.map.name)} <b>${worst.delta>0?'+':''}${worst.delta}</b></span></div>
+        <div class="msum"><span class="k">Spread</span><span class="v">${best.delta>0?'':''}${spread} pts</span></div>
+        <div class="msum"><span class="k">Profile</span><span class="v">${esc(weaponTagline(w))}</span></div>
+      </div>` : '<div class="none">Map data unavailable.</div>'}
+      <div class="kpanel" style="margin-bottom:18px">
+        <h4>Advantage over an evenly mixed map — every map</h4>
+        <div class="krace">${MAPS.length ? mapDeltaChart(w) : '<div class="none">No map data.</div>'}</div>
+        <div class="note">Bars right of centre are maps that favour this weapon, left of centre are maps that work against it. Values are percentile points of kill speed relative to a hypothetical map with an even CQB / mid / long split.</div>
+      </div>
+      <div class="mapwrap">${mapCards}</div>
+      ${MAPS.length && worst.delta < -2 ? `<div class="avoid"><b>Worst fit:</b> ${esc(worst.map.name)} (${worst.delta>0?'+':''}${worst.delta}) — its engagement mix plays away from this weapon's strengths.</div>`
+        : (MAPS.length ? `<div class="avoid"><b>Uniform performer:</b> every map lands within ${spread} points, so map choice barely changes how this weapon plays.</div>` : '')}
+      ${(MAPS.length && Math.max(e.cqb,e.mid,e.long) < 25) ? `<div class="avoid" style="border-color:#4a2b2e"><b>Below average everywhere:</b> this weapon ranks in the bottom quarter of the arsenal in all three brackets, so no map is a clear advantage — it needs positioning and attachments to compensate.</div>` : ''}
+      <div class="note">Map engagement mix is sourced from EA developer map guides and public map breakdowns. Fit is a comparison aid, not a verdict: player skill, positioning and loadout still dominate.</div>
+    </section>
+
+    <section class="pane" id="meta">
+      <h3 class="sh">Meta & real world</h3>
+      <div class="panels">
+        <div class="panel"><h4>Tier distribution — ${esc(SEASON)}</h4>
+          ${tierLadder(ti)}
+          <div class="note">${ti?`This weapon sits in <b>tier ${ti.t}</b>.`:'This weapon has no published tier.'} Column heights are how many of the ${Object.keys(TIER).length} tiered weapons land in each band.</div>
+        </div>
+        <div class="panel"><h4>Meta reading</h4>
+          ${ti?`<div class="rw"><span class="pill tierpill ${ti.t}">TIER ${ti.t}</span><div style="margin-top:9px">${esc(ti.n)}</div>
+            <div class="kv" style="margin-top:8px">Source: <a href="${ti.s}" target="_blank" rel="noopener">${esc(ti.s.replace(/^https?:\/\//,'').replace(/\/$/,''))}</a></div></div>`
+            :'<div class="rw">No tier data for this weapon.</div>'}
+        </div>
+      </div>
+      <div class="panels" style="margin-top:16px">
+        <div class="panel"><h4>Real-world reference</h4>
+          ${rw.realName?`<div class="rw"><div class="rvb">${esc(rw.realName)}</div>
+            <div class="modes" style="margin-top:10px">${[rw.manufacturer?'<span class="mode">'+esc(rw.manufacturer)+'</span>':'', rw.country?'<span class="mode">'+esc(rw.country)+'</span>':'', rw.year?'<span class="mode"><b>'+esc(rw.year)+'</b></span>':'', rw.realCaliber?'<span class="mode">'+esc(rw.realCaliber)+'</span>':''].filter(Boolean).join('')}</div>
+            <div class="kv" style="margin-top:8px">${esc(rw.type||'')}</div>
+            ${rw.source?`<div class="kv" style="margin-top:8px">Source: <a href="${rw.source}" target="_blank" rel="noopener">${esc(rw.source.replace(/^https?:\/\//,'').split('/')[0])}</a></div>`:''}
+          </div>`:'<div class="rw">No reliable real-world mapping found.</div>'}
+        </div>
+        <div class="panel"><h4>In-game identity</h4>
+          <table class="spec">
+            <tr><td>Class</td><td>${esc(w.clsLabel)}</td></tr>
+            <tr><td>Caliber</td><td>${esc(w.ammo)}</td></tr>
+            <tr><td>Fire modes</td><td>${(w.modes||[]).map(m=>({auto:'Auto',single:'Single',burst:'Burst'})[m]||m).join(' / ')||'—'}</td></tr>
+            <tr><td>Pellets per shell</td><td>${w.pellets}</td></tr>
+            <tr><td>Attachment slots</td><td>${Object.keys(w.atts||{}).length}</td></tr>
+            <tr><td>Attachments</td><td>${attTotal}</td></tr>
+          </table>
+        </div>
+        <div class="panel" style="grid-column:1/-1"><h4>Sources & method</h4><div class="note" id="msrc"></div></div>
+      </div>
+    </section>`;
+
+  const msrc = document.getElementById('msrc');
+  if(msrc) msrc.innerHTML = document.getElementById('foot').innerHTML;
+  const aq = document.getElementById('attq');
+  if(aq){ aq.value = paneState.attq; aq.oninput = ()=>{ paneState.attq = aq.value; renderAttBody(w); }; }
+  renderAttBody(w);
+  showPane(paneState.pane, keepScroll);
+}
+
+/* tabs: only the active pane is in the layout, so switching is instant and never scrolls */
+function showPane(id, keepScroll){
+  if(!document.getElementById(id)) id = SECTIONS[0][0];
+  paneState.pane = id;
+  document.querySelectorAll('#sections > section.pane').forEach(s=>s.classList.toggle('on', s.id===id));
+  document.querySelectorAll('#subnav a').forEach(a=>a.classList.toggle('on', a.dataset.s===id));
+  playAnim(document.getElementById(id), !keepScroll);
+  if(!keepScroll) window.scrollTo(0,0);
+}
+
+/* attachments: a slot at a time, or every slot filtered by the improvement you want */
+function renderAttBody(w){
+  const slots = Object.entries((w&&w.atts)||{});
+  const bar = document.getElementById('attbar'), grid = document.getElementById('attgrid'), goals = document.getElementById('attgoals');
+  if(!bar || !grid) return;
+  if(!slots.length){ bar.innerHTML = ''; if(goals) goals.innerHTML = ''; grid.innerHTML = '<div class="none">No attachment data.</div>'; return; }
+  if(!slots.some(([s])=>s===paneState.att)) paneState.att = slots[0][0];
+
+  // which improvements this weapon can actually buy — never offer a filter that returns nothing
+  const avail = {};
+  for(const [slot, items] of slots) for(const it of items){
+    const eff = attEffects(slot, it[2]);
+    if(eff) for(const [id] of AXES) if(eff[id]===1) avail[id] = (avail[id]||0)+1;
+  }
+  const goal = paneState.attGoal && avail[paneState.attGoal] ? paneState.attGoal : null;
+  paneState.attGoal = goal;
+
+  bar.innerHTML = slots.map(([slot,items])=>
+    `<button class="attslot ${(!goal && slot===paneState.att) ?'on':''}" data-slot="${slot}">`+
+      `${GLYPH[slot]?`<svg viewBox="0 0 24 24" aria-hidden="true">${GLYPH[slot]}</svg>`:''}`+
+      `<span>${slot}</span><span class="n">${items.length}</span></button>`).join('');
+  bar.querySelectorAll('.attslot').forEach(b=>b.onclick=()=>{ paneState.att = b.dataset.slot; paneState.attGoal = null; renderAttBody(curW); });
+
+  if(goals){
+    goals.innerHTML = AXES.filter(([id])=>avail[id]).map(([id,label])=>
+        `<button class="gchip ${goal===id?'on':''}" data-goal="${id}">${label}<span style="opacity:.6;margin-left:6px">${avail[id]}</span></button>`).join('')
+      + (goal ? `<button class="gchip" data-goal="">✕ all slots</button>` : '');
+    goals.querySelectorAll('.gchip').forEach(b=>b.onclick=()=>{ paneState.attGoal = b.dataset.goal || null; renderAttBody(curW); });
+  }
+
+  const q = paneState.attq.trim().toLowerCase();
+  let list;
+  if(goal){
+    list = [];
+    for(const [slot, items] of slots) for(const it of items){
+      const eff = attEffects(slot, it[2]);
+      if(eff && eff[goal]===1) list.push({slot, it});
+    }
+    list.sort((a,b)=> b.it[1]-a.it[1]);
+  } else {
+    list = ((slots.find(([s])=>s===paneState.att)||[,[]])[1]).map(it=>({slot:paneState.att, it}));
+  }
+  if(q) list = list.filter(x=>String(x.it[0]).toLowerCase().includes(q));
+
+  grid.innerHTML = list.length ? list.map(({slot,it})=>{
+    const [n, pt, tipIdx, ic] = it;
+    return `<div class="attcard">${attIcon(slot,ic)}<div class="txt">
+      <div class="n">${esc(n)}${pt?`<em>${pt} pt</em>`:''}${goal?`<span class="slot">${esc(slot)}</span>`:''}</div>
+      ${tipIdx>=0?`<div class="td">${esc(TIPS[tipIdx])}</div>`:''}
+      ${efxPills(attEffects(slot, tipIdx))}</div></div>`;
+  }).join('') : '<div class="none">No matching attachments.</div>';
+}
+
+/* ================= playground: gunsmith sandbox =================
+   Effects are read straight from the datamined attachment fields, already resolved for this
+   weapon (weaponOverrides / frostyModifiers / adsTimeTierModByWeapon, folded in by the build
+   script). Two units are preserved: absolute fields keep their real magnitude (velocity ×1.25,
+   minimap spotting ×0.14) and tier fields are the in-game UI ladder. The direction of every
+   field is the one its own panel text uses — recoil, ADS-time and moving-spread tiers are
+   higher-is-better; hip-spread and the *TierShift family (deploy, sprint recovery, ADS move
+   speed) are lower-is-better — so a positive lane index always means an improvement, and a
+   negative one is the price paid for it. */
+const PG_FX = {
+  velMult:['velocity',1], velTierMod:['range',1],
+  dv:['damage per shot',1], btk:['shots to kill',-1], coll:['penetration',1],
+  magd:['magazine',1],
+  adsRecoilTierMod:['ADS recoil',1], hipRecoilTierMod:['hip recoil',1],
+  adsRecoilVariationTierMod:['ADS stability',1], hipRecoilVariationTierMod:['hip stability',1],
+  adsRecoilDecayMult:['recovery',1],
+  adsSpreadIncMult:['ADS spread',-1], movingAdsSpreadTierMod:['moving accuracy',1],
+  weaponSwayMult:['sway',-1],
+  adsTimeTierMod:['ADS time',1], adsTimeTierShift:['ADS time',-1],
+  adsMoveSpeedTierShift:['ADS move speed',-1],
+  sprintRecoveryTierShift:['sprint recovery',-1], deployTimeTierShift:['deploy',-1],
+  reloadSpeedMult:['reload',1], reloadSpeedTier:['reload',1],
+  hipSpreadTierMod:['hip spread',-1], hipSpreadIncMult:['hip spread',-1],
+  worldSpotMult:['spotting',-1], minimapSpotMult:['minimap',-1],
+  adsInc:['ADS spread (abs)',-1], hipInc:['hip spread (abs)',-1],
+};
+/* fields whose score is a signed delta, a ratio, or a value compared against the bare gun */
+const PG_REF = new Set(['dv','btk','coll']);
+const PG_MULT = new Set(['velMult','adsSpreadIncMult','hipSpreadIncMult','adsRecoilDecayMult',
+                         'reloadSpeedMult','weaponSwayMult','worldSpotMult','minimapSpotMult']);
+const PG_TIERK = new Set(['velTierMod','adsRecoilTierMod','hipRecoilTierMod','adsRecoilVariationTierMod',
+  'hipRecoilVariationTierMod','hipSpreadTierMod','movingAdsSpreadTierMod','adsTimeTierMod',
+  'adsTimeTierShift','adsMoveSpeedTierShift','sprintRecoveryTierShift','deployTimeTierShift','reloadSpeedTier']);
+const PG_LANES = [
+  {id:'range',    label:'Range',     f:[['velMult',1.0,'ratio'],['velTierMod',1.0,'delta']]},
+  {id:'power',    label:'Power',     f:[['dv',1.0,'ref'],['btk',3.0,'ref'],['coll',0.6,'ref']]},
+  {id:'recoil',   label:'Control',   f:[['adsRecoilTierMod',1.0,'delta'],['hipRecoilTierMod',0.6,'delta'],
+                                        ['adsRecoilVariationTierMod',0.5,'delta'],['adsRecoilDecayMult',1.5,'ratio']]},
+  {id:'accuracy', label:'Accuracy',  f:[['adsSpreadIncMult',1.5,'ratio'],['movingAdsSpreadTierMod',1.0,'delta'],
+                                        ['weaponSwayMult',1.0,'ratio']]},
+  {id:'handling', label:'Handling',  f:[['adsTimeTierMod',1.0,'delta'],['adsTimeTierShift',1.0,'delta'],
+                                        ['adsMoveSpeedTierShift',0.7,'delta'],['sprintRecoveryTierShift',1.0,'delta'],
+                                        ['deployTimeTierShift',1.0,'delta']]},
+  {id:'reload',   label:'Reload',    f:[['reloadSpeedMult',2.0,'ratio'],['reloadSpeedTier',1.0,'delta']]},
+  {id:'autonomy', label:'Capacity',  f:[['magd',0.15,'delta']]},
+  {id:'hipfire',  label:'Hip-fire',  f:[['hipSpreadTierMod',1.0,'delta'],['hipSpreadIncMult',1.5,'ratio']]},
+  {id:'stealth',  label:'Stealth',   f:[['worldSpotMult',1.0,'ratio'],['minimapSpotMult',1.0,'ratio']]},
+];
+const playState = {slug:null, sel:{}, slot:null, goal:'recoil'};
+
+function pgCurveAt(pts, d){
+  if(!pts || !pts.length) return 0;
+  let v = pts[0][1];
+  for(let i=0;i<pts.length;i++){ if(d >= pts[i][0]) v = pts[i][1]; else break; }
+  return v;
+}
+function pgDmg(w, o){
+  const b = w.play.base, fx = o.fx || {};
+  return (fx.pel || b.pel || 1) * pgCurveAt(fx.dmg || b.dmg, state.dist);
+}
+function pgOpt(w, slot, id){ const s = w.play.slots.find(x=>x.k===slot); return s ? s.o.find(o=>o.id===id) : null; }
+function pgBtk(dv){ return Math.max(1, Math.ceil(HEALTH/(dv+1e-9))); }
+function pgVal(w, o, k){
+  if(k==='dv') return pgDmg(w,o);
+  if(k==='btk') return pgBtk(pgDmg(w,o));
+  if(k==='coll') return (o.fx && o.fx.coll!=null) ? o.fx.coll : w.play.base.coll;
+  if(k==='magd') return (o.fx||{}).magd || 0;
+  return (o.fx||{})[k];
+}
+function pgBase(w, k){
+  if(k==='dv') return pgDmg(w,{fx:{}});
+  if(k==='btk') return pgBtk(pgDmg(w,{fx:{}}));
+  if(k==='coll') return w.play.base.coll;
+  return null;
+}
+function pgFScore(w, o, f){
+  const [k, wt, kind] = f, dir = (PG_FX[k]||[k,1])[1];
+  const v = pgVal(w, o, k);
+  if(v == null) return 0;
+  if(kind==='delta') return wt*dir*v;
+  if(kind==='ratio') return wt*(dir>0 ? v-1 : 1-v);
+  const b = pgBase(w, k);
+  if(!b) return 0;
+  return wt*dir*(v-b)/Math.abs(b);
+}
+function pgOptScore(w, o, lane){ let s=0; for(const f of lane.f) s += pgFScore(w,o,f); return s; }
+/* the factory option of a slot, used to re-base every score to the gun as it ships */
+function pgRef(w, slot){
+  const s = w.play.slots.find(x=>x.k===slot);
+  return s ? (s.o.find(o=>o.id===w.play.def[slot]) || null) : null;
+}
+/* a slot's contribution is measured against its factory part, so an axis reads exactly 0
+   for the untouched weapon even when a factory part carries an absolute value such as a
+   fully suppressed muzzle (spotting ×0). */
+function pgSlotScore(w, slot, id, lane){
+  const o = pgOpt(w, slot, id); if(!o) return 0;
+  const ref = pgRef(w, slot);
+  return pgOptScore(w, o, lane) - (ref ? pgOptScore(w, ref, lane) : 0);
+}
+function pgLane(w, sel, lane){
+  let s=0;
+  for(const sl of w.play.slots) s += pgSlotScore(w, sl.k, sel[sl.k], lane);
+  return s;
+}
+/* best single pick per slot for one goal. Every slot's contribution is independent, so
+   taking that slot's best delta is the true optimum for the objective, not an approximation. */
+function pgBuild(w, lane){
+  const sel = Object.assign({}, w.play.def);
+  for(const sl of w.play.slots){
+    let best = null, bs = 0;                 // 0 = keep the factory part
+    for(const o of sl.o){
+      const s = pgSlotScore(w, sl.k, o.id, lane);
+      if(s > bs + 1e-9 || (Math.abs(s-bs) < 1e-9 && best && o.p > best.p)){ best = o; bs = s; }
+    }
+    if(best) sel[sl.k] = best.id;
+  }
+  return sel;
+}
+/* widest swing any single slot can give this lane: the fan of values the player can reach */
+function pgEnv(w, lane){
+  let lo=0, hi=0;
+  for(const sl of w.play.slots){
+    let a=0, b=0;                            // the factory part is always available
+    for(const o of sl.o){ const s = pgSlotScore(w, sl.k, o.id, lane); if(s<a) a=s; if(s>b) b=s; }
+    lo += a; hi += b;
+  }
+  return {lo, hi};
+}
+/* field spec lookup, so a pill can be scored with the same function the lanes use */
+const PG_FIELD = {};
+for(const L of PG_LANES) for(const f of L.f) if(!PG_FIELD[f[0]]) PG_FIELD[f[0]] = f;
+
+function pgPills(w, slotId, o){
+  const fx = o.fx || {}, out = [];
+  for(const k in PG_FX){                 /* declaration order keeps the pill row stable */
+    if(fx[k] == null) continue;
+    const lab = PG_FX[k][0];
+    if(k==='adsInc' || k==='hipInc'){    /* absolute overrides carry no direction of their own */
+      out.push(`<span class="nu">${fx[k]}° ${lab}</span>`);
+      continue;
+    }
+    const spec = PG_FIELD[k];
+    if(!spec) continue;
+    const ref = pgRef(w, slotId);
+    const sc = pgFScore(w, o, spec) - (ref ? pgFScore(w, ref, spec) : 0);
+    if(Math.abs(sc) < 1e-9) continue;    /* identical to the factory part — nothing to report */
+    let txt;
+    if(PG_REF.has(k)){
+      const v = pgVal(w, o, k), b = pgBase(w, k);
+      if(k==='coll') txt = Math.round(v*100)+'%';
+      else if(k==='dv') txt = (v>=b?'+':'−') + Math.round(Math.abs(v/b-1)*100) + '%';
+      else txt = (v>b?'+':'−') + Math.abs(v-b);
+    } else if(PG_MULT.has(k)) txt = (fx[k]>1?'+':'−') + Math.round(Math.abs(fx[k]-1)*100) + '%';
+    else txt = (fx[k]>0?'+':'−') + Math.abs(fx[k]);
+    out.push(`<span class="${sc>0?'up':'dn'}">${txt} ${lab}</span>`);
+  }
+  if(fx.pel) out.push(`<span class="nu">${fx.pel} pellets</span>`);
+  if(fx.supp) out.push(`<span class="up">suppressed</span>`);
+  if(fx.vis === 1) out.push(`<span class="dn">laser visible</span>`);
+  else if(fx.vis === 0) out.push(`<span class="up">hidden</span>`);
+  if(fx.regen) out.push(`<span class="up">regen +${fx.regen}s</span>`);
+  if(fx.dur != null) out.push(`<span class="nu">recoil duration ${fx.dur}s</span>`);
+  return out.length ? `<div class="sfx">${out.join('')}</div>` : '';
+}
+function pgAbs(w, sel){
+  const b = w.play.base, BM = b.mult || {};
+  /* the factory parts carry their own absolute multipliers, so the readout starts from the
+     gun as it ships — a suppressed barrel shows 0% spotting, not a neutral 100% */
+  let vel = BM.velMult != null ? BM.velMult : 1,
+      rel = BM.reloadSpeedMult != null ? BM.reloadSpeedMult : 1,
+      wsp = BM.worldSpotMult != null ? BM.worldSpotMult : 1,
+      msp = BM.minimapSpotMult != null ? BM.minimapSpotMult : 1;
+  let magd = 0, pel = b.pel, adsInc = b.adsInc, hipInc = b.hipInc, coll = b.coll;
+  const tiers = {};
+  for(const sl of w.play.slots){
+    const o = pgOpt(w, sl.k, sel[sl.k]); if(!o) continue;
+    const fx = o.fx || {};
+    if(fx.velMult != null) vel *= fx.velMult;
+    if(fx.reloadSpeedMult != null) rel *= fx.reloadSpeedMult;
+    if(fx.worldSpotMult != null) wsp *= fx.worldSpotMult;
+    if(fx.minimapSpotMult != null) msp *= fx.minimapSpotMult;
+    if(fx.magd != null) magd += fx.magd;
+    if(fx.pel != null) pel = fx.pel;
+    if(fx.coll != null) coll = fx.coll;
+    if(fx.adsInc != null) adsInc = fx.adsInc;
+    if(fx.hipInc != null) hipInc = fx.hipInc;
+    for(const k in fx) if(PG_TIERK.has(k)) tiers[k] = (tiers[k]||0) + fx[k];
+  }
+  const ammo = pgOpt(w,'ammo',sel.ammo);
+  const dmg = pgDmg(w, ammo || {fx:{}});
+  const btk = pgBtk(dmg);
+  return {vel:Math.round(b.vel*vel), mag:b.mag + magd, pel, coll, tiers,
+          empty:(b.empty!=null? b.empty/rel : null), tac:(b.tac!=null? b.tac/rel : null),
+          wsp, msp, adsInc, hipInc,
+          dmg:Math.round(dmg*10)/10, btk, ttk:(btk-1)*CYCLE_MS(w)};
+}
+function pgTierLine(tiers){
+  const keys = Object.keys(tiers).filter(k=>tiers[k]);
+  if(!keys.length) return 'no tier changes';
+  return keys.sort((a,b)=>Math.abs(tiers[b])-Math.abs(tiers[a]))
+    .slice(0,7).map(k=>{
+      const v = tiers[k], lab = (PG_FX[k]||[k])[0], dir = (PG_FX[k]||[k,1])[1];
+      return `<span style="color:${v*dir>0?'#6fd48a':'#e0707a'}">${lab} ${v>0?'+':'−'}${Math.abs(v)}</span>`;
+    }).join(' · ');
+}
+
+/* the command bar is sticky at top:0 and changes height across breakpoints, so the goal bar's
+   offset is measured from it rather than hard-coded. */
+function syncBarh(){
+  const b = document.querySelector('#viewPlay .wbar');
+  if(b) document.documentElement.style.setProperty('--wbarh', b.offsetHeight + 'px');
+}
+window.addEventListener('resize', syncBarh);
+
+function renderPlay(w, keepScroll){
+  curW = null;
+  document.body.classList.add('wpn');
+  document.getElementById('viewCatalog').hidden = true;
+  document.getElementById('viewWeapon').hidden = true;
+  const vp = document.getElementById('viewPlay'); vp.hidden = false;
+  setBackdrop(w.img || '');
+  if(playState.slug !== w.slug){
+    playState.slug = w.slug;
+    playState.sel = Object.assign({}, w.play.def);
+    playState.slot = w.play.slots[0].k;
+  }
+  for(const sl of w.play.slots)
+    if(!sl.o.some(o=>o.id===playState.sel[sl.k])) playState.sel[sl.k] = w.play.def[sl.k] || sl.o[0].id;
+  if(!w.play.slots.some(s=>s.k===playState.slot)) playState.slot = w.play.slots[0].k;
+
+  const sel = playState.sel;
+  const goal = PG_LANES.find(l=>l.id===playState.goal) || PG_LANES[0];
+  const rows = PG_LANES.map(lane=>{
+    const cur = pgLane(w, sel, lane), env = pgEnv(w, lane);
+    /* share of the reachable upside this build has actually taken: 0 = factory gun,
+       100% = every slot spent on this axis */
+    const pct = env.hi > 0 ? Math.max(0, Math.min(1, cur/env.hi)) : 0;
+    return {lane, cur, env, pct};
+  });
+  const pot = Math.round(100 * rows.reduce((a,r)=>a+r.pct,0) / rows.length);
+  const A = pgAbs(w, sel);
+
+  document.getElementById('phead').innerHTML = `
+    <div class="wthumb"><img src="${w.img||''}" alt="${esc(w.name)}" decoding="async"></div>
+    <div class="wtt">
+      <div class="wkick"><span class="cls">${w.clsLabel}</span><span class="wsub">${esc(weaponTagline(w))}</span></div>
+      <h2>${esc(w.name)}</h2>
+      <div class="wreal">${esc(w.ammo)} · banco de armado</div>
+    </div>`;
+  document.getElementById('pstats').innerHTML = [
+    ['Vel', A.vel, 'm/s', true],
+    ['Mag', A.mag, 'rds', false],
+    ['Dmg '+state.dist+'m', A.dmg, '', true],
+    ['BTK', A.btk, ''],
+    ['TTK', A.btk<=1?'1-shot':Math.round(A.ttk), A.btk<=1?'':'ms', true],
+  ].map(([k,v,u,hl])=>`<div class="wst ${hl?'hl':''}"><span class="k">${k}</span><span class="v">${v}${u?`<small>${u}</small>`:''}</span></div>`).join('');
+
+  const slot = w.play.slots.find(s=>s.k===playState.slot) || w.play.slots[0];
+  const opts = slot.o.slice().sort((a,b)=> b.p-a.p || a.n.localeCompare(b.n));
+  const changed = w.play.slots.filter(s=>sel[s.k] !== w.play.def[s.k]).length;
+
+  /* one shared scale for every fan band, so the grey bars are comparable across axes */
+  const gLo = Math.min(0, ...rows.map(r=>r.env.lo));
+  const gHi = Math.max(0, ...rows.map(r=>r.env.hi));
+  const gSpan = (gHi - gLo) || 1;
+  const xOf = v => (v - gLo)/gSpan*100;
+
+  document.getElementById('pgbar').innerHTML = `
+    <span class="pglb">Optimise for</span>
+    <div class="pggoals" id="pggoals">
+      ${PG_LANES.map(l=>`<button class="pgchip ${l.id===goal.id?'on':''}" data-goal="${l.id}">${l.label}</button>`).join('')}
+      <button class="pgchip" data-goal="__reset">Reset</button>
+    </div>
+    <span class="sp"></span>
+    <span class="pgsum"><b>${pot}%</b> potential · <b>${changed}</b>/${w.play.slots.length} slots</span>`;
+
+  document.getElementById('pbody').innerHTML = `
+  <div class="pghero">
+    <div class="note" style="margin:0">Every slot offers a real variation of the weapon. Pills use the datamined magnitude of the attachment: <b>the sign is the change in the stat, the colour says whether it plays for you (green) or against you (red)</b>. Each axis <b>index</b> is additive and unitless, and starts at 0 for the gun exactly as it ships — positive is always an improvement.</div>
+    <div class="pgpot">
+      <div class="dial"><svg viewBox="0 0 100 100">
+        <circle class="trk" cx="50" cy="50" r="40"/>
+        <circle class="arc" cx="50" cy="50" r="40" style="stroke-dasharray:${(2*Math.PI*40).toFixed(1)};stroke-dashoffset:${(2*Math.PI*40*(1-pot/100)).toFixed(1)}"/></svg>
+        <div class="mid"><div class="big">${pot}%</div><div class="cap">potential</div></div></div>
+      <div class="side">
+        <b>${changed}</b> slot${changed===1?'':'s'} changed · <b>${w.play.slots.length}</b> available<br>
+        Velocity <b>${A.vel} m/s</b> · Magazine <b>${A.mag}</b><br>
+        Reload <b>${A.empty!=null? A.empty.toFixed(2)+' s':'—'}</b><br>
+        Visibility <b>${Math.round(A.wsp*100)}% / ${Math.round(A.msp*100)}%</b> <span style="color:var(--dim2)">world / minimap · lower is better</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pggrid">
+    <div>
+      <div class="kpanel" style="margin-bottom:16px">
+        <h4>Slot &amp; attachments</h4>
+        <div class="pgslots" id="pgslots">
+          ${w.play.slots.map(s=>`<button class="attslot ${s.k===slot.k?'on':''}" data-slot="${s.k}">${GLYPH[s.l]?`<svg viewBox="0 0 24 24" aria-hidden="true">${GLYPH[s.l]}</svg>`:''}<span>${s.l}</span><span class="n">${s.o.length}</span></button>`).join('')}
+        </div>
+        <div class="pgopts" id="pgopts">
+          ${opts.map(o=>`<button class="pgopt ${sel[slot.k]===o.id?'on':''}" data-id="${o.id}">${attIcon(slot.l, o.ic)}
+            <div class="txt"><div class="nm">${esc(o.n)}${o.p?`<em>${o.p} pt</em>`:''}</div>
+            ${o.t>=0?`<div style="font-size:10.5px;line-height:1.4;color:var(--dim2);margin-top:3px">${esc(TIPS[o.t]||'')}</div>`:''}
+            ${pgPills(w, slot.k, o)}</div></button>`).join('')}
+        </div>
+      </div>
+
+      <div class="kpanel" style="margin-bottom:16px">
+        <h4>Current build</h4>
+        <div class="pgbuild">
+          ${w.play.slots.map(s=>{
+            const o = pgOpt(w, s.k, sel[s.k]);
+            const d = sel[s.k] !== w.play.def[s.k];
+            return `<div class="pgb" style="${d?'border-color:#4a3a18':''}">${attIcon(s.l, o?o.ic:-1)}
+              <div><span class="sl">${s.l}</span><span class="nm" style="${d?'color:var(--accent)':''}">${esc(o?o.n:'—')}</span></div></div>`;
+          }).join('')}
+        </div>
+        <div class="note">Amber = changed from the factory gun.</div>
+      </div>
+
+      <div class="kpanel">
+        <h4>Absolute readout — this build</h4>
+        <table class="spec">
+          <tr><td>Muzzle velocity</td><td>${A.vel} m/s</td></tr>
+          <tr><td>Damage per shot @ ${state.dist} m</td><td>${A.dmg} (${A.btk<=1?'1 shot':A.btk+' hits'})</td></tr>
+          <tr><td>Pellets per shot</td><td>${A.pel}</td></tr>
+          <tr><td>Magazine</td><td>${A.mag} rounds</td></tr>
+          <tr><td>Reload from empty</td><td>${A.empty!=null? A.empty.toFixed(2)+' s':'—'}</td></tr>
+          <tr><td>ADS spread growth</td><td>${A.adsInc!=null? A.adsInc+'°/shot':'—'}</td></tr>
+          <tr><td>Hip spread growth</td><td>${A.hipInc!=null? A.hipInc+'°/shot':'—'}</td></tr>
+          <tr><td>Collateral multiplier</td><td>${A.coll!=null? Math.round(A.coll*100)+'%':'—'}</td></tr>
+          <tr><td>Visibility — world / minimap</td><td>${Math.round(A.wsp*100)}% / ${Math.round(A.msp*100)}%</td></tr>
+        </table>
+        <div class="note">Accumulated tiers: ${pgTierLine(A.tiers)}</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="kpanel" style="margin-bottom:16px">
+        <h4>Fan — reachable value per axis</h4>
+        <div id="pglanes">
+          ${rows.map(r=>`<div class="pglane ${r.lane.id===goal.id?'sel':''}">
+            <span class="n">${r.lane.label}</span>
+            <span class="pgenv">
+              ${r.env.hi>r.env.lo?`<i class="rng" style="left:${xOf(r.env.lo).toFixed(2)}%;width:${(xOf(r.env.hi)-xOf(r.env.lo)).toFixed(2)}%"></i>`:''}
+              <i class="zero" style="left:${xOf(0).toFixed(2)}%"></i>
+              ${r.lane.id===goal.id?`<i class="cur" style="left:${xOf(r.cur).toFixed(2)}%"></i>`:''}
+            </span>
+            <span class="v">${(r.cur>0?'+':'')+r.cur.toFixed(1)}<small>/${(r.env.hi>0?'+':'')+r.env.hi.toFixed(1)}</small></span>
+          </div>`).join('')}
+        </div>
+        <div class="note">The grey band is everything reachable by summing each slot's best choice; <b>every band shares one scale</b>, so the widest band is the axis with the most headroom. The thin vertical mark is zero (factory gun) and the amber marker is your build on the axis you are optimising. Index 1.0 ≈ one tier level or a 100% multiplier; magazine rounds score at 15%.</div>
+      </div>
+
+      <div class="kpanel">
+        <h4>Trade-off matrix — what each goal costs you</h4>
+        <div class="pgmxwrap"><div class="pgmx" style="grid-template-columns:74px repeat(${PG_LANES.length},minmax(0,1fr))">
+          <i class="h"></i>${PG_LANES.map(l=>`<i class="h">${l.label}</i>`).join('')}
+          ${PG_LANES.map(row=>{
+            const b = pgBuild(w, row);
+            return `<i class="rh">${row.label}</i>` + PG_LANES.map(col=>{
+              const v = pgLane(w, b, col);
+              const cls = v > 0.05 ? 'up' : v < -0.05 ? 'dn' : 'z';
+              return `<i class="${cls}" ${col.id===row.id?'style="background:#2a2415"':''}>${(v>0?'+':'')+v.toFixed(1)}</i>`;
+            }).join('');
+          }).join('')}
+        </div></div>
+        <div class="note">Each row is the best possible build for that goal, and each cell is how the rest of the weapon ends up with it. The diagonal is the maximum reachable. Because every effect is additive per slot, the optimal build for a goal is the sum of its best attachment in each slot — there is no hidden better combination.</div>
+      </div>
+    </div>
+  </div>`;
+
+  // ---- events ----
+  document.getElementById('pggoals').querySelectorAll('.pgchip').forEach(b=>b.onclick=()=>{
+    const g = b.dataset.goal;
+    if(g==='__reset'){ playState.sel = Object.assign({}, w.play.def); }
+    else { playState.goal = g; playState.sel = pgBuild(w, PG_LANES.find(l=>l.id===g)); }
+    renderPlay(w, true);
+  });
+  document.getElementById('pgslots').querySelectorAll('.attslot').forEach(b=>b.onclick=()=>{
+    playState.slot = b.dataset.slot; renderPlay(w, true);
+  });
+  document.getElementById('pgopts').querySelectorAll('.pgopt').forEach(b=>b.onclick=()=>{
+    playState.sel[slot.k] = b.dataset.id; renderPlay(w, true);
+  });
+  syncBarh();
+  if(!keepScroll) window.scrollTo(0,0);
+}
+
+/* ---- controls ---- */
+function syncRange(){
+  const cd = document.getElementById('dist'); if(cd) cd.value = state.dist;
+  document.getElementById('distv').textContent = state.dist+'m';
+  const wd = document.getElementById('wdist'); if(wd) wd.value = state.dist;
+  const wv = document.getElementById('wdistv'); if(wv) wv.textContent = state.dist+'m';
+  const pd = document.getElementById('pdist'); if(pd) pd.value = state.dist;
+  const pv = document.getElementById('pdistv'); if(pv) pv.textContent = state.dist+'m';
+}
+function setDist(v){
+  state.dist = +v;
+  syncRange();
+  if(!document.getElementById('viewPlay').hidden && playState.slug){
+    const pw = WEAPONS.find(x=>x.slug===playState.slug);
+    if(pw){ renderPlay(pw, true); return; }
+  }
+  if(curW && !document.getElementById('viewWeapon').hidden) renderWeapon(curW, true);
+  else renderGrid();
+}
+document.getElementById('q').addEventListener('input', e=>{ state.q=e.target.value; renderGrid(); });
+document.getElementById('sort').addEventListener('change', e=>{ state.sort=e.target.value; renderGrid(); });
+document.getElementById('dist').addEventListener('input', e=>setDist(e.target.value));
+document.getElementById('wdist').addEventListener('input', e=>setDist(e.target.value));
+document.getElementById('pdist').addEventListener('input', e=>setDist(e.target.value));
+document.getElementById('only').addEventListener('click', e=>{
+  state.only = !state.only;
+  const b = e.currentTarget;
+  b.classList.toggle('on', state.only);
+  b.setAttribute('aria-pressed', String(state.only));
+  renderGrid();
+});
+document.getElementById('back').addEventListener('click', ()=>{ location.hash=''; });
+document.getElementById('pgopen').addEventListener('click', ()=>{ if(curW) goPlay(curW.slug); });
+document.getElementById('pback').addEventListener('click', ()=>{ if(playState.slug) go(playState.slug); });
+
+document.getElementById('foot').innerHTML =
+  `<b>Sources.</b> Weapon renders: in-game armory screenshots (BF6 Balance Log), Battlefield Wiki / Fandom as fallback. `+
+  `Base stats (damage, velocity, ROF, spread, reload): sym.gg BF6 game-file dump ${VER}. `+
+  `Descriptions, fire modes, attachment lists and in-game attachment text: community datamine <i>BF6-Weapon-Analyzer</i> (no license — attributed). `+
+  `Meta tiers, real-world firearm references and map intel: public community sources.<br>`+
+  `Self-contained, offline, no network requests. Fan-made reference — not affiliated with EA/DICE. `+
+  `TTK model: 100 HP, chest shots, constant damage per range band. `+
+  `The playground applies the datamined per-attachment fields on top of the bare weapon; tier axes keep the game's own ladder because the tier→number table is not public. `+
+  `Map fit is a derived heuristic, not a guarantee.`;
+
+renderChips();
+renderGrid();
+route();
+</script>
+</body>
+</html>
